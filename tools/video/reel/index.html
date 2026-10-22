@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" data-fonts="Pretendard">
+<head>
+<meta charset="utf-8">
+<title>Foreman film</title>
+<!-- fonts/fonts.css 는 new_project.py 가 실제로 있는 폰트만 골라 만든다(굵기마다 @font-face). -->
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  /* Foreman brand v2 (Foreman/docs/design/tokens.json). Light values; dark scenes set their own from THEME.dark. */
+  :root {
+    --bg: #F3F5F8; --surface: #FFFFFF; --sunken: #E9EDF2;
+    --ink: #0B0F19; --ink2: #4A5363; --ink3: #5E6879; --line: #DFE3EA; --line2: #858E9E;
+    --accent: #2040C8; --accent-c: #E7ECFF; --on-accent-c: #142A8F;
+    --signal: #C6F03A; --signal-d: #D4F74C; --on-signal: #0B0F19;
+    --success: #119A82; --success-d: #3CD0B2;
+    --night: #08090D; --night-1: #12151B; --night-text: #EDF0F5; --night-2: #A3ACBA; --night-3: #7F8899; --night-line: #242932; --running-d: #4A66F2;
+    --display: "Pretendard", sans-serif;
+    --mono: "JetBrains Mono", "Pretendard", monospace;
+  }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #wrap { transform-origin: 0 0; }
+  #stage { position: relative; overflow: hidden; background: var(--bg); color: var(--ink);
+           font-family: "Pretendard", sans-serif; font-kerning: normal; -webkit-font-smoothing: antialiased;
+           word-break: keep-all; }
+  .cam, .top, .scene { position: absolute; inset: 0; }
+  .scene { overflow: hidden; }
+  .a { position: absolute; }                     /* 절대 배치 헬퍼 */
+  .full { position: absolute; inset: 0; }
+  .center { position: absolute; left: 0; right: 0; text-align: center; }
+  .display { font-family: var(--display); font-weight: 900; letter-spacing: -0.045em; line-height: 1.05; }
+  /* .label 은 _example_scenes.js 가 쓰는 예시 클래스다. 구간 라벨의 모양은 아트 디렉션으로 정한다 */
+  .ico svg { width: 100%; height: 100%; display: block; }
+  .cap { position: absolute; left: 120px; width: 600px; font-weight: 600; font-size: 60px; letter-spacing: -0.02em; line-height: 1.2; }
+  .cap .l2 { display: block; color: var(--ink2); }
+  .cap span { text-wrap: balance; }
+  .mono { font-family: var(--mono); }
+  .shot { position: absolute; display: block; }
+  /* 미리보기 플레이어 */
+  .player { position: fixed; left: 0; right: 0; bottom: 0; height: 44px; display: flex; gap: 12px; align-items: center;
+            padding: 0 12px; background: #111; color: #bbb; font: 12px/1 Menlo, monospace; }
+  .player .scrub { flex: 1; }
+  /* ── 장면별 스타일은 아래에 이어서 쓴다 ── */
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage"></div></div>
+<script src="timeline.js"></script>  <!-- timeline.py 가 만든다(없으면 빈 TL). 나레이션·큐 시각의 단일 원천 -->
+<script src="lang.js"></script>
+<script src="brand.js"></script>
+<script src="engine.js"></script>
+<script src="fx.js"></script>
+<script src="scenes.js"></script>
+</body>
+</html>

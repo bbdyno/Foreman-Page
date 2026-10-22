@@ -1,0 +1,13 @@
+{
+  "duration": 40,
+  "lines": [],
+  "scenes": [
+    {"id": "s01", "start": 0},
+    {"id": "s02", "start": 6},
+    {"id": "s03", "start": 14},
+    {"id": "s04", "start": 22},
+    {"id": "s05", "start": 30}
+  ],
+  "sfx": [],
+  "music": {"file": "audio/music/music.wav", "gain_db": -6, "analysis": "audio/music/analysis.json"}
+}

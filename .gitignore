@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+.claude/
+tools/.venv/
+*.render.html
+# film: generated or copied in by tools/video/prepare.sh and the showreel skill (new_project.py)
+tools/video/out/
+tools/video/qa/
+tools/video/assets/
+tools/video/audio/music/*.wav
+tools/video/audio/*.wav
+tools/video/reel/fonts/
+tools/video/reel/engine.js
+tools/video/reel/fx.js
+tools/video/reel/_example_scenes.js
+tools/video/reel/brand.js

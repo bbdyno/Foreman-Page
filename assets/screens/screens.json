@@ -1,0 +1,106 @@
+{
+  "android-home": {
+    "kind": "phone",
+    "w": 824,
+    "h": 1830,
+    "source": "Android-Home",
+    "dark": "assets/screens/android-home-dark.webp",
+    "light": "assets/screens/android-home-light.webp"
+  },
+  "mac-menubar": {
+    "kind": "menu",
+    "w": 800,
+    "h": 960,
+    "source": "Mac-MenuBar",
+    "dark": "assets/screens/mac-menubar-dark.webp",
+    "light": "assets/screens/mac-menubar-light.webp"
+  },
+  "mac-workspace": {
+    "kind": "mac",
+    "w": 2880,
+    "h": 1800,
+    "source": "Mac-Workspace",
+    "dark": "assets/screens/mac-workspace-dark.webp",
+    "light": "assets/screens/mac-workspace-light.webp"
+  },
+  "windows-main": {
+    "kind": "mac",
+    "w": 2880,
+    "h": 1800,
+    "source": "Windows-Main",
+    "dark": "assets/screens/windows-main-dark.webp",
+    "light": "assets/screens/windows-main-light.webp"
+  },
+  "ios-agents": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Agents",
+    "dark": "assets/screens/ios-agents-dark.webp",
+    "light": "assets/screens/ios-agents-light.webp"
+  },
+  "ios-home": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Home",
+    "dark": "assets/screens/ios-home-dark.webp",
+    "light": "assets/screens/ios-home-light.webp"
+  },
+  "ios-inbox": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Inbox",
+    "dark": "assets/screens/ios-inbox-dark.webp",
+    "light": "assets/screens/ios-inbox-light.webp"
+  },
+  "ios-lock": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Lock",
+    "dark": "assets/screens/ios-lock-dark.webp",
+    "light": "assets/screens/ios-lock-light.webp"
+  },
+  "ios-new-session": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-NewSession",
+    "dark": "assets/screens/ios-new-session-dark.webp",
+    "light": "assets/screens/ios-new-session-light.webp"
+  },
+  "ios-session": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Session",
+    "dark": "assets/screens/ios-session-dark.webp",
+    "light": "assets/screens/ios-session-light.webp"
+  },
+  "ios-terminal": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Terminal",
+    "dark": "assets/screens/ios-terminal-dark.webp",
+    "light": "assets/screens/ios-terminal-light.webp"
+  },
+  "ipad-grid": {
+    "kind": "ipad",
+    "w": 2752,
+    "h": 2064,
+    "source": "iPad-Grid",
+    "dark": "assets/screens/ipad-grid-dark.webp",
+    "light": "assets/screens/ipad-grid-light.webp"
+  },
+  "watch-approve": {
+    "kind": "watch",
+    "w": 416,
+    "h": 496,
+    "source": "watchOS-Approve",
+    "dark": "assets/screens/watch-approve-dark.webp",
+    "light": "assets/screens/watch-approve-dark.webp"
+  }
+}

@@ -1,0 +1,79 @@
+{
+ "duration": 40,
+ "mood": "pulse",
+ "bpm": 120,
+ "key": "E",
+ "minor": false,
+ "progression": [
+  "I",
+  "vi",
+  "IV",
+  "V"
+ ],
+ "sections": [
+  {
+   "start": 0,
+   "energy": 0.04
+  },
+  {
+   "start": 6,
+   "energy": 0.16
+  },
+  {
+   "start": 14,
+   "energy": 0.42
+  },
+  {
+   "start": 22,
+   "energy": 0.7
+  },
+  {
+   "start": 30,
+   "energy": 0.22
+  },
+  {
+   "start": 35,
+   "energy": 0.06
+  }
+ ],
+ "events": [
+  {
+   "t": 4.0,
+   "type": "chime"
+  },
+  {
+   "t": 10.0,
+   "type": "hit"
+  },
+  {
+   "t": 21.4,
+   "type": "stop",
+   "dur": 0.6
+  },
+  {
+   "t": 22.0,
+   "type": "hit"
+  },
+  {
+   "t": 26.0,
+   "type": "riser",
+   "dur": 1.6
+  },
+  {
+   "t": 27.6,
+   "type": "hit"
+  },
+  {
+   "t": 36.0,
+   "type": "chime"
+  }
+ ],
+ "fade_in": 0.3,
+ "fade_out": 3.0,
+ "global_styles": [
+  "minimal electronic",
+  "soft synth pulse",
+  "calm control room at night",
+  "no vocals"
+ ]
+}
