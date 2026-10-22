@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Foreman</title>
-<meta name="description" content="Foreman has no servers run by its developer and collects no personal information. Your data stays on your devices and in your iCloud.">
+<meta name="description" content="Foreman has no servers run by its developer and collects no personal information. Your data stays on your computer, your devices and your cloud account.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F3F5F8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#08090D" media="(prefers-color-scheme: dark)">
@@ -21,12 +21,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Foreman">
 <meta property="og:title" content="Privacy Policy — Foreman">
-<meta property="og:description" content="Foreman has no servers run by its developer and collects no personal information. Your data stays on your devices and in your iCloud.">
+<meta property="og:description" content="Foreman has no servers run by its developer and collects no personal information. Your data stays on your computer, your devices and your cloud account.">
 <meta property="og:url" content="https://bbdyno.github.io/Foreman-Page/privacy/">
 <meta property="og:image" content="https://bbdyno.github.io/Foreman-Page/assets/brand/og-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Foreman logo and the line: Manage the coding agents on your Mac from anywhere.">
+<meta property="og:image:alt" content="Foreman logo and the line: Manage the coding agents on your computer from anywhere.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -58,31 +58,34 @@
     <div class="doc-meta"><nav aria-label="Contents"><p class="meta">Contents</p><ol><li><a href="#summary">Summary</a></li><li><a href="#collect">Information the developer collects</a></li><li><a href="#data">Data the app handles and where it is stored</a></li><li><a href="#third">Communication with other services</a></li><li><a href="#crash">Crash reports and diagnostics</a></li><li><a href="#payment">Payments</a></li><li><a href="#delete">Retention and deletion</a></li><li><a href="#website">This website</a></li><li><a href="#children">Children</a></li><li><a href="#changes">Changes to this policy</a></li><li><a href="#contact">Contact</a></li></ol></nav></div>
     <article class="prose">
       <h2 id="summary">Summary</h2>
-      <p class="summary">The data Foreman works with is stored only on your devices and in your iCloud. The developer cannot receive or see it.</p>
-      <ul><li>There is no sign-up. We don’t ask for your name, email address or phone number.</li><li>No advertising identifiers, analytics or tracking SDKs.</li><li>Session content travels between your devices end-to-end encrypted.</li></ul>
+      <p class="summary">The data Foreman works with is stored only on your computer, your devices and your cloud account (your iCloud or an app-only folder in your Google Drive). The developer cannot receive or see it.</p>
+      <ul><li>There is no sign-up. We don’t ask for your name, email address or phone number.</li><li>No advertising identifiers, analytics or tracking SDKs.</li><li>All data travels between your devices end-to-end encrypted, and the developer stores and reads nothing.</li></ul>
       <h2 id="collect">Information the developer collects</h2>
       <p>None. The developer runs no relay, logging or account servers, so none of your information is sent to the developer.</p>
       <h2 id="data">Data the app handles and where it is stored</h2>
       <p>The app needs the data below to work. All of it is stored only in places you control.</p>
       <ul>
-        <li><strong>Session output and history</strong> (an agent’s terminal output, conversation and changes): on the Mac where the agent runs. When your devices can’t connect directly, it passes through the CloudKit private database in your iCloud.</li>
-        <li><strong>Approval requests and questions</strong>: on your Mac, your devices and the CloudKit private database in your iCloud.</li>
-        <li><strong>Pairing details and API keys</strong>: in the keychain of your devices. Agent API keys stay in the keychain of the Mac where the agent runs.</li>
-        <li><strong>Settings and approval rules</strong>: on your devices and in your iCloud.</li>
+        <li><strong>Session output and history</strong> (an agent’s terminal output, conversation and changes): on the computer where the agent runs (the host). Only when your device can’t reach the host directly is your cloud account used as a mailbox.</li>
+        <li><strong>Cloud mailbox</strong>: your iCloud (CloudKit private database) for iPhone, iPad, Mac and Apple Watch; an app-only folder in your Google Drive for the Android and Windows apps. The app-only folder holds only files Foreman created; Foreman does not see your other files. What passes through the mailbox is end-to-end encrypted too.</li>
+        <li><strong>Approval requests and questions</strong>: on your computer and devices, and in the cloud mailbox above.</li>
+        <li><strong>Pairing details and API keys</strong>: in the keychain (or the operating system’s secure storage) of your devices and computer. Agent API keys stay on the computer where the agent runs. Your phone issues the host’s access and hands it over through an encrypted channel; it does not depend on the host computer’s iCloud sign-in.</li>
+        <li><strong>Settings and approval rules</strong>: on your devices and in your cloud account.</li>
       </ul>
-      <p>Data stored in iCloud is subject to Apple’s iCloud terms and privacy policy.</p>
+      <p>Data stored in your cloud account is subject to that service’s terms and privacy policy (Apple iCloud, Google Drive).</p>
       <h2 id="third">Communication with other services</h2>
       <ul>
-        <li><strong>Apple</strong>: the app uses iCloud (CloudKit), push notifications and App Store payments. Notifications are sent by Apple directly, through a subscription registered in your iCloud.</li>
+        <li><strong>Apple</strong>: iPhone, iPad, Mac and Apple Watch use iCloud (CloudKit), push notifications and App Store payments. Notifications on Apple devices are sent by Apple directly, through a subscription registered in your iCloud.</li>
+        <li><strong>Google</strong>: the Android and Windows apps use an app-only folder in your Google Drive as the mailbox. Payments in the Android app are processed by Google Play.</li>
+        <li><strong>Microsoft</strong>: the Windows app is distributed and paid for through Microsoft Store.</li>
         <li><strong>Public STUN servers</strong> (stun.cloudflare.com, stun.l.google.com): used only to learn your public IP address while finding a direct route between your devices. No session content is sent. Each operator’s own policy applies.</li>
-        <li><strong>Agent providers</strong>: agents such as Claude Code, Codex and Gemini CLI run on your Mac because you start them, and they talk to their own services under their providers’ terms and privacy policies. Foreman does not intercept their traffic or send data on their behalf.</li>
+        <li><strong>Agent providers</strong>: agents such as Claude Code, Codex and Gemini CLI run on your computer because you start them, and they talk to their own services under their providers’ terms and privacy policies. Foreman does not intercept their traffic or send data on their behalf.</li>
       </ul>
       <h2 id="crash">Crash reports and diagnostics</h2>
       <p>The app contains no crash-reporting tool of its own. The only crash information the developer receives is what each store (App Store, Google Play, Microsoft Store) provides by default, and only if you agreed in your device settings to share it with developers. It does not identify you.</p>
       <h2 id="payment">Payments</h2>
-      <p>Subscriptions are processed by the App Store. The developer receives no payment or billing details. The Mac app checks your subscription by reading the App Store–signed record from your iCloud.</p>
+      <p>Subscriptions are processed by the store you subscribe through (App Store, Google Play, Microsoft Store). The developer receives no payment or billing details. The directly downloaded Mac app checks your subscription by reading the App Store–signed record from your iCloud.</p>
       <h2 id="delete">Retention and deletion</h2>
-      <p>Data stays on your devices and in your iCloud until you delete it. On the Free plan, session history older than 7 days is deleted automatically. Deleting the app removes its data from that device; data left in iCloud can be removed on iPhone: open Settings, tap your name, then iCloud and Manage Account Storage, and choose Foreman. Session history on your Mac is deleted from the Mac app’s settings.</p>
+      <p>Data stays on your computer, your devices and your cloud account until you delete it. On the Free plan, session history older than 7 days is deleted automatically. Deleting the app removes its data from that device. Data left in iCloud can be removed on iPhone: open Settings, tap your name, then iCloud and Manage Account Storage, and choose Foreman. The app-only folder in Google Drive is removed under Manage apps in Google Drive settings, by deleting Foreman’s hidden app data. Session history on the host is deleted in the host app’s settings.</p>
       <h2 id="website">This website</h2>
       <p>This website is served by GitHub Pages. It uses no cookies, no analytics and no external font services. GitHub may process access logs (such as IP addresses) to operate its service, under the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>.</p>
       <h2 id="children">Children</h2>

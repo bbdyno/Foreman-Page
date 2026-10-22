@@ -21,6 +21,7 @@ The HTML is generated and committed. All links are relative, so the site works f
 | What | Source | Made by |
 | --- | --- | --- |
 | Copy | `tools/site/en.mjs`, `tools/site/ko.mjs` | `tools/site/build.mjs` (templates) |
+| Cloud mailbox wording (iCloud for Apple devices, Google Drive app folder for Android/Windows) | `tools/site/relay.mjs`, the one place to change it | used by the copy, the privacy policy and the FAQ |
 | Colors, fonts, easing | Foreman brand `docs/design/tokens.json` (Foreman repository, read only) | `tools/theme/from-brand.mjs` → `tools/theme/theme.json` → `assets/tokens.css` |
 | Logo, favicon, touch icon, OG images | Foreman brand `docs/design/logo`, `app-icon` | `tools/brand.mjs` → `assets/brand/` |
 | Product screens | Foreman brand `docs/design/mockups/*-{light,dark}.png` | `tools/screens.py` → `assets/screens/*.webp`, `screens.json` |

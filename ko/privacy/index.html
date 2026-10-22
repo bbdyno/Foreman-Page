@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>개인정보 처리방침 — Foreman</title>
-<meta name="description" content="Foreman은 개발자가 운영하는 서버가 없고 개인정보를 수집하지 않습니다. 데이터는 사용자 기기와 사용자 iCloud에만 저장됩니다.">
+<meta name="description" content="Foreman은 개발자가 운영하는 서버가 없고 개인정보를 수집하지 않습니다. 데이터는 이용자의 컴퓨터와 기기, 이용자의 클라우드 계정에만 저장됩니다.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F3F5F8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#08090D" media="(prefers-color-scheme: dark)">
@@ -21,12 +21,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Foreman">
 <meta property="og:title" content="개인정보 처리방침 — Foreman">
-<meta property="og:description" content="Foreman은 개발자가 운영하는 서버가 없고 개인정보를 수집하지 않습니다. 데이터는 사용자 기기와 사용자 iCloud에만 저장됩니다.">
+<meta property="og:description" content="Foreman은 개발자가 운영하는 서버가 없고 개인정보를 수집하지 않습니다. 데이터는 이용자의 컴퓨터와 기기, 이용자의 클라우드 계정에만 저장됩니다.">
 <meta property="og:url" content="https://bbdyno.github.io/Foreman-Page/ko/privacy/">
 <meta property="og:image" content="https://bbdyno.github.io/Foreman-Page/assets/brand/og-ko.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Foreman 로고와 문구: 내 Mac의 코딩 에이전트를 어디서든 관리합니다.">
+<meta property="og:image:alt" content="Foreman 로고와 문구: 내 컴퓨터의 코딩 에이전트를 어디서든 관리합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -58,31 +58,34 @@
     <div class="doc-meta"><nav aria-label="목차"><p class="meta">목차</p><ol><li><a href="#summary">요약</a></li><li><a href="#collect">개발자가 수집하는 정보</a></li><li><a href="#data">앱이 다루는 데이터와 저장 위치</a></li><li><a href="#third">외부 서비스와의 통신</a></li><li><a href="#crash">크래시 리포트와 진단 정보</a></li><li><a href="#payment">결제</a></li><li><a href="#delete">보관과 삭제</a></li><li><a href="#website">이 웹사이트</a></li><li><a href="#children">아동</a></li><li><a href="#changes">방침의 변경</a></li><li><a href="#contact">문의</a></li></ol></nav></div>
     <article class="prose">
       <h2 id="summary">요약</h2>
-      <p class="summary">Foreman 앱이 다루는 데이터는 이용자의 기기와 이용자의 iCloud에만 저장됩니다. 개발자는 그 데이터를 받거나 볼 수 없습니다.</p>
-      <ul><li>회원 가입이 없고, 이름·이메일·전화번호를 받지 않습니다.</li><li>광고 식별자, 분석 도구, 추적 SDK를 쓰지 않습니다.</li><li>세션 내용은 기기 사이에서 종단간 암호화되어 오갑니다.</li></ul>
+      <p class="summary">Foreman이 다루는 데이터는 이용자의 컴퓨터와 기기, 그리고 이용자의 클라우드 계정(내 iCloud 또는 내 Google Drive의 앱 전용 폴더)에만 저장됩니다. 개발자는 그 데이터를 받거나 볼 수 없습니다.</p>
+      <ul><li>회원 가입이 없고, 이름·이메일·전화번호를 받지 않습니다.</li><li>광고 식별자, 분석 도구, 추적 SDK를 쓰지 않습니다.</li><li>모든 데이터는 기기 사이에서 종단간 암호화되어 오가고, 개발자는 아무것도 저장하거나 열람하지 않습니다.</li></ul>
       <h2 id="collect">개발자가 수집하는 정보</h2>
       <p>없습니다. 개발자는 중계 서버, 로그 서버, 계정 서버를 운영하지 않으므로 이용자의 정보가 개발자에게 전송되지 않습니다.</p>
       <h2 id="data">앱이 다루는 데이터와 저장 위치</h2>
       <p>앱이 동작하려면 아래 데이터가 필요합니다. 모두 이용자가 관리하는 곳에만 저장됩니다.</p>
       <ul>
-        <li><strong>세션 출력과 기록</strong>(에이전트의 터미널 출력, 대화, 변경 내용): 에이전트가 도는 이용자의 Mac. 기기 사이를 직접 연결할 수 없을 때는 이용자 iCloud의 CloudKit 개인 데이터베이스를 거칩니다.</li>
-        <li><strong>승인 요청과 질문</strong>: 이용자의 Mac, 이용자의 기기, 이용자 iCloud의 CloudKit 개인 데이터베이스.</li>
-        <li><strong>페어링 정보와 API 키</strong>: 이용자 기기의 키체인. 에이전트 API 키는 에이전트가 도는 Mac의 키체인에만 둡니다.</li>
-        <li><strong>설정과 승인 규칙</strong>: 이용자의 기기와 이용자 iCloud.</li>
+        <li><strong>세션 출력과 기록</strong>(에이전트의 터미널 출력, 대화, 변경 내용): 에이전트가 도는 이용자의 컴퓨터(호스트). 기기와 컴퓨터를 직접 연결할 수 없을 때만 이용자의 클라우드 계정을 우편함으로 씁니다.</li>
+        <li><strong>클라우드 우편함</strong>: iPhone·iPad·Mac·Apple Watch는 내 iCloud(CloudKit 개인 데이터베이스), Android·Windows 앱은 내 Google Drive의 앱 전용 폴더. 앱 전용 폴더에는 Foreman이 만든 파일만 있고, 다른 파일은 보지 않습니다. 우편함에 오가는 내용도 종단간 암호화되어 있습니다.</li>
+        <li><strong>승인 요청과 질문</strong>: 이용자의 컴퓨터와 기기, 위의 클라우드 우편함.</li>
+        <li><strong>페어링 정보와 API 키</strong>: 이용자 기기와 컴퓨터의 키체인(또는 각 OS의 보안 저장소). 에이전트 API 키는 에이전트가 도는 컴퓨터에만 둡니다. 호스트의 접근 권한은 이용자의 휴대폰이 발급해 암호화된 채널로 넘겨주며, 호스트 컴퓨터의 iCloud 로그인과는 관계없습니다.</li>
+        <li><strong>설정과 승인 규칙</strong>: 이용자의 기기와 클라우드 계정.</li>
       </ul>
-      <p>iCloud에 저장된 데이터는 Apple의 iCloud 이용 약관과 개인정보 처리방침을 따릅니다.</p>
+      <p>클라우드 계정에 저장된 데이터는 해당 서비스(Apple iCloud, Google Drive)의 약관과 개인정보 처리방침을 따릅니다.</p>
       <h2 id="third">외부 서비스와의 통신</h2>
       <ul>
-        <li><strong>Apple</strong>: iCloud(CloudKit), 푸시 알림, App Store 결제를 이용합니다. 알림은 이용자 iCloud에 등록한 구독을 통해 Apple이 직접 보냅니다.</li>
+        <li><strong>Apple</strong>: iPhone·iPad·Mac·Apple Watch에서 iCloud(CloudKit), 푸시 알림, App Store 결제를 이용합니다. Apple 기기의 알림은 이용자 iCloud에 등록한 구독을 통해 Apple이 직접 보냅니다.</li>
+        <li><strong>Google</strong>: Android·Windows 앱은 우편함으로 내 Google Drive의 앱 전용 폴더를 씁니다. Android 앱의 결제는 Google Play가 처리합니다.</li>
+        <li><strong>Microsoft</strong>: Windows 앱의 배포와 결제는 Microsoft Store가 처리합니다.</li>
         <li><strong>공개 STUN 서버</strong>(stun.cloudflare.com, stun.l.google.com): 기기 사이 직접 연결 경로를 찾을 때 이용자의 공인 IP 주소를 확인하는 데만 씁니다. 세션 내용은 보내지 않습니다. 각 서버 운영자의 정책이 적용됩니다.</li>
-        <li><strong>에이전트 제공자</strong>: Claude Code, Codex, Gemini CLI 같은 에이전트는 이용자의 Mac에서 이용자가 직접 실행하며, 각 제공자의 약관과 개인정보 처리방침에 따라 해당 서비스와 통신합니다. Foreman은 에이전트의 통신에 끼어들거나 대신 데이터를 보내지 않습니다.</li>
+        <li><strong>에이전트 제공자</strong>: Claude Code, Codex, Gemini CLI 같은 에이전트는 이용자의 컴퓨터에서 이용자가 직접 실행하며, 각 제공자의 약관과 개인정보 처리방침에 따라 해당 서비스와 통신합니다. Foreman은 에이전트의 통신에 끼어들거나 대신 데이터를 보내지 않습니다.</li>
       </ul>
       <h2 id="crash">크래시 리포트와 진단 정보</h2>
       <p>앱 안에 별도의 크래시 수집 도구를 넣지 않습니다. 개발자가 받는 크래시 정보는 각 스토어(App Store, Google Play, Microsoft Store)가 기본으로 제공하는 범위에 한하며, 이용자가 기기 설정에서 개발자와 공유하기로 동의한 경우에만 Apple, Google, Microsoft를 통해 전달됩니다. 이 정보에는 이용자를 식별하는 정보가 포함되지 않습니다.</p>
       <h2 id="payment">결제</h2>
-      <p>구독 결제는 App Store가 처리합니다. 개발자는 결제 수단이나 청구 정보를 받지 않습니다. Mac 앱은 App Store가 서명한 구독 내역을 이용자 iCloud에서 읽어 구독 상태를 확인합니다.</p>
+      <p>구독 결제는 구독한 스토어(App Store, Google Play, Microsoft Store)가 처리합니다. 개발자는 결제 수단이나 청구 정보를 받지 않습니다. 직접 내려받은 Mac 앱은 App Store가 서명한 구독 내역을 이용자 iCloud에서 읽어 구독 상태를 확인합니다.</p>
       <h2 id="delete">보관과 삭제</h2>
-      <p>데이터는 이용자가 지울 때까지 이용자의 기기와 iCloud에 남습니다. Free 요금제의 세션 기록은 7일이 지나면 자동으로 지워집니다. 앱을 삭제하면 해당 기기의 데이터가 지워지고, iCloud에 남은 데이터는 iPhone 설정 앱에서 내 이름, [iCloud], [계정 저장 공간 관리] 순으로 들어가 Foreman을 골라 지울 수 있습니다. Mac의 세션 기록은 Mac 앱 설정에서 지웁니다.</p>
+      <p>데이터는 이용자가 지울 때까지 이용자의 컴퓨터와 기기, 클라우드 계정에 남습니다. Free 요금제의 세션 기록은 7일이 지나면 자동으로 지워집니다. 앱을 삭제하면 해당 기기의 데이터가 지워집니다. iCloud에 남은 데이터는 iPhone 설정 앱에서 내 이름, [iCloud], [계정 저장 공간 관리] 순으로 들어가 Foreman을 골라 지우고, Google Drive의 앱 전용 폴더는 Google Drive 설정의 [앱 관리]에서 Foreman의 숨겨진 앱 데이터를 삭제해 지웁니다. 호스트의 세션 기록은 호스트 앱 설정에서 지웁니다.</p>
       <h2 id="website">이 웹사이트</h2>
       <p>이 웹사이트는 GitHub Pages에서 제공됩니다. 쿠키, 분석 도구, 외부 글꼴 서버를 쓰지 않습니다. GitHub는 서비스 운영을 위해 접속 기록(IP 주소 등)을 처리할 수 있으며, 이는 <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보 처리방침</a>을 따릅니다.</p>
       <h2 id="children">아동</h2>

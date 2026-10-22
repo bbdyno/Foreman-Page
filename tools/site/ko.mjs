@@ -1,5 +1,7 @@
 // 한국어 콘텐츠. build.mjs가 이 값으로 ko/ 아래 페이지를 만듭니다.
 import { icon } from './icons.mjs';
+import { RELAY } from './relay.mjs';
+const R = RELAY.ko;
 const REPO = 'https://github.com/bbdyno/Foreman-Page';
 const ARROW = icon('arrow-right');
 const EFFECTIVE = '2026년 10월 22일';
@@ -17,7 +19,7 @@ export default {
     footLine: '내 컴퓨터에서 도는 코딩 에이전트를 iPhone·iPad·Mac·Apple Watch·Android·Windows에서 관리하는 앱. 우리 서버 없이 동작합니다.',
     legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud, Face ID, App Store는 Apple Inc.의 상표입니다. Android, Google Play는 Google LLC의, Windows, Microsoft Store는 Microsoft Corporation의 상표입니다. Claude는 Anthropic, Codex는 OpenAI, Gemini는 Google의 상표입니다. Foreman은 이 회사들과 제휴하지 않은 독립 앱입니다.',
     toc: '목차',
-    ogAlt: 'Foreman 로고와 문구: 내 Mac의 코딩 에이전트를 어디서든 관리합니다.',
+    ogAlt: 'Foreman 로고와 문구: 내 컴퓨터의 코딩 에이전트를 어디서든 관리합니다.',
     yes: '포함',
     no: '없음',
   },
@@ -43,7 +45,7 @@ export default {
     turnText: '에이전트가 승인이나 답을 기다릴 때만 알립니다. 나머지 시간에는 조용합니다.',
     facts: [
       ['우리 서버', '0대'],
-      ['데이터가 머무는 곳', '내 Mac과 내 iCloud'],
+      ['데이터가 지나는 곳', '내 컴퓨터 · 내 기기 · 내 클라우드 계정'],
       ['회원 가입', '없음'],
     ],
     heroShot: { key: 'ios-lock', alt: 'iPhone 잠금화면. Foreman 알림에서 에이전트의 명령을 바로 허용하거나 거부할 수 있습니다.', cap: 'iPhone · 잠금화면 승인' },
@@ -54,7 +56,7 @@ export default {
       {
         key: 'approve', label: '승인',
         title: '자리를 비운 사이 기다리는 일을, 손 안에서 끝냅니다.',
-        text: ['에이전트가 권한을 묻거나 질문하면 모든 Mac의 요청이 승인 인박스 한곳에 모입니다. 명령마다 위험도를 표시하고, 되돌릴 수 없는 작업은 Face ID를 거쳐야 허용됩니다.'],
+        text: ['에이전트가 권한을 묻거나 질문하면 모든 컴퓨터의 요청이 승인 인박스 한곳에 모입니다. 명령마다 위험도를 표시하고, 되돌릴 수 없는 작업은 Face ID를 거쳐야 허용됩니다.'],
         points: [
           ['bell-ringing', '<b>잠금화면 알림</b>에서 바로 허용하거나 거부'],
           ['fingerprint', '<b><code>rm -rf</code>, <code>push --force</code>, 운영 DB</b> 같은 작업은 항상 Face ID'],
@@ -70,7 +72,7 @@ export default {
       {
         key: 'session', label: '세션',
         title: '대화로 읽거나, 터미널 그대로 보거나.',
-        text: ['세션은 Mac에 상주하는 프로세스가 소유합니다. 터미널 창을 닫거나 연결이 끊겨도 에이전트는 계속 돌고, 다시 열면 놓친 출력부터 이어 받습니다. Mac 앞의 터미널과 iPhone이 같은 세션을 함께 볼 수도 있습니다.'],
+        text: ['세션은 컴퓨터에 상주하는 프로세스가 소유합니다. 터미널 창을 닫거나 연결이 끊겨도 에이전트는 계속 돌고, 다시 열면 놓친 출력부터 이어 받습니다. 컴퓨터 앞의 터미널과 휴대폰이 같은 세션을 함께 볼 수도 있습니다.'],
         points: [
           ['chat-text', '<b>대화 뷰</b>: 지시와 답, 읽고 고친 파일, diff'],
           ['terminal-window', '<b>터미널 뷰</b>: 실제 PTY 화면과 ESC·TAB·CTRL 키 줄'],
@@ -86,12 +88,12 @@ export default {
       {
         key: 'agents', label: '에이전트 연결',
         title: '도구마다 계정과 한도가 달라도, 한 목록에서.',
-        text: ['Mac에 설치된 에이전트 CLI를 찾아 연결합니다. Claude Code, Codex, Gemini CLI, OpenCode처럼 계정과 한도가 제각각인 도구를 한 화면에서 보고, 남은 한도와 리셋 시각을 함께 확인합니다. Free에서는 두 종류까지 연결할 수 있습니다.'],
+        text: ['컴퓨터에 설치된 에이전트 CLI를 찾아 연결합니다. Claude Code, Codex, Gemini CLI, OpenCode처럼 계정과 한도가 제각각인 도구를 한 화면에서 보고, 남은 한도와 리셋 시각을 함께 확인합니다. Free에서는 두 종류까지 연결할 수 있습니다.'],
         points: [
           ['plugs-connected', '<b>Claude Code · Codex · Gemini CLI · OpenCode</b>, 그 밖의 CLI는 터미널 모드로'],
           ['users-three', '<b>개인 계정과 업무 계정</b>을 나눠 연결'],
           ['hourglass-medium', '<b>5시간·주간 한도</b>와 리셋까지 남은 시간'],
-          ['lock-simple', '<b>API 키</b>는 Mac의 키체인에만 보관'],
+          ['lock-simple', '<b>API 키</b>는 호스트 컴퓨터에만 보관'],
         ],
         shots: [
           { key: 'ios-agents', alt: '에이전트 연결 화면. Claude Code, Codex, Gemini CLI, OpenCode 네 개가 연결되어 있고 한도 페일오버가 켜져 있습니다.', cap: 'iPhone · 에이전트' },
@@ -129,7 +131,7 @@ export default {
       {
         key: 'ipad', label: 'iPad',
         title: 'iPad는 관제 화면이 됩니다.',
-        text: ['여러 Mac의 세션을 타일로 펼쳐 봅니다. 답을 기다리는 세션이 앞에 오고, 타일에서 바로 허용하거나 답할 수 있습니다.'],
+        text: ['여러 컴퓨터의 세션을 타일로 펼쳐 봅니다. 답을 기다리는 세션이 앞에 오고, 타일에서 바로 허용하거나 답할 수 있습니다.'],
         shots: [
           { key: 'ipad-grid', alt: 'iPad 관제 그리드. 세션 아홉 개가 타일로 펼쳐져 있고, 답을 기다리는 타일에는 허용·거부 버튼, 실행 중인 타일에는 최근 출력과 진행률이 보입니다.', cap: 'iPad · 관제 그리드' },
         ],
@@ -146,15 +148,18 @@ export default {
       },
       {
         key: 'zero', id: 'zero', label: '서버 0대',
-        title: '우리 서버는 없습니다. 내 Mac과 내 iCloud만 거칩니다.',
-        text: ['Foreman에는 개발자가 운영하는 중계 서버가 없습니다. 앱은 아래 순서로 연결을 시도하고, 어느 경로로 붙든 끊긴 지점부터 같은 방식으로 이어 받습니다.'],
-        path: `iPhone · iPad · Mac · Watch<span class="sep">${ARROW}</span>내 iCloud<span class="sep">${ARROW}</span>내 Mac<span class="sep">${ARROW}</span>Claude Code · Codex · Gemini CLI`,
-        routes: [
-          ['wifi-high', 'LAN 직결', '같은 네트워크에서는 Bonjour로 Mac을 찾아 바로 연결합니다.'],
-          ['arrows-left-right', 'P2P 직결', '밖에서는 WebRTC로 Mac과 직접 연결합니다. 연결 정보는 내 iCloud(CloudKit 개인 데이터베이스)로 주고받습니다.'],
-          ['cloud', 'iCloud 경유', '직접 연결이 안 되는 네트워크에서는 내 iCloud를 거칩니다. 승인과 질문은 바로, 터미널 출력은 1~2초씩 모아서 보냅니다.'],
+        title: '우리 서버 0대. 내 컴퓨터와 내 기기, 그리고 내 클라우드 계정만 거칩니다.',
+        text: [
+          '연결은 먼저 내 기기와 내 컴퓨터를 직접 잇습니다. 직접 닿지 않을 때만 내 클라우드 계정을 우편함처럼 씁니다. 어느 경로로 붙든 끊긴 지점부터 같은 방식으로 이어 받습니다.',
+          `호스트 컴퓨터는 그 컴퓨터의 iCloud 로그인과 상관없습니다. 회사 Mac이나 Windows PC에서도 똑같이 동작하고, 접근 권한은 내 휴대폰이 발급해 암호화된 채널로 넘겨줍니다.`,
         ],
-        note: '알림은 내 iCloud에 걸어 둔 구독으로 Apple이 직접 보냅니다. 연결 경로를 찾을 때 공개 STUN 서버에 내 공인 IP 주소를 확인하는 것 말고는, 세션 내용이 내 기기와 내 iCloud 밖으로 나가지 않습니다.',
+        path: `내 기기<span class="sep">${ARROW}</span>내 컴퓨터(Mac · Windows)<span class="sep">${ARROW}</span>Claude Code · Codex · Gemini CLI`,
+        routes: [
+          ['wifi-high', 'LAN 직결', '같은 네트워크에서는 컴퓨터를 찾아 바로 연결합니다.'],
+          ['arrows-left-right', 'P2P 직결', '밖에서는 WebRTC로 컴퓨터와 직접 연결합니다. 연결 정보는 내 클라우드 계정으로 주고받습니다.'],
+          ['cloud', '클라우드 우편함', `직접 닿지 않을 때만 거칩니다. ${R.appleDevices}는 ${R.apple}, ${R.otherDevices}은 ${R.other}를 씁니다. ${R.otherScope}`],
+        ],
+        note: '모든 데이터는 기기 사이에서 종단간 암호화되고, 개발자는 아무것도 저장하거나 열어 보지 않습니다. 연결 경로를 찾을 때 공개 STUN 서버에 내 공인 IP 주소를 확인하는 것 말고는, 세션 내용이 내 컴퓨터와 내 기기, 내 클라우드 계정 밖으로 나가지 않습니다.',
       },
       {
         key: 'platforms', label: '지원 기기',
@@ -191,7 +196,7 @@ export default {
     title: '요금제',
     lede: '아래는 출시 예정 가격이며 출시 때 바뀔 수 있습니다. 결제는 App Store, Google Play, Microsoft Store에서 하고, 나라별 가격은 각 스토어가 정합니다.',
     tiers: [
-      { id: 'free', name: 'Free', price: '무료', unit: '', alt: '&nbsp;', for: '컴퓨터 한 대로 시작하는 개인', items: ['에이전트 2종까지 한 화면에서', '호스트 1대 · 동시 세션 3개', '대화 뷰와 터미널 뷰', '승인·질문 알림', 'P2P 직결 · iCloud 경유 · LAN', '세션 기록 7일'] },
+      { id: 'free', name: 'Free', price: '무료', unit: '', alt: '&nbsp;', for: '컴퓨터 한 대로 시작하는 개인', items: ['에이전트 2종까지 한 화면에서', '호스트 1대 · 동시 세션 3개', '대화 뷰와 터미널 뷰', '승인·질문 알림', 'LAN · P2P 직결 · 클라우드 우편함', '세션 기록 7일'] },
       { id: 'pro', name: 'Pro', pro: false, price: '$7.99', unit: '/월', alt: '연간 $69', for: '여러 에이전트를 엮어 쓰는 개인', items: ['한도 페일오버 · 에이전트 간 인계', '파이프라인 · 레이스', '에이전트 · 계정 무제한', '호스트 · 세션 무제한', 'Autopilot 승인 규칙 · 리셋 자동 재개', 'Live Activity · Apple Watch · 위젯', '아침 브리핑 · 기록 무제한 검색'] },
       { id: 'team', name: 'Team', price: '$14', unit: '/인·월', alt: '&nbsp;', for: '빌드 머신을 같이 쓰는 팀', items: ['Pro의 모든 기능', '공유 호스트 · 세션 넘겨받기', '승인 위임 · 2인 승인', '감사 로그 내보내기', 'iCloud 공유로 팀원 초대'] },
     ],
@@ -199,8 +204,8 @@ export default {
     compareHead: '기능',
     compare: [
       { group: '연결', rows: [
-        ['LAN 직결 · P2P 직결 · iCloud 경유', true, true, true],
-        ['호스트(Mac)', '1대', '무제한', '무제한'],
+        ['LAN 직결 · P2P 직결 · 클라우드 우편함', true, true, true],
+        ['호스트(Mac · Windows PC)', '1대', '무제한', '무제한'],
         ['동시 세션', '3개', '무제한', '무제한'],
         ['에이전트 종류 · 계정', '2종', '무제한', '무제한'],
       ] },
@@ -224,7 +229,7 @@ export default {
         ['iCloud 공유로 팀원 초대', false, false, true],
       ] },
     ],
-    footnote: '어느 요금제든 우리 서버를 거치지 않습니다. 구독 정보도 App Store와 내 iCloud에서 확인합니다.',
+    footnote: '어느 요금제든 우리 서버를 거치지 않습니다. 구독 정보도 스토어와 내 클라우드 계정에서 확인합니다.',
     faqTitle: '결제에 대해',
     faq: [
       ['Mac 앱도 따로 구독해야 하나요?', ['아니요. iPhone이나 iPad에서 구독하면 같은 Apple 계정으로 로그인한 Mac 앱에서도 Pro를 씁니다. Mac 앱은 App Store가 서명한 구독 내역을 내 iCloud에서 읽어 확인합니다.']],
@@ -236,30 +241,33 @@ export default {
 
   privacy: {
     metaTitle: '개인정보 처리방침 — Foreman',
-    metaDescription: 'Foreman은 개발자가 운영하는 서버가 없고 개인정보를 수집하지 않습니다. 데이터는 사용자 기기와 사용자 iCloud에만 저장됩니다.',
+    metaDescription: 'Foreman은 개발자가 운영하는 서버가 없고 개인정보를 수집하지 않습니다. 데이터는 이용자의 컴퓨터와 기기, 이용자의 클라우드 계정에만 저장됩니다.',
     kicker: `시행일 ${EFFECTIVE}`,
     title: '개인정보 처리방침',
     lede: 'Foreman은 개발자가 운영하는 서버가 없고, 개발자는 이용자의 개인정보를 수집하지 않습니다.',
     sections: [
-      { id: 'summary', h: '요약', body: `<p class="summary">Foreman 앱이 다루는 데이터는 이용자의 기기와 이용자의 iCloud에만 저장됩니다. 개발자는 그 데이터를 받거나 볼 수 없습니다.</p>
-      <ul><li>회원 가입이 없고, 이름·이메일·전화번호를 받지 않습니다.</li><li>광고 식별자, 분석 도구, 추적 SDK를 쓰지 않습니다.</li><li>세션 내용은 기기 사이에서 종단간 암호화되어 오갑니다.</li></ul>` },
+      { id: 'summary', h: '요약', body: `<p class="summary">Foreman이 다루는 데이터는 이용자의 컴퓨터와 기기, 그리고 이용자의 클라우드 계정(${R.apple} 또는 ${R.other})에만 저장됩니다. 개발자는 그 데이터를 받거나 볼 수 없습니다.</p>
+      <ul><li>회원 가입이 없고, 이름·이메일·전화번호를 받지 않습니다.</li><li>광고 식별자, 분석 도구, 추적 SDK를 쓰지 않습니다.</li><li>모든 데이터는 기기 사이에서 종단간 암호화되어 오가고, 개발자는 아무것도 저장하거나 열람하지 않습니다.</li></ul>` },
       { id: 'collect', h: '개발자가 수집하는 정보', body: `<p>없습니다. 개발자는 중계 서버, 로그 서버, 계정 서버를 운영하지 않으므로 이용자의 정보가 개발자에게 전송되지 않습니다.</p>` },
       { id: 'data', h: '앱이 다루는 데이터와 저장 위치', body: `<p>앱이 동작하려면 아래 데이터가 필요합니다. 모두 이용자가 관리하는 곳에만 저장됩니다.</p>
       <ul>
-        <li><strong>세션 출력과 기록</strong>(에이전트의 터미널 출력, 대화, 변경 내용): 에이전트가 도는 이용자의 Mac. 기기 사이를 직접 연결할 수 없을 때는 이용자 iCloud의 CloudKit 개인 데이터베이스를 거칩니다.</li>
-        <li><strong>승인 요청과 질문</strong>: 이용자의 Mac, 이용자의 기기, 이용자 iCloud의 CloudKit 개인 데이터베이스.</li>
-        <li><strong>페어링 정보와 API 키</strong>: 이용자 기기의 키체인. 에이전트 API 키는 에이전트가 도는 Mac의 키체인에만 둡니다.</li>
-        <li><strong>설정과 승인 규칙</strong>: 이용자의 기기와 이용자 iCloud.</li>
+        <li><strong>세션 출력과 기록</strong>(에이전트의 터미널 출력, 대화, 변경 내용): 에이전트가 도는 이용자의 컴퓨터(호스트). 기기와 컴퓨터를 직접 연결할 수 없을 때만 이용자의 클라우드 계정을 우편함으로 씁니다.</li>
+        <li><strong>클라우드 우편함</strong>: ${R.appleDevices}는 ${R.apple}(${R.appleStore}), ${R.otherDevices}은 ${R.other}. ${R.otherScope} 우편함에 오가는 내용도 종단간 암호화되어 있습니다.</li>
+        <li><strong>승인 요청과 질문</strong>: 이용자의 컴퓨터와 기기, 위의 클라우드 우편함.</li>
+        <li><strong>페어링 정보와 API 키</strong>: 이용자 기기와 컴퓨터의 키체인(또는 각 OS의 보안 저장소). 에이전트 API 키는 에이전트가 도는 컴퓨터에만 둡니다. 호스트의 접근 권한은 이용자의 휴대폰이 발급해 암호화된 채널로 넘겨주며, 호스트 컴퓨터의 iCloud 로그인과는 관계없습니다.</li>
+        <li><strong>설정과 승인 규칙</strong>: 이용자의 기기와 클라우드 계정.</li>
       </ul>
-      <p>iCloud에 저장된 데이터는 Apple의 iCloud 이용 약관과 개인정보 처리방침을 따릅니다.</p>` },
+      <p>클라우드 계정에 저장된 데이터는 해당 서비스(Apple iCloud, Google Drive)의 약관과 개인정보 처리방침을 따릅니다.</p>` },
       { id: 'third', h: '외부 서비스와의 통신', body: `<ul>
-        <li><strong>Apple</strong>: iCloud(CloudKit), 푸시 알림, App Store 결제를 이용합니다. 알림은 이용자 iCloud에 등록한 구독을 통해 Apple이 직접 보냅니다.</li>
+        <li><strong>Apple</strong>: ${R.appleDevices}에서 iCloud(CloudKit), 푸시 알림, App Store 결제를 이용합니다. Apple 기기의 알림은 이용자 iCloud에 등록한 구독을 통해 Apple이 직접 보냅니다.</li>
+        <li><strong>Google</strong>: ${R.otherDevices}은 우편함으로 ${R.other}를 씁니다. Android 앱의 결제는 Google Play가 처리합니다.</li>
+        <li><strong>Microsoft</strong>: Windows 앱의 배포와 결제는 Microsoft Store가 처리합니다.</li>
         <li><strong>공개 STUN 서버</strong>(stun.cloudflare.com, stun.l.google.com): 기기 사이 직접 연결 경로를 찾을 때 이용자의 공인 IP 주소를 확인하는 데만 씁니다. 세션 내용은 보내지 않습니다. 각 서버 운영자의 정책이 적용됩니다.</li>
-        <li><strong>에이전트 제공자</strong>: Claude Code, Codex, Gemini CLI 같은 에이전트는 이용자의 Mac에서 이용자가 직접 실행하며, 각 제공자의 약관과 개인정보 처리방침에 따라 해당 서비스와 통신합니다. Foreman은 에이전트의 통신에 끼어들거나 대신 데이터를 보내지 않습니다.</li>
+        <li><strong>에이전트 제공자</strong>: Claude Code, Codex, Gemini CLI 같은 에이전트는 이용자의 컴퓨터에서 이용자가 직접 실행하며, 각 제공자의 약관과 개인정보 처리방침에 따라 해당 서비스와 통신합니다. Foreman은 에이전트의 통신에 끼어들거나 대신 데이터를 보내지 않습니다.</li>
       </ul>` },
       { id: 'crash', h: '크래시 리포트와 진단 정보', body: `<p>앱 안에 별도의 크래시 수집 도구를 넣지 않습니다. 개발자가 받는 크래시 정보는 각 스토어(App Store, Google Play, Microsoft Store)가 기본으로 제공하는 범위에 한하며, 이용자가 기기 설정에서 개발자와 공유하기로 동의한 경우에만 Apple, Google, Microsoft를 통해 전달됩니다. 이 정보에는 이용자를 식별하는 정보가 포함되지 않습니다.</p>` },
-      { id: 'payment', h: '결제', body: `<p>구독 결제는 App Store가 처리합니다. 개발자는 결제 수단이나 청구 정보를 받지 않습니다. Mac 앱은 App Store가 서명한 구독 내역을 이용자 iCloud에서 읽어 구독 상태를 확인합니다.</p>` },
-      { id: 'delete', h: '보관과 삭제', body: `<p>데이터는 이용자가 지울 때까지 이용자의 기기와 iCloud에 남습니다. Free 요금제의 세션 기록은 7일이 지나면 자동으로 지워집니다. 앱을 삭제하면 해당 기기의 데이터가 지워지고, iCloud에 남은 데이터는 iPhone 설정 앱에서 내 이름, [iCloud], [계정 저장 공간 관리] 순으로 들어가 Foreman을 골라 지울 수 있습니다. Mac의 세션 기록은 Mac 앱 설정에서 지웁니다.</p>` },
+      { id: 'payment', h: '결제', body: `<p>구독 결제는 구독한 스토어(App Store, Google Play, Microsoft Store)가 처리합니다. 개발자는 결제 수단이나 청구 정보를 받지 않습니다. 직접 내려받은 Mac 앱은 App Store가 서명한 구독 내역을 이용자 iCloud에서 읽어 구독 상태를 확인합니다.</p>` },
+      { id: 'delete', h: '보관과 삭제', body: `<p>데이터는 이용자가 지울 때까지 이용자의 컴퓨터와 기기, 클라우드 계정에 남습니다. Free 요금제의 세션 기록은 7일이 지나면 자동으로 지워집니다. 앱을 삭제하면 해당 기기의 데이터가 지워집니다. iCloud에 남은 데이터는 iPhone 설정 앱에서 내 이름, [iCloud], [계정 저장 공간 관리] 순으로 들어가 Foreman을 골라 지우고, Google Drive의 앱 전용 폴더는 Google Drive 설정의 [앱 관리]에서 Foreman의 숨겨진 앱 데이터를 삭제해 지웁니다. 호스트의 세션 기록은 호스트 앱 설정에서 지웁니다.</p>` },
       { id: 'website', h: '이 웹사이트', body: `<p>이 웹사이트는 GitHub Pages에서 제공됩니다. 쿠키, 분석 도구, 외부 글꼴 서버를 쓰지 않습니다. GitHub는 서비스 운영을 위해 접속 기록(IP 주소 등)을 처리할 수 있으며, 이는 <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보 처리방침</a>을 따릅니다.</p>` },
       { id: 'children', h: '아동', body: `<p>Foreman은 개발자를 위한 도구이며 만 14세 미만 아동을 대상으로 하지 않습니다. 개발자는 아동의 개인정보를 포함해 어떤 개인정보도 수집하지 않습니다.</p>` },
       { id: 'changes', h: '방침의 변경', body: `<p>이 방침이 바뀌면 이 페이지에 새 내용과 시행일을 게시합니다. 변경 이력은 <a href="${REPO}/commits/main/ko/privacy/index.html">GitHub 저장소</a>에서 볼 수 있습니다.</p>` },
@@ -275,8 +283,8 @@ export default {
     lede: 'Foreman 앱과 이 웹사이트를 이용할 때 적용되는 약관입니다. 스토어에서 받은 앱에는 그 스토어의 사용권 계약(App Store의 Apple 표준 EULA 등)도 함께 적용됩니다.',
     sections: [
       { id: 'scope', h: '적용 범위', body: `<p>이 약관은 Foreman의 iPhone, iPad, Mac, Apple Watch, Android, Windows 앱과 호스트 프로그램, 그리고 이 웹사이트에 적용됩니다. 앱을 설치하거나 사용하면 이 약관에 동의한 것으로 봅니다. 이 약관과 각 스토어의 사용권 계약(Apple 표준 EULA 등)이 충돌하면 그 스토어에서 받은 앱에는 스토어의 계약이 우선합니다.</p>` },
-      { id: 'service', h: '앱이 하는 일', body: `<p>Foreman은 이용자의 Mac에서 실행되는 코딩 에이전트 세션을 이용자의 다른 기기에서 보고, 입력하고, 승인할 수 있게 하는 도구입니다. Foreman은 에이전트를 제공하지 않습니다. Claude Code, Codex, Gemini CLI 같은 에이전트의 이용에는 각 제공자의 약관이 적용되며, 이용자가 직접 계정과 이용 한도를 관리합니다.</p>` },
-      { id: 'responsibility', h: '승인과 명령에 대한 책임', body: `<p>Foreman에서 허용하거나 Autopilot 규칙으로 자동 허용한 명령은 이용자의 Mac에서 이용자의 권한으로 실행됩니다. 앱이 보여 주는 위험도는 참고용 판단이며 정확성을 보장하지 않습니다. 명령 실행으로 생긴 결과(파일 변경·삭제, 배포, 데이터베이스 변경, 비용 발생 등)에 대한 책임은 이용자에게 있습니다. 중요한 작업은 승인 전에 내용을 확인하세요.</p>` },
+      { id: 'service', h: '앱이 하는 일', body: `<p>Foreman은 이용자의 컴퓨터(Mac 또는 Windows PC)에서 실행되는 코딩 에이전트 세션을 이용자의 다른 기기에서 보고, 입력하고, 승인할 수 있게 하는 도구입니다. Foreman은 에이전트를 제공하지 않습니다. Claude Code, Codex, Gemini CLI 같은 에이전트의 이용에는 각 제공자의 약관이 적용되며, 이용자가 직접 계정과 이용 한도를 관리합니다.</p>` },
+      { id: 'responsibility', h: '승인과 명령에 대한 책임', body: `<p>Foreman에서 허용하거나 Autopilot 규칙으로 자동 허용한 명령은 이용자의 컴퓨터에서 이용자의 권한으로 실행됩니다. 앱이 보여 주는 위험도는 참고용 판단이며 정확성을 보장하지 않습니다. 명령 실행으로 생긴 결과(파일 변경·삭제, 배포, 데이터베이스 변경, 비용 발생 등)에 대한 책임은 이용자에게 있습니다. 중요한 작업은 승인 전에 내용을 확인하세요.</p>` },
       { id: 'subscription', h: '구독과 결제', body: `<ul>
         <li>Pro와 Team은 자동 갱신 구독입니다. 결제와 갱신, 환불은 구독한 스토어(App Store, Google Play, Microsoft Store)의 정책을 따릅니다.</li>
         <li>구독은 현재 기간이 끝나기 최소 24시간 전에 해지하지 않으면 자동으로 갱신됩니다. 해지는 기기 설정의 구독 관리에서 합니다.</li>
@@ -288,7 +296,7 @@ export default {
         <li>앱을 이용해 법령을 어기거나 다른 사람의 시스템에 허가 없이 접근하지 않습니다.</li>
       </ul>` },
       { id: 'ip', h: '지식재산', body: `<p>앱과 웹사이트의 소프트웨어, 디자인, 상표에 대한 권리는 개발자에게 있습니다. 이용자의 코드, 세션 내용, 데이터에 대한 권리는 이용자에게 있으며, 개발자는 이를 받거나 이용하지 않습니다.</p>` },
-      { id: 'warranty', h: '보증의 부인', body: `<p>앱은 "있는 그대로" 제공됩니다. 개발자는 앱이 중단 없이 또는 오류 없이 동작한다고 보증하지 않습니다. 연결은 이용자의 네트워크, Mac의 전원·잠자기 상태, Apple iCloud와 공개 STUN 서버의 상태에 영향을 받습니다.</p>` },
+      { id: 'warranty', h: '보증의 부인', body: `<p>앱은 "있는 그대로" 제공됩니다. 개발자는 앱이 중단 없이 또는 오류 없이 동작한다고 보증하지 않습니다. 연결은 이용자의 네트워크, 호스트 컴퓨터의 전원·잠자기 상태, 이용자의 클라우드 서비스(iCloud, Google Drive)와 공개 STUN 서버의 상태에 영향을 받습니다.</p>` },
       { id: 'liability', h: '책임의 제한', body: `<p>관련 법령이 허용하는 범위에서, 개발자는 앱 이용으로 생긴 간접적·부수적·결과적 손해에 책임지지 않으며, 개발자의 책임은 이용자가 직전 12개월 동안 Foreman에 지급한 금액을 넘지 않습니다. 법령상 제한할 수 없는 책임은 예외로 합니다.</p>` },
       { id: 'changes', h: '약관의 변경과 종료', body: `<p>약관을 바꾸면 이 페이지에 새 내용과 시행일을 게시합니다. 이용자는 언제든 앱을 삭제하고 구독을 해지해 이용을 끝낼 수 있습니다.</p>` },
       { id: 'contact', h: '문의', body: `<p>약관에 관한 문의는 <a href="${REPO}/issues">GitHub Issues</a>로 남겨 주세요.</p>` },
@@ -310,10 +318,10 @@ export default {
       ['Foreman은 무엇인가요?', ['Mac이나 Windows PC에서 도는 코딩 에이전트(Claude Code, Codex, Gemini CLI 등)의 세션을 iPhone, iPad, Mac, Apple Watch, Android, Windows에서 보고 입력하고 승인하는 앱입니다. 세션마다 원격 기능을 따로 켤 필요 없이, 평소처럼 실행한 세션을 가져옵니다.']],
       ['언제 출시되나요?', ['지금은 개발 중이고 출시일은 정하지 않았습니다. 첫 버전부터 iPhone·iPad·Mac·Apple Watch·Android·Windows 앱과 Mac·Windows 호스트를 함께 냅니다. 출시하면 이 사이트에 App Store, Google Play, Microsoft Store, Mac 직접 다운로드 링크를 올립니다.']],
       ['어떤 컴퓨터를 호스트로 쓸 수 있나요?', ['Mac과 Windows PC입니다. 늘 켜 두는 Mac mini나 데스크톱 PC가 잘 맞고, 노트북도 됩니다. 밖에서 쓰려면 호스트가 잠자기에 들지 않도록 설정해 두세요.']],
-      ['정말 서버를 거치지 않나요?', ['개발자가 운영하는 서버는 없습니다. 같은 네트워크에서는 직접, 밖에서는 WebRTC로 직접 연결하고, 그것도 안 될 때만 이용자의 iCloud를 거칩니다. 직접 연결 경로를 찾을 때 공개 STUN 서버에 공인 IP 주소를 확인하는 것이 유일한 외부 통신입니다.']],
-      ['밖에서 연결이 안 돼요.', ['호스트 Mac이 켜져 있고 잠자기 상태가 아닌지, 두 기기가 같은 Apple 계정으로 iCloud에 로그인되어 있는지 확인해 주세요. 회사망처럼 직접 연결을 막는 네트워크에서는 자동으로 iCloud 경유로 바뀌며, 이때 터미널 출력은 1~2초씩 늦게 보일 수 있습니다.']],
+      ['정말 서버를 거치지 않나요?', [`개발자가 운영하는 서버는 없습니다. 같은 네트워크에서는 직접, 밖에서는 WebRTC로 직접 연결하고, 그것도 안 될 때만 내 클라우드 계정(${R.appleDevices}는 ${R.apple}, ${R.otherDevices}은 ${R.other})을 우편함으로 씁니다. 직접 연결 경로를 찾을 때 공개 STUN 서버에 공인 IP 주소를 확인하는 것이 유일한 외부 통신입니다.`]],
+      ['밖에서 연결이 안 돼요.', ['호스트 컴퓨터가 켜져 있고 잠자기 상태가 아닌지, 휴대폰에서 그 호스트와 페어링했는지, 앱을 쓰는 기기가 iCloud(Android·Windows 앱은 Google 계정)에 로그인되어 있는지 확인해 주세요. 회사망처럼 직접 연결을 막는 네트워크에서는 자동으로 클라우드 우편함을 거치며, 이때 터미널 출력은 1~2초씩 늦게 보일 수 있습니다.']],
       ['Free에서 연결할 수 있는 에이전트는 몇 개인가요?', ['두 종류까지입니다. 예를 들어 Claude Code와 Codex를 함께 쓸 수 있습니다. 호스트는 1대, 동시 세션은 3개까지이며, 에이전트 사이 인계와 페일오버 같은 연계 기능은 Pro에 있습니다.']],
-      ['API 키는 어디에 저장되나요?', ['에이전트가 도는 Mac의 키체인에만 저장됩니다. iPhone이나 iCloud로 보내지 않습니다.']],
+      ['API 키는 어디에 저장되나요?', ['에이전트가 도는 컴퓨터의 보안 저장소(Mac은 키체인)에만 저장됩니다. 휴대폰이나 클라우드 계정으로 보내지 않습니다.']],
     ],
   },
 };

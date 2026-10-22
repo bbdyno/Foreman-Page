@@ -17,7 +17,7 @@ const COPY = {
     c2: ['잠금화면에서', '바로 허용합니다.'],
     allowed: '허용됨 · Mac mini에서 실행 중',
     wrist: 'Apple Watch에서도.',
-    c3: ['여러 에이전트, 여러 Mac.', '한 화면에서.'],
+    c3: ['여러 에이전트, 여러 컴퓨터.', '한 화면에서.'],
     agents: 'Claude Code · Codex · Gemini CLI · OpenCode',
     c4: ['Claude가 한도에 닿으면,', 'Codex가 이어받습니다.'],
     turn: '당신 차례', running: '실행 중', done: '완료', offline: '오프라인', waiting: '대기',
@@ -25,15 +25,15 @@ const COPY = {
     claudeAcct: '개인 Max', codexAcct: 'ChatGPT 계정',
     proFeature: 'Pro 기능',
     task: 'Kumquat · 페이월 리팩터', summary: '요약 1.2k 토큰과 diff를 함께 넘김', files: '파일 11',
-    nodes: ['iPhone · iPad · Mac · Watch', '내 iCloud', '내 Mac'],
-    z1: '우리 서버 0대.', z2: '내 Mac과 내 iCloud만.',
-    devices: 'iPhone · iPad · Mac · Apple Watch', soon: '출시 준비 중',
+    nodes: ['내 기기', '내 클라우드 계정', '내 컴퓨터'], fallback: '직접 닿지 않을 때만',
+    z1: '우리 서버 0대.', z2: '내 컴퓨터와 내 기기, 내 클라우드 계정만.',
+    devices: 'iPhone · iPad · Mac · Apple Watch · Android · Windows', soon: '출시 준비 중',
     rows: [
       ['HyroxSim · 위젯 테스트', 'Gemini CLI · Mac mini', 'xcodebuild test', 'run', '42/118'],
       ['DynoCam · 캡처 파이프라인', 'Codex · MacBook Pro', 'swift build', 'idle-run', '72%'],
       ['Kumquat · 페이월 리팩터', 'Claude Code · Mac mini', 'git push origin feat/paywall', 'turn', ''],
       ['NudgeMate · ATT 문구', 'Claude Code · Mac mini', 'gh pr create', 'done', ''],
-      ['TripFit · 크롤러', 'OpenCode · Mac Studio', 'npm run crawl', 'offline', ''],
+      ['TripFit · 크롤러', 'OpenCode · Windows PC', 'npm run crawl', 'offline', ''],
     ],
   },
   en: {
@@ -41,7 +41,7 @@ const COPY = {
     c2: ['Allow it right from', 'the Lock Screen.'],
     allowed: 'Allowed · running on Mac mini',
     wrist: 'Or from Apple Watch.',
-    c3: ['Every agent, every Mac.', 'On one screen.'],
+    c3: ['Every agent, every computer.', 'On one screen.'],
     agents: 'Claude Code · Codex · Gemini CLI · OpenCode',
     c4: ['When Claude hits its limit,', 'Codex takes over.'],
     turn: 'Your turn', running: 'Running', done: 'Done', offline: 'Offline', waiting: 'Waiting',
@@ -49,15 +49,15 @@ const COPY = {
     claudeAcct: 'Personal Max', codexAcct: 'ChatGPT account',
     proFeature: 'Pro feature',
     task: 'Kumquat · paywall refactor', summary: 'Hands over a 1.2k-token summary and the diff', files: '11 files',
-    nodes: ['iPhone · iPad · Mac · Watch', 'Your iCloud', 'Your Mac'],
-    z1: 'Zero servers of ours.', z2: 'Only your Mac and your iCloud.',
-    devices: 'iPhone · iPad · Mac · Apple Watch', soon: 'Coming soon',
+    nodes: ['Your devices', 'Your cloud account', 'Your computer'], fallback: 'only when there’s no direct route',
+    z1: 'Zero servers of ours.', z2: 'Only your computer, your devices and your cloud account.',
+    devices: 'iPhone · iPad · Mac · Apple Watch · Android · Windows', soon: 'Coming soon',
     rows: [
       ['HyroxSim · widget tests', 'Gemini CLI · Mac mini', 'xcodebuild test', 'run', '42/118'],
       ['DynoCam · capture pipeline', 'Codex · MacBook Pro', 'swift build', 'idle-run', '72%'],
       ['Kumquat · paywall refactor', 'Claude Code · Mac mini', 'git push origin feat/paywall', 'turn', ''],
       ['NudgeMate · ATT copy', 'Claude Code · Mac mini', 'gh pr create', 'done', ''],
-      ['TripFit · crawler', 'OpenCode · Mac Studio', 'npm run crawl', 'offline', ''],
+      ['TripFit · crawler', 'OpenCode · Windows PC', 'npm run crawl', 'offline', ''],
     ],
   },
 }[L];
@@ -341,24 +341,26 @@ REEL.scene({
   id: 's05', start: T.s05 - 0.2, end: 40,
   setup(el) {
     this.root = h('div', 'full', el); css(this.root, { background: 'var(--bg)' });
-    const Y = 300, xs = [330, 960, 1590];
+    const Y = 250, xs = [330, 960, 1590], YC = 450;
     this.svg = s('svg', { width: 1920, height: 1080, viewBox: '0 0 1920 1080' }, this.root);
     css(this.svg, { position: 'absolute', left: 0, top: 0 });
-    this.lines = [0, 1].map((i) => {
-      const p = s('path', { d: `M${xs[i] + 120},${Y} L${xs[i + 1] - 120},${Y}`, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 3, 'stroke-linecap': 'round' }, this.svg);
-      p.style.strokeDasharray = 420; return p;
-    });
+    const path = (d, w, col) => { const p = s('path', { d, fill: 'none', stroke: col, 'stroke-width': w, 'stroke-linecap': 'round' }, this.svg); const L = p.getTotalLength(); p.style.strokeDasharray = L; p._len = L; return p; };
+    this.lines = [path(`M${xs[0] + 150},${Y} L${xs[2] - 150},${Y}`, 3, 'var(--accent)')];          // 직접 연결
+    this.fall = [path(`M${xs[0]},${Y + 128} Q${xs[0] + 60},${YC + 10} ${xs[1] - 90},${YC + 10}`, 2, 'var(--line2)'),
+                 path(`M${xs[1] + 90},${YC + 10} Q${xs[2] - 60},${YC + 10} ${xs[2]},${Y + 128}`, 2, 'var(--line2)')];
     this.dot = s('circle', { r: 9, cy: Y, fill: 'var(--accent)' }, this.svg);
     const icons = [['device-mobile', 'device-tablet', 'laptop', 'watch'], ['cloud'], ['desktop']];
-    this.nodes = xs.map((x, i) => {
-      const n = h('div', 'a', this.root); css(n, { left: x - 200 + 'px', top: Y - 50 + 'px', width: '400px', height: '200px' });
+    const at = [[xs[0], Y], [xs[1], YC], [xs[2], Y]];
+    this.nodes = at.map(([x, y], i) => {
+      const n = h('div', 'a', this.root); css(n, { left: x - 220 + 'px', top: y - 50 + 'px', width: '440px', height: '200px' });
       const row = h('div', 'a', n); css(row, { left: 0, right: 0, top: 0, height: '100px', display: 'flex', justifyContent: 'center', gap: '10px' });
-      icons[i].forEach((nm) => { const e = icon(row, nm, icons[i].length > 1 ? 68 : 108, 'var(--ink)'); css(e, { position: 'relative', alignSelf: 'center' }); });
-      const t = h('div', 'a', n, COPY.nodes[i]); css(t, { left: '-40px', right: '-40px', top: '126px', textAlign: 'center', fontSize: '32px', fontWeight: 600 });
+      icons[i].forEach((nm) => { const e = icon(row, nm, icons[i].length > 1 ? 64 : 100, i === 1 ? 'var(--ink2)' : 'var(--ink)'); css(e, { position: 'relative', alignSelf: 'center' }); });
+      const t = h('div', 'a', n, COPY.nodes[i]); css(t, { left: 0, right: 0, top: '112px', textAlign: 'center', fontSize: '32px', fontWeight: 600, color: i === 1 ? 'var(--ink2)' : 'var(--ink)' });
+      if (i === 1) { const fb = h('div', 'a', n, COPY.fallback); css(fb, { left: 0, right: 0, top: '156px', textAlign: 'center', fontSize: '24px', color: 'var(--ink3)' }); }
       return n;
     });
-    this.z1 = h('div', 'a', this.root, COPY.z1); css(this.z1, { left: '120px', top: '600px', fontSize: '88px', fontWeight: 600, letterSpacing: '-0.025em' });
-    this.z2 = h('div', 'a', this.root, COPY.z2); css(this.z2, { left: '120px', top: '712px', fontSize: '88px', fontWeight: 600, letterSpacing: '-0.025em', color: 'var(--ink2)' });
+    this.z1 = h('div', 'a', this.root, COPY.z1); css(this.z1, { left: '120px', top: '660px', fontSize: '80px', fontWeight: 600, letterSpacing: '-0.025em' });
+    this.z2 = h('div', 'a', this.root, COPY.z2); css(this.z2, { left: '120px', top: '762px', width: '1680px', fontSize: L === 'en' ? '60px' : '72px', fontWeight: 600, letterSpacing: '-0.025em', color: 'var(--ink2)', textWrap: 'balance' });
     // 엔드카드 로고: 브랜드 lockup SVG 를 그대로 쓰고, 커서는 전역 커서가 들어와 채운다
     this.logo = h('div', 'a', this.root); css(this.logo, { left: LOCK.x + 'px', top: LOCK.y + 'px', width: 438 * LOCK.k + 'px', height: 96 * LOCK.k + 'px' });
     this.logo.innerHTML = window.LOGO.lockup.replace(/<title>.*?<\/title>/, '').replace(/ width="[\d.]+" height="[\d.]+"/, ' width="100%" height="100%"');
@@ -375,16 +377,15 @@ REEL.scene({
     const t0 = 0.2;
     const out = prog(lt, 4.0, 0.4, BX);
     this.nodes.forEach((n, i) => {
-      const e = prog(lt, 0.05 + i * 0.3, 0.7, BE);
-      css(n, { opacity: e * (1 - out), transform: `translateY(${(1 - e) * 220 - out * 30}px)` });
+      const e = i === 1 ? prog(lt, 1.4, 0.6, BE) : prog(lt, 0.05 + i * 0.15, 0.7, BE);
+      css(n, { opacity: e * (1 - out), transform: `translateY(${(1 - e) * (i === 1 ? 40 : 220) - out * 30}px)` });
     });
-    this.lines.forEach((p, i) => { p.style.strokeDashoffset = 420 * (1 - prog(lt, t0 + 0.45 + i * 0.35, 0.6, BE)); p.style.opacity = 1 - out; });
-    // 흐르는 점: 기기 → iCloud → Mac(실행 중 = 코발트)
-    const run = ((lt - (t0 + 1.4)) / 1.6) % 1;
-    const xA = this.xs[0] + 120, xB = this.xs[2] - 120;
-    const onLine = lt > t0 + 1.4 && out < 1;
+    this.lines.forEach((p) => { p.style.strokeDashoffset = p._len * (1 - prog(lt, 0.4, 0.8, BE)); p.style.opacity = 1 - out; });
+    this.fall.forEach((p, i) => { p.style.strokeDashoffset = p._len * (1 - prog(lt, 1.3 + i * 0.25, 0.7, BE)); p.style.opacity = 1 - out; });
+    const run = ((lt - 1.2) / 1.6) % 1;
+    const xA = this.xs[0] + 150, xB = this.xs[2] - 150;
     this.dot.setAttribute('cx', lerp(xA, xB, ease.inOutSine(clamp(run))));
-    this.dot.style.opacity = onLine ? (1 - out) * Math.min(1, (lt - t0 - 1.4) * 4) : 0;
+    this.dot.style.opacity = lt > 1.2 ? (1 - out) * Math.min(1, (lt - 1.2) * 4) : 0;
     const z1 = prog(lt, t0 + 1.6, 0.6, BE), z2 = prog(lt, t0 + 2.5, 0.6, BE);
     css(this.z1, { opacity: z1 * (1 - out), transform: `translateY(${(1 - z1) * 40 - out * 30}px)` });
     css(this.z2, { opacity: z2 * (1 - out), transform: `translateY(${(1 - z2) * 40 - out * 30}px)` });
