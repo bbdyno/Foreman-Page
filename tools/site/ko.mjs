@@ -101,7 +101,7 @@ export default {
           ['레이스', '같은 지시를 두 에이전트에게 주고, 테스트 결과와 diff를 나란히 비교해 하나를 채택합니다.'],
         ],
         shots: [
-          { key: 'mac-orchestrate', alt: 'Mac의 파이프라인 화면. 구현은 Claude Code가 끝냈고 Codex가 리뷰 중입니다. 오른쪽에 한도 페일오버 순서와 오늘의 인계 기록이 있습니다.', cap: 'Mac · 파이프라인과 한도 페일오버' },
+          { key: 'mac-orchestrate', alt: 'Mac의 에이전트 연계 화면. Kumquat 작업을 구현(Claude Code, 완료), 리뷰(Codex, 진행 중), 테스트(Gemini CLI), PR(Claude Code, 승인 필요) 단계로 나눴고, 오른쪽에 한도 페일오버 순서와 오늘의 인계 기록, 아래에 인계 요약과 diff가 있습니다.', cap: 'Mac · 에이전트 연계' },
         ],
       },
       {
@@ -115,7 +115,7 @@ export default {
           ['sun', '<b>아침 브리핑</b>: 정한 시각에 밤사이 결과를 요약'],
         ],
         shots: [
-          { key: 'ios-autopilot', alt: 'Autopilot 화면. Claude 5시간 한도가 1시간 42분 뒤 리셋되고, 승인 규칙 네 개와 아침 브리핑 설정이 보입니다.', cap: 'iPhone · Autopilot' },
+          { key: 'ios-autopilot', alt: 'Autopilot 화면. Claude 5시간 한도가 1시간 42분 뒤 리셋되면 멈춘 세션 두 개를 이어 가고, 읽기 전용 명령·테스트·feat/* 브랜치 푸시는 자동 허용, 되돌릴 수 없는 작업은 항상 Face ID입니다. 아래에 아침 브리핑 설정이 있습니다.', cap: 'iPhone · Autopilot' },
         ],
       },
       {

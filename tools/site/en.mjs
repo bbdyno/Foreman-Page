@@ -101,7 +101,7 @@ export default {
           ['Race', 'Give two agents the same task, compare test results and diffs side by side, keep one.'],
         ],
         shots: [
-          { key: 'mac-orchestrate', alt: 'Pipeline on Mac. Claude Code finished the implementation and Codex is reviewing. On the right are the failover order and today’s handoff log.', cap: 'Mac · Pipeline and limit failover' },
+          { key: 'mac-orchestrate', alt: 'Agent handoff on Mac. The Kumquat task is split into implement (Claude Code, done), review (Codex, in progress), test (Gemini CLI) and PR (Claude Code, needs approval); the failover order and today’s handoff log are on the right, the handoff summary and diff below.', cap: 'Mac · Agent handoff' },
         ],
       },
       {
@@ -115,7 +115,7 @@ export default {
           ['sun', '<b>Morning briefing</b> at the time you choose'],
         ],
         shots: [
-          { key: 'ios-autopilot', alt: 'Autopilot. The Claude 5-hour limit resets in 1 hour 42 minutes; four approval rules and the morning briefing setting are listed.', cap: 'iPhone · Autopilot' },
+          { key: 'ios-autopilot', alt: 'Autopilot. When the Claude 5-hour limit resets in 1 hour 42 minutes, two stopped sessions continue; read-only commands, tests and feat/* pushes are allowed automatically, and irreversible actions always need Face ID. The morning briefing setting is below.', cap: 'iPhone · Autopilot' },
         ],
       },
       {

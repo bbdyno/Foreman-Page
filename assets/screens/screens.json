@@ -10,10 +10,18 @@
   "mac-menubar": {
     "kind": "menu",
     "w": 800,
-    "h": 960,
+    "h": 1080,
     "source": "Mac-MenuBar",
     "dark": "assets/screens/mac-menubar-dark.webp",
     "light": "assets/screens/mac-menubar-light.webp"
+  },
+  "mac-orchestrate": {
+    "kind": "mac",
+    "w": 2880,
+    "h": 1800,
+    "source": "Mac-Orchestrate",
+    "dark": "assets/screens/mac-orchestrate-dark.webp",
+    "light": "assets/screens/mac-orchestrate-light.webp"
   },
   "mac-workspace": {
     "kind": "mac",
@@ -38,6 +46,14 @@
     "source": "iOS-Agents",
     "dark": "assets/screens/ios-agents-dark.webp",
     "light": "assets/screens/ios-agents-light.webp"
+  },
+  "ios-autopilot": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-Autopilot",
+    "dark": "assets/screens/ios-autopilot-dark.webp",
+    "light": "assets/screens/ios-autopilot-light.webp"
   },
   "ios-home": {
     "kind": "phone",
