@@ -11,7 +11,7 @@ const day = new Date().toISOString().slice(0, 10);
 const shots = path.join(ROOT, 'screenshots', day);
 fs.mkdirSync(shots, { recursive: true });
 
-const pages = ['', 'pricing/', 'privacy/', 'terms/', 'support/'].flatMap((p) => [p, 'ko/' + p]);
+const pages = ['', 'guide/', 'pricing/', 'privacy/', 'terms/', 'support/'].flatMap((p) => [p, 'ko/' + p]);
 const browser = await chromium.launch();
 const problems = [];
 
@@ -62,10 +62,18 @@ for (const [name, viewport, mobile] of [['desktop', { width: 1440, height: 900 }
       film[`${lang}-${name}-${scheme}`] = st;
       if (st.paused || st.t < 1 || !st.w) problems.push(`film not playing: ${lang} ${name} ${scheme} ${JSON.stringify(st)}`);
       await page.locator('.film').screenshot({ path: path.join(shots, `${lang}-film-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
-      await page.goto(BASE + (lang === 'ko' ? 'ko/' : '') + 'pricing/', { waitUntil: 'networkidle' });
-      await page.screenshot({ path: path.join(shots, `${lang}-pricing-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
-      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-      if (overflow > 0) problems.push(`horizontal overflow ${overflow}px: ${lang} pricing ${name}`);
+      for (const sub of ['pricing', 'guide']) {
+        await page.goto(BASE + (lang === 'ko' ? 'ko/' : '') + sub + '/', { waitUntil: 'networkidle' });
+        await page.screenshot({ path: path.join(shots, `${lang}-${sub}-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        if (overflow > 0) problems.push(`horizontal overflow ${overflow}px: ${lang} ${sub} ${name}`);
+      }
+      // A guide anchor the apps link to (docs/guide-anchors.md) opens at its heading.
+      await page.goto(BASE + (lang === 'ko' ? 'ko/' : '') + 'guide/#approvals-risk', { waitUntil: 'networkidle' });
+      await page.waitForTimeout(300);
+      const top = await page.evaluate(() => document.getElementById('approvals-risk')?.getBoundingClientRect().top);
+      if (top === undefined || top < -1 || top > 80) problems.push(`guide anchor not at top: ${lang} ${name} (${top})`);
+      await page.screenshot({ path: path.join(shots, `${lang}-guide-anchor-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
     }
     await ctx.close();
   }

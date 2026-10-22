@@ -1,6 +1,7 @@
 // 한국어 콘텐츠. build.mjs가 이 값으로 ko/ 아래 페이지를 만듭니다.
 import { icon } from './icons.mjs';
 import { RELAY } from './relay.mjs';
+import guide from './guide-ko.mjs';
 const R = RELAY.ko;
 const REPO = 'https://github.com/bbdyno/Foreman-Page';
 const ARROW = icon('arrow-right');
@@ -8,16 +9,18 @@ const EFFECTIVE = '2026년 10월 22일';
 
 export default {
   lang: 'ko',
+  guide,
   ui: {
     skip: '본문으로 건너뛰기',
     home: '홈',
     navLabel: '주요 메뉴',
     footNav: '사이트 링크',
-    nav: { home: '소개', features: '기능', pricing: '요금제', support: '지원', privacy: '개인정보 처리방침', terms: '이용약관' },
+    nav: { guide: '가이드', home: '소개', features: '기능', pricing: '요금제', support: '지원', privacy: '개인정보 처리방침', terms: '이용약관' },
     otherLang: 'English',
     status: '출시 준비 중',
     footLine: '내 컴퓨터에서 도는 코딩 에이전트를 iPhone·iPad·Mac·Apple Watch·Android·Windows에서 관리하는 앱. 우리 서버 없이 동작합니다.',
     legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud, Face ID, App Store는 Apple Inc.의 상표입니다. Android, Google Play는 Google LLC의, Windows, Microsoft Store는 Microsoft Corporation의 상표입니다. Claude는 Anthropic, Codex는 OpenAI, Gemini는 Google의 상표입니다. Foreman은 이 회사들과 제휴하지 않은 독립 앱입니다.',
+    anchor: '이 절의 링크',
     toc: '목차',
     ogAlt: 'Foreman 로고와 문구: 내 컴퓨터의 코딩 에이전트를 어디서든 관리합니다.',
     yes: '포함',

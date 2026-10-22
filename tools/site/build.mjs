@@ -37,7 +37,7 @@ const SCREENS = exists('assets/screens/screens.json') ? JSON.parse(fs.readFileSy
 const hasVideo = (lang) => exists(`assets/video/foreman-loop-${lang}.webm`) && exists(`assets/video/foreman-loop-${lang}.mp4`) && exists(`assets/video/foreman-${lang}-1080p.mp4`);
 
 // page keys and their paths relative to the language root
-const PAGES = { home: '', pricing: 'pricing/', privacy: 'privacy/', terms: 'terms/', support: 'support/' };
+const PAGES = { home: '', guide: 'guide/', pricing: 'pricing/', privacy: 'privacy/', terms: 'terms/', support: 'support/' };
 const langRoot = { en: '', ko: 'ko/' };
 function rel(lang, page, to) {
   const depth = (langRoot[lang] + PAGES[page]).split('/').filter(Boolean).length;
@@ -92,6 +92,7 @@ function layout(c, page, { title, description, body }) {
     <nav class="nav" aria-label="${c.ui.navLabel}">
       <a href="${link('home')}#features">${c.ui.nav.features}</a>
       <a href="${link('pricing')}"${cur('pricing')}>${c.ui.nav.pricing}</a>
+      <a href="${link('guide')}"${cur('guide')}>${c.ui.nav.guide}</a>
       <a href="${link('support')}"${cur('support')}>${c.ui.nav.support}</a>
       <a class="lang" href="${r(there)}" hreflang="${other}" lang="${other}">${icon('globe-simple')}<span>${c.ui.otherLang}</span></a>
     </nav>
@@ -110,6 +111,7 @@ ${body}
     <nav aria-label="${c.ui.footNav}">
       <a href="${link('home')}">${c.ui.nav.home}</a>
       <a href="${link('pricing')}"${cur('pricing')}>${c.ui.nav.pricing}</a>
+      <a href="${link('guide')}"${cur('guide')}>${c.ui.nav.guide}</a>
       <a href="${link('support')}"${cur('support')}>${c.ui.nav.support}</a>
       <a href="${link('privacy')}"${cur('privacy')}>${c.ui.nav.privacy}</a>
       <a href="${link('terms')}"${cur('terms')}>${c.ui.nav.terms}</a>
@@ -259,6 +261,56 @@ function doc(c, page, d) {
   return layout(c, page, { title: d.metaTitle, description: d.metaDescription, body });
 }
 
+// ---------------------------------------------------------------- guide ---
+// One page per language. Every section and subsection has a fixed id (docs/guide-anchors.md) so the
+// apps' help links can point at it. Blocks: p, h3, steps, list, fig, table, code, note, dl.
+const GUIDE = exists('assets/guide/guide.json') ? JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/guide/guide.json'), 'utf8')) : {};
+function guideFig(c, items) {
+  const r = (p) => rel(c.lang, 'guide', p);
+  const figs = items.map((it) => {
+    const g = GUIDE[it.key];
+    if (!g) throw new Error(`guide capture ${it.key} missing`);
+    const img = `<img src="${r(g.light)}" width="${g.w}" height="${g.h}" alt="${esc(it.alt)}" loading="lazy" decoding="async">`;
+    const pic = g.dark && g.dark !== g.light ? `<picture><source srcset="${r(g.dark)}" media="(prefers-color-scheme: dark)">${img}</picture>` : img;
+    return `<figure class="gfig gfig-${g.kind}">${pic}${it.cap ? `<figcaption>${it.cap}</figcaption>` : ''}</figure>`;
+  });
+  return `<div class="gfigs">${figs.join('')}</div>`;
+}
+function guideBlock(c, b) {
+  const [t, ...a] = b;
+  switch (t) {
+    case 'p': return `<p>${a[0]}</p>`;
+    case 'h3': return `<h3 id="${a[0]}"><a class="anchor" href="#${a[0]}" aria-label="${esc(c.ui.anchor)}">${icon('link-simple')}</a>${a[1]}</h3>`;
+    case 'steps': return `<ol class="steps">${a[0].map((x) => `<li>${x}</li>`).join('')}</ol>`;
+    case 'list': return `<ul>${a[0].map((x) => `<li>${x}</li>`).join('')}</ul>`;
+    case 'fig': return guideFig(c, a[0]);
+    case 'code': return `<pre class="code"><code>${esc(a[0])}</code></pre>`;
+    case 'note': return `<p class="gnote">${icon('info')}<span>${a[0]}</span></p>`;
+    case 'dl': return `<dl class="gdl">${a[0].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+    case 'table': return `<div class="gtable"><table><thead><tr>${a[0].map((x) => `<th scope="col">${x}</th>`).join('')}</tr></thead><tbody>${a[1].map((row) => `<tr>${row.map((x, i) => i ? `<td${a[0][i] ? ` data-label="${esc(a[0][i].replace(/<[^>]+>/g, ''))}"` : ''}>${x}</td>` : `<th scope="row">${x}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    default: throw new Error('unknown guide block ' + t);
+  }
+}
+function guide(c) {
+  const g = c.guide;
+  const toc = g.sections.map((s, i) => `<li><a href="#${s.id}"><span class="n">${String(i + 1).padStart(2, '0')}</span>${s.h}</a>${s.sub ? `<ol>${s.sub.map(([id, h]) => `<li><a href="#${id}">${h}</a></li>`).join('')}</ol>` : ''}</li>`).join('');
+  const body = `
+<div class="wrap">
+  <div class="page-head"><p class="meta">${g.kicker}</p><h1>${g.title}</h1><p>${g.lede}</p></div>
+  <div class="doc guide">
+    <div class="doc-meta"><nav aria-label="${c.ui.toc}"><p class="meta">${c.ui.toc}</p><ol class="gtoc">${toc}</ol></nav></div>
+    <article class="prose">
+      ${g.sections.map((s, i) => `<section class="gsec" aria-labelledby="${s.id}">
+        <h2 id="${s.id}"><span class="n">${String(i + 1).padStart(2, '0')}</span><a class="anchor" href="#${s.id}" aria-label="${esc(c.ui.anchor)}">${icon('link-simple')}</a>${s.h}</h2>
+        ${s.body.map((b) => guideBlock(c, b)).join('\n        ')}
+      </section>`).join('\n      ')}
+      <p class="gupdated">${g.updated}</p>
+    </article>
+  </div>
+</div>`;
+  return layout(c, 'guide', { title: g.metaTitle, description: g.metaDescription, body });
+}
+
 function support(c) {
   const s = c.support;
   const body = `
@@ -275,13 +327,19 @@ function support(c) {
   return layout(c, 'support', { title: s.metaTitle, description: s.metaDescription, body });
 }
 
+// The apps link to guide anchors (docs/guide-anchors.md), so both languages must carry the same ids.
+const guideIds = (g) => g.sections.flatMap((s) => [s.id, ...s.body.filter((b) => b[0] === 'h3').map((b) => b[1])]).join(' ');
+if (guideIds(en.guide) !== guideIds(ko.guide)) throw new Error('guide anchors differ between en and ko');
+
+let pages = 0;
 for (const c of [en, ko]) {
   const base = path.join(ROOT, langRoot[c.lang]);
-  const write = (p, html) => { const f = path.join(base, p, 'index.html'); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); };
+  const write = (p, html) => { const f = path.join(base, p, 'index.html'); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); pages++; };
   write('', home(c));
   write('pricing', pricing(c));
   write('privacy', doc(c, 'privacy', c.privacy));
   write('terms', doc(c, 'terms', c.terms));
   write('support', support(c));
+  if (c.guide) write('guide', guide(c));
 }
-console.log('built 10 pages');
+console.log(`built ${pages} pages`);

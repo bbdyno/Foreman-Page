@@ -1,6 +1,7 @@
 // English content. build.mjs renders the root pages from these values.
 import { icon } from './icons.mjs';
 import { RELAY } from './relay.mjs';
+import guide from './guide-en.mjs';
 const R = RELAY.en;
 const REPO = 'https://github.com/bbdyno/Foreman-Page';
 const ARROW = icon('arrow-right');
@@ -8,16 +9,18 @@ const EFFECTIVE = 'October 22, 2026';
 
 export default {
   lang: 'en',
+  guide,
   ui: {
     skip: 'Skip to content',
     home: 'home',
     navLabel: 'Main menu',
     footNav: 'Site links',
-    nav: { home: 'Overview', features: 'Features', pricing: 'Pricing', support: 'Support', privacy: 'Privacy Policy', terms: 'Terms of Use' },
+    nav: { guide: 'Guide', home: 'Overview', features: 'Features', pricing: 'Pricing', support: 'Support', privacy: 'Privacy Policy', terms: 'Terms of Use' },
     otherLang: '한국어',
     status: 'In development',
     footLine: 'An app for managing the coding agents that run on your computer from iPhone, iPad, Mac, Apple Watch, Android and Windows. It works without any servers of ours.',
     legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud, Face ID and App Store are trademarks of Apple Inc. Android and Google Play are trademarks of Google LLC; Windows and Microsoft Store of Microsoft Corporation. Claude is a trademark of Anthropic, Codex of OpenAI and Gemini of Google. Foreman is an independent app and is not affiliated with these companies.',
+    anchor: 'Link to this section',
     toc: 'Contents',
     ogAlt: 'Foreman logo and the line: Manage the coding agents on your computer from anywhere.',
     yes: 'Included',

@@ -1,0 +1,146 @@
+{
+  "iphone-home": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Home-light.png",
+    "light": "assets/guide/iphone-home-light.webp",
+    "dark": "assets/guide/iphone-home-dark.webp"
+  },
+  "iphone-inbox": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Inbox-light.png",
+    "light": "assets/guide/iphone-inbox-light.webp",
+    "dark": "assets/guide/iphone-inbox-dark.webp"
+  },
+  "iphone-session": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Session-light.png",
+    "light": "assets/guide/iphone-session-light.webp",
+    "dark": "assets/guide/iphone-session-dark.webp"
+  },
+  "iphone-session-danger": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-SessionDanger-light.png",
+    "light": "assets/guide/iphone-session-danger-light.webp",
+    "dark": "assets/guide/iphone-session-danger-dark.webp"
+  },
+  "iphone-terminal": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Terminal-light.png",
+    "light": "assets/guide/iphone-terminal-light.webp",
+    "dark": "assets/guide/iphone-terminal-dark.webp"
+  },
+  "iphone-changes": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Changes-light.png",
+    "light": "assets/guide/iphone-changes-light.webp",
+    "dark": "assets/guide/iphone-changes-dark.webp"
+  },
+  "iphone-hosts": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Hosts-light.png",
+    "light": "assets/guide/iphone-hosts-light.webp",
+    "dark": "assets/guide/iphone-hosts-dark.webp"
+  },
+  "iphone-agents": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Agents-light.png",
+    "light": "assets/guide/iphone-agents-light.webp",
+    "dark": "assets/guide/iphone-agents-dark.webp"
+  },
+  "iphone-new-session": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-NewSession-light.png",
+    "light": "assets/guide/iphone-new-session-light.webp",
+    "dark": "assets/guide/iphone-new-session-dark.webp"
+  },
+  "iphone-autopilot": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Autopilot-light.png",
+    "light": "assets/guide/iphone-autopilot-light.webp",
+    "dark": "assets/guide/iphone-autopilot-dark.webp"
+  },
+  "iphone-pairing": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Pairing-light.png",
+    "light": "assets/guide/iphone-pairing-light.webp",
+    "dark": "assets/guide/iphone-pairing-dark.webp"
+  },
+  "iphone-settings": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Settings-light.png",
+    "light": "assets/guide/iphone-settings-light.webp",
+    "dark": "assets/guide/iphone-settings-dark.webp"
+  },
+  "iphone-paywall": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Paywall-light.png",
+    "light": "assets/guide/iphone-paywall-light.webp",
+    "dark": "assets/guide/iphone-paywall-dark.webp"
+  },
+  "iphone-widgets": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Widgets-light.png",
+    "light": "assets/guide/iphone-widgets-light.webp",
+    "dark": "assets/guide/iphone-widgets-dark.webp"
+  },
+  "ipad-grid": {
+    "kind": "tablet",
+    "w": 1600,
+    "h": 2133,
+    "source": "docs/screens/iPad-Grid-light.png",
+    "light": "assets/guide/ipad-grid-light.webp",
+    "dark": "assets/guide/ipad-grid-dark.webp"
+  },
+  "watch-approve": {
+    "kind": "watch",
+    "w": 416,
+    "h": 496,
+    "source": "docs/screens/Watch-Approve-dark.png",
+    "dark": "assets/guide/watch-approve-dark.webp",
+    "light": "assets/guide/watch-approve-dark.webp"
+  },
+  "mac-workspace": {
+    "kind": "desktop",
+    "w": 1800,
+    "h": 1108,
+    "source": "docs/screens/Mac-Workspace-light.png",
+    "light": "assets/guide/mac-workspace-light.webp",
+    "dark": "assets/guide/mac-workspace-dark.webp"
+  },
+  "mac-menubar": {
+    "kind": "panel",
+    "w": 640,
+    "h": 1012,
+    "source": "docs/screens/Mac-MenuBar-light.png",
+    "light": "assets/guide/mac-menubar-light.webp",
+    "dark": "assets/guide/mac-menubar-dark.webp"
+  }
+}

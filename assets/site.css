@@ -258,3 +258,73 @@ main > .wrap { padding-bottom: clamp(56px, 8vw, 104px); }
 .stores .state { font-size: 13px; color: var(--mute); margin-top: 6px; }
 @media (max-width: 1100px) { .stores ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stores li:nth-child(3) { border-left: 0; padding-left: 0; } .stores li:nth-child(n+3) { border-top: 1px solid var(--rule); } }
 @media (max-width: 420px) { .stores ul { grid-template-columns: 1fr; } .stores li + li { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); } }
+
+/* User guide -------------------------------------------------------------- */
+.guide .prose { max-width: 46em; }
+.gtoc, .gtoc ol { list-style: none; margin: 12px 0 0; padding: 0; }
+.doc-meta .gtoc li { display: block; border-top: 0; }
+.doc-meta .gtoc li::before { content: none; }
+.doc-meta .gtoc > li { border-top: 1px solid var(--rule); }
+.gtoc > li { border-top: 1px solid var(--rule); padding: 7px 0; font-size: 14.5px; }
+.gtoc > li > a { display: flex; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 600; }
+.gtoc .n { color: var(--mute); font-weight: 400; min-width: 1.6em; }
+.gtoc ol { margin: 4px 0 0 calc(1.6em + 10px); }
+.gtoc ol li { padding: 2px 0; font-size: 13.5px; }
+.gtoc ol a { color: var(--ink-2); text-decoration: none; }
+.gtoc a:hover { text-decoration: underline; }
+.doc.guide .doc-meta nav { max-height: calc(100vh - 48px); overflow: auto; }
+.gsec { padding-top: 8px; }
+.gsec h2 { display: flex; align-items: baseline; gap: 10px; border-top: 1px solid var(--rule-strong); padding-top: 14px; margin-top: 64px; }
+.gsec:first-child h2 { margin-top: 0; }
+.gsec h2 .n { font-size: 14px; color: var(--mute); font-weight: 400; order: 3; margin-left: auto; }
+.prose h3 { position: relative; scroll-margin-top: 16px; margin-top: 36px; }
+.anchor { color: var(--mute); opacity: 0; display: inline-flex; margin-left: -26px; width: 26px; text-decoration: none; transition: opacity 150ms var(--ease); }
+.anchor .ico { width: 16px; height: 16px; }
+h2:hover .anchor, h3:hover .anchor, .anchor:focus-visible { opacity: 1; }
+.steps { list-style: none; padding: 0 !important; counter-reset: step; }
+.steps li { counter-increment: step; position: relative; padding-left: 40px; margin-top: 12px; }
+.steps li::before { content: counter(step); position: absolute; left: 0; top: .1em; width: 26px; height: 26px; border: 1px solid var(--rule-strong); border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 600; color: var(--ink); }
+.gfigs { display: flex; flex-wrap: wrap; gap: 20px; margin: 24px 0 8px; align-items: flex-start; }
+.gfig { margin: 0; max-width: 100%; }
+.gfig img { height: auto; box-shadow: 0 0 0 1px var(--shot-edge); }
+.gfig figcaption { margin-top: 8px; font-size: 13.5px; color: var(--mute); max-width: 30em; }
+.gfig-phone { width: 240px; } .gfig-phone img { border-radius: 28px; }
+.gfig-watch { width: 160px; } .gfig-watch img { border-radius: 36px; }
+.gfig-panel { width: 260px; } .gfig-panel img { border-radius: 12px; }
+.gfig-tablet { width: min(420px, 100%); } .gfig-tablet img { border-radius: 18px; }
+.gfig-desktop { width: 100%; } .gfig-desktop img { width: 100%; border-radius: 10px; }
+@media (max-width: 560px) { .gfig-phone { width: calc(50% - 10px); } .gfig-phone img { border-radius: 18px; } .gfig-watch { width: 40%; } }
+.gnote { display: flex; gap: 10px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 0; color: var(--ink-2); font-size: 15.5px; }
+.gnote .ico { margin-top: 3px; color: var(--ink); width: 18px; height: 18px; }
+.code { background: var(--panel-2); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font-family: var(--mono); font-size: 13.5px; line-height: 1.6; margin: 14px 0 0; color: var(--ink); }
+.code code { background: none; padding: 0; font-size: inherit; }
+.gtable { overflow-x: auto; margin-top: 16px; }
+.gtable table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520px; }
+.gtable th, .gtable td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+.gtable thead th { border-bottom: 1px solid var(--rule-strong); font-size: 13.5px; color: var(--mute); font-weight: 600; }
+.gtable tbody th { font-weight: 600; color: var(--ink); min-width: 7.5em; }
+.gtable td { color: var(--ink-2); }
+.gdl { margin: 14px 0 0; }
+.gdl > div { display: grid; grid-template-columns: 12em 1fr; gap: 4px 20px; padding: 10px 0; border-top: 1px solid var(--rule); }
+.gdl dt { font-weight: 600; }
+.gdl dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 640px) { .gdl > div { grid-template-columns: 1fr; } }
+.gupdated { margin-top: 56px; font-size: 13.5px; color: var(--mute); }
+kbd { font-family: var(--mono); font-size: .88em; border: 1px solid var(--rule-strong); border-radius: 4px; padding: 0 .35em; }
+@media (max-width: 1024px) {
+  .doc.guide .doc-meta, .doc.guide .prose { grid-column: 1 / -1; }
+  .doc.guide .doc-meta nav { position: static; max-height: none; margin-bottom: 36px; }
+  .doc.guide .gtoc { columns: 2; column-gap: 32px; }
+  .doc.guide .gtoc > li { break-inside: avoid; }
+}
+@media (max-width: 560px) { .doc.guide .gtoc { columns: 1; } }
+
+.doc.guide .prose code { overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  .gtable table, .gtable tbody, .gtable tr, .gtable th, .gtable td { display: block; min-width: 0; }
+  .gtable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .gtable tr { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .gtable tbody th, .gtable td { border: 0; padding: 0; min-width: 0; }
+  .gtable td { margin-top: 6px; }
+  .gtable td[data-label]::before { content: attr(data-label); display: block; font-size: 13px; color: var(--mute); }
+}

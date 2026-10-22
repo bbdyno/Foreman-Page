@@ -40,7 +40,7 @@ const icons = [
   'chat-text', 'plugs-connected', 'arrows-left-right', 'squares-four', 'lock-simple', 'cloud', 'wifi-high',
   'check', 'arrow-right', 'arrow-up-right', 'github-logo', 'play', 'pause', 'speaker-simple-x',
   'speaker-simple-high', 'download-simple', 'shield-check', 'hard-drives', 'x', 'globe-simple', 'moon',
-  'app-store-logo', 'google-play-logo', 'windows-logo', 'apple-logo', 'android-logo', 'sun', 'desktop', 'sparkle', 'flow-arrow', 'git-diff', 'hourglass-medium', 'users-three', 'list-checks', 'envelope-simple',
+  'link-simple', 'info', 'app-store-logo', 'google-play-logo', 'windows-logo', 'apple-logo', 'android-logo', 'sun', 'desktop', 'sparkle', 'flow-arrow', 'git-diff', 'hourglass-medium', 'users-three', 'list-checks', 'envelope-simple',
   'question', 'clock-countdown', 'gauge', 'minus', 'plus', 'flag-checkered', 'arrow-bend-down-right',
 ];
 mkdir(out('icons'));
