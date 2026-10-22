@@ -7,12 +7,16 @@ import ko from './ko.mjs';
 import en from './en.mjs';
 import { icon } from './icons.mjs';
 import { theme, writeTokensCss } from '../theme/tokens.mjs';
+writeTokensCss();                       // before hashing tokens.css
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 export const SITE = 'https://bbdyno.github.io/Foreman-Page/';
 export const REPO = 'https://github.com/bbdyno/Foreman-Page';
 
 const exists = (p) => fs.existsSync(path.join(ROOT, p));
+// Stylesheet URLs carry a hash of their content so browsers and the Pages CDN never serve a stale copy.
+import crypto from 'node:crypto';
+const ver = (p) => crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, p))).digest('hex').slice(0, 8);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // Brand lockup (assets/brand/lockup.svg, copied from the brand repository by tools/brand.mjs).
@@ -22,7 +26,7 @@ function lockup() {
     .replace(/<title>.*?<\/title>/, '')
     .replace(/ width="[\d.]+" height="[\d.]+"/, '')
     .replace(/role="img" aria-label="[^"]*"/, 'aria-hidden="true" focusable="false"')
-    .replace(new RegExp(`fill="${theme.logo.ink}"`, 'gi'), 'fill="currentColor"')
+    .replace(new RegExp(`(fill|stroke)="${theme.logo.ink}"`, 'gi'), '$1="currentColor"')
     .replace(theme.logo.accent ? new RegExp(`fill="${theme.logo.accent}"`, 'gi') : /$^/, 'style="fill:var(--signal)"');
   return svg.replace('<svg ', '<svg class="lockup" ');
 }
@@ -65,9 +69,9 @@ function layout(c, page, { title, description, body }) {
 <link rel="icon" href="${r('assets/brand/favicon.svg')}" type="image/svg+xml">
 <link rel="icon" href="${r('assets/brand/favicon-32.png')}" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="${r('assets/brand/apple-touch-icon.png')}">
-<link rel="stylesheet" href="${r('assets/fonts/fonts.css')}">
-<link rel="stylesheet" href="${r('assets/tokens.css')}">
-<link rel="stylesheet" href="${r('assets/site.css')}">
+<link rel="stylesheet" href="${r('assets/fonts/fonts.css')}?v=${ver('assets/fonts/fonts.css')}">
+<link rel="stylesheet" href="${r('assets/tokens.css')}?v=${ver('assets/tokens.css')}">
+<link rel="stylesheet" href="${r('assets/site.css')}?v=${ver('assets/site.css')}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Foreman">
 <meta property="og:title" content="${esc(title)}">
@@ -171,7 +175,7 @@ function home(c) {
       <p class="meta">${h.devices}</p>
       <h1>${h.title}</h1>
       <p class="lede">${h.lede}</p>
-      <p class="turn"><span class="badge">${icon('hand-tap')}${h.turnBadge}</span><span>${h.turnText}</span></p>
+      <p class="turn"><span class="badge"><span class="dot" aria-hidden="true"></span>${h.turnBadge}</span><span>${h.turnText}</span></p>
       <dl class="facts">${h.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
       <p class="launch">${icon('hourglass-medium')}<span>${h.launch}</span></p>
       <section class="stores" aria-labelledby="stores-title"><h2 id="stores-title" class="meta">${h.storesTitle}</h2>
@@ -271,7 +275,6 @@ function support(c) {
   return layout(c, 'support', { title: s.metaTitle, description: s.metaDescription, body });
 }
 
-writeTokensCss();
 for (const c of [en, ko]) {
   const base = path.join(ROOT, langRoot[c.lang]);
   const write = (p, html) => { const f = path.join(base, p, 'index.html'); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); };

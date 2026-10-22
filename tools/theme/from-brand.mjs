@@ -4,7 +4,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const src = process.argv[2] || path.resolve(import.meta.dirname, '../../../Foreman/docs/design/tokens.json');
+const DESIGN = path.resolve(import.meta.dirname, '../../../Foreman/docs/design');
+const src = process.argv[2] || [path.join(DESIGN, 'v3/tokens-v3.json'), path.join(DESIGN, 'tokens.json')].find((f) => fs.existsSync(f));
 const t = JSON.parse(fs.readFileSync(src, 'utf8'));
 const sem = t.semantic;
 

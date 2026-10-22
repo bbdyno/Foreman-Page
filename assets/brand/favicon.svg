@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Foreman">
-<title>Foreman</title>
-<rect width="32" height="32" rx="7" fill="#0B0F19"/>
-<path d="M9.531 11.208A2.3958333333333335 2.3958333333333335 0 0 1 11.927 8.812H21.87A0.5989583333333334 0.5989583333333334 0 0 1 22.469 9.411V12.047A0.5989583333333334 0.5989583333333334 0 0 1 21.87 12.646H13.365V22.589A0.5989583333333334 0.5989583333333334 0 0 1 12.766 23.188H10.13A0.5989583333333334 0.5989583333333334 0 0 1 9.531 22.589Z" fill="#FFFFFF"/>
-<rect x="14.802" y="14.562" width="5.271" height="3.833" rx="0.599" fill="#C6F03A"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Foreman"><title>Foreman</title><rect width="32" height="32" rx="7" fill="#000000"/><path d="M5.000 19.045 L9.616 19.045 L9.616 9.616 L22.384 9.616 L22.384 19.045 L27.000 19.045 L27.000 22.384 L19.045 22.384 L19.045 12.955 L12.955 12.955 L12.955 22.384 L5.000 22.384 Z" fill="#FFFFFF"/></svg>

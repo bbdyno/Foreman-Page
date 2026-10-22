@@ -6,8 +6,10 @@ set -eu
 here=$(cd "$(dirname "$0")" && pwd)
 design="${1:-$here/../../../Foreman/docs/design}"
 PY="${PY:-$here/../.venv/bin/python}"
-mkdir -p "$here/assets/img"
-cp "$design"/mockups/*.png "$here/assets/img/"
+# the newest brand version's mockups (v3/ when present)
+mock="$design/v3/mockups"; [ -d "$mock" ] || mock="$design/mockups"
+rm -rf "$here/assets/img"; mkdir -p "$here/assets/img"
+cp "$mock"/*.png "$here/assets/img/"
 if ls "$here/../captures/"*.png >/dev/null 2>&1; then cp "$here/../captures/"*.png "$here/assets/img/"; fi
 # The lock screen scene hides the notification by painting over it with the screen's own background.
 "$PY" - "$here/assets/img" "$here/out/mockup-bg.json" <<'PYEOF'

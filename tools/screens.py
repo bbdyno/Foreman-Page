@@ -15,7 +15,8 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / 'Foreman/docs/design/mockups/2x'   # @2x, no device frame, square corners
+DESIGN = ROOT.parent / 'Foreman/docs/design'
+SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else next(p for p in [DESIGN / 'v3/mockups/2x', DESIGN / 'mockups/2x'] if p.exists())   # @2x, no device frame, square corners
 OUT = ROOT / 'assets/screens'
 CAPTURES = Path(__file__).resolve().parent / 'captures'
 

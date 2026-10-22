@@ -26,24 +26,6 @@
     "dark": "assets/screens/android-shade-dark.webp",
     "light": "assets/screens/android-shade-light.webp"
   },
-  "mac-menubar": {
-    "kind": "menu",
-    "w": 800,
-    "h": 1080,
-    "source": "Mac-MenuBar",
-    "capture": false,
-    "dark": "assets/screens/mac-menubar-dark.webp",
-    "light": "assets/screens/mac-menubar-light.webp"
-  },
-  "mac-orchestrate": {
-    "kind": "mac",
-    "w": 2880,
-    "h": 1800,
-    "source": "Mac-Orchestrate",
-    "capture": false,
-    "dark": "assets/screens/mac-orchestrate-dark.webp",
-    "light": "assets/screens/mac-orchestrate-light.webp"
-  },
   "mac-workspace": {
     "kind": "mac",
     "w": 2880,
@@ -61,24 +43,6 @@
     "capture": false,
     "dark": "assets/screens/windows-main-dark.webp",
     "light": "assets/screens/windows-main-light.webp"
-  },
-  "ios-agents": {
-    "kind": "phone",
-    "w": 804,
-    "h": 1748,
-    "source": "iOS-Agents",
-    "capture": false,
-    "dark": "assets/screens/ios-agents-dark.webp",
-    "light": "assets/screens/ios-agents-light.webp"
-  },
-  "ios-autopilot": {
-    "kind": "phone",
-    "w": 804,
-    "h": 1748,
-    "source": "iOS-Autopilot",
-    "capture": false,
-    "dark": "assets/screens/ios-autopilot-dark.webp",
-    "light": "assets/screens/ios-autopilot-light.webp"
   },
   "ios-home": {
     "kind": "phone",
@@ -107,15 +71,6 @@
     "dark": "assets/screens/ios-lock-dark.webp",
     "light": "assets/screens/ios-lock-light.webp"
   },
-  "ios-new-session": {
-    "kind": "phone",
-    "w": 804,
-    "h": 1748,
-    "source": "iOS-NewSession",
-    "capture": false,
-    "dark": "assets/screens/ios-new-session-dark.webp",
-    "light": "assets/screens/ios-new-session-light.webp"
-  },
   "ios-session": {
     "kind": "phone",
     "w": 804,
@@ -125,15 +80,6 @@
     "dark": "assets/screens/ios-session-dark.webp",
     "light": "assets/screens/ios-session-light.webp"
   },
-  "ios-terminal": {
-    "kind": "phone",
-    "w": 804,
-    "h": 1748,
-    "source": "iOS-Terminal",
-    "capture": false,
-    "dark": "assets/screens/ios-terminal-dark.webp",
-    "light": "assets/screens/ios-terminal-light.webp"
-  },
   "ipad-grid": {
     "kind": "ipad",
     "w": 2752,
@@ -142,14 +88,5 @@
     "capture": false,
     "dark": "assets/screens/ipad-grid-dark.webp",
     "light": "assets/screens/ipad-grid-light.webp"
-  },
-  "watch-approve": {
-    "kind": "watch",
-    "w": 416,
-    "h": 496,
-    "source": "watchOS-Approve",
-    "capture": false,
-    "dark": "assets/screens/watch-approve-dark.webp",
-    "light": "assets/screens/watch-approve-dark.webp"
   }
 }

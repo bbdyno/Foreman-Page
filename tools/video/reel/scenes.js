@@ -95,11 +95,11 @@ function phoneImg(parent, src, x, y, height) {
 const LIST = { x: 720, y: 170, w: 1100, row: 122 };
 const TURN_ROW = 2;
 const SORT = (t) => prog(t, 2.35, 0.75, BE);              // 2.35s: 당신 차례인 세션이 목록 맨 위로
-const TILE0 = { x: LIST.x, y: LIST.y + TURN_ROW * LIST.row + (LIST.row - 52) / 2, s: 52, r: 12 };
+const TILE0 = { x: LIST.x + 6, y: LIST.y + TURN_ROW * LIST.row + (LIST.row - 26) / 2, s: 26, r: 13 };          // ● 당신 차례
 const rowIndex = (i, t) => (i === TURN_ROW ? lerp(TURN_ROW, 0, SORT(t)) : i < TURN_ROW ? lerp(i, i + 1, SORT(t)) : i);
 const PHONE2 = { x: 1210, y: 60, h: 960 };
 const K2 = PHONE2.h / 2622;
-const TILE1 = { x: PHONE2.x + 84 * K2, y: PHONE2.y + 1498 * K2, s: 60 * K2, r: 15 * K2 };   // Live Activity 의 당신 차례 타일
+const TILE1 = { x: PHONE2.x + 82 * K2, y: PHONE2.y + 1522 * K2, s: 28 * K2, r: 14 * K2 };   // Live Activity 의 당신 차례 ●
 // 엔드카드 로고: 브랜드 lockup SVG 의 크기와(있다면) 브랜드 강조색으로 칠한 커서 블록 위치를 읽는다.
 // 커서가 있는 로고면 영상의 커서가 그 자리로 들어가고, 없으면 로고가 왼쪽부터 드러난다.
 const LOGO_GEO = (() => {
@@ -187,8 +187,9 @@ REEL.scene({
     this.note = piece('1622px 24px 722px 24px', '603px 1760px');
     this.menu = piece('1912px 20px 286px 352px', '1170px 1912px');
     this.tap = h('div', 'a', g); css(this.tap, { left: '700px', top: '1928px', width: '120px', height: '120px', borderRadius: '60px', background: 'rgba(var(--night-text-rgb), .28)' });
-    this.watch = frameImg(el, '../assets/img/watchOS-Approve-dark.png', 624, 744, 820, 470, 300, 0);
-    this.cap = caption(el, [...COPY.c2, COPY.wrist], 120, 150, 'var(--night-text)', 'var(--night-2)');
+    this.hasWatch = (window.MOCKUPS || []).includes('watchOS-Approve-dark');
+    if (this.hasWatch) this.watch = frameImg(el, '../assets/img/watchOS-Approve-dark.png', 624, 744, 820, 470, 300, 0);
+    this.cap = caption(el, this.hasWatch ? [...COPY.c2, COPY.wrist] : COPY.c2, 120, 150, 'var(--night-text)', 'var(--night-2)');
     this.ok = h('div', 'a', el); css(this.ok, { left: '120px', bottom: '84px', fontSize: '30px', color: 'var(--night-2)', display: 'flex', alignItems: 'center', gap: '12px', height: '36px' });
     const ic = icon(this.ok, 'check-circle', 34, 'var(--success-d)'); css(ic, { position: 'relative' });
     h('span', '', this.ok, COPY.allowed);
@@ -210,8 +211,10 @@ REEL.scene({
     css(this.tap, { opacity: tp > 0 && tp < 1 ? Math.sin(tp * Math.PI) : 0, transform: `scale(${lerp(0.5, 1.1, tp)})` });
     showLines(this.cap.spans.slice(0, 2), lt, t0 + 0.6, 8.9 - 0.7);
     showLines(this.cap.spans.slice(2), lt, tTap + 1.9, 8.9 - 0.7);
-    const w = prog(lt, tTap + 1.7, 0.8, BE) * (1 - prog(lt, 8.9 - 0.6, 0.45, BX));
-    css(this.watch.g, { opacity: w, transform: `translateY(${(1 - w) * 140}px)` });
+    if (this.hasWatch) {
+      const w = prog(lt, tTap + 1.7, 0.8, BE) * (1 - prog(lt, 8.9 - 0.6, 0.45, BX));
+      css(this.watch.g, { opacity: w, transform: `translateY(${(1 - w) * 140}px)` });
+    }
     const ok = prog(lt, tTap + 0.7, 0.5, BE) * (1 - prog(lt, 8.9 - 0.7, 0.35, BX));
     css(this.ok, { opacity: ok, transform: `translateY(${(1 - ok) * 16}px)` });
   },
@@ -248,12 +251,12 @@ REEL.scene({
     css(this.ipad.g, { opacity: e1 * (1 - x1), transform: `translate(${-x1 * 260}px, ${(1 - e1) * 260}px) scale(${1 - 0.04 * x1})` });
     // iPad: 답을 기다리는 Kumquat 타일로 다가갔다가(15.6–16.9) 빠진다
     const zi = prog(lt, 2.1, 1.2, BE) * (1 - prog(lt, 3.6, 0.7, BE));
-    this.ipad.zoom(1 + 0.8 * zi, 985, 300);
+    this.ipad.zoom(1 + 0.8 * zi, 960, 300);
     const e2 = prog(lt, swap + 0.1, 0.8, BE);
     css(this.mac.g, { opacity: e2 * (1 - out), transform: `translate(${(1 - e2) * 420 - out * 900}px, 0px)` });
     // Mac: 대화 위의 승인 요청 줄로 다가간다(19.6–)
     const zm = prog(lt, swap + 1.3, 1.3, BE) * (1 - prog(lt, 7.6, 0.4, BE));
-    this.mac.zoom(1 + 0.7 * zm, 1430, 430);
+    this.mac.zoom(1 + 0.7 * zm, 1420, 560);
     showLines(this.cap.spans, lt, 1.0, 8.5 - 0.6);
     const a = prog(lt, 1.8, 0.6, BE) * (1 - prog(lt, 8.5 - 0.6, 0.35, BX));
     css(this.ag, { opacity: a, transform: `translateY(${(1 - a) * 16}px)` });
@@ -267,16 +270,16 @@ REEL.scene({
     this.root = h('div', 'full', el); css(this.root, { background: 'var(--bg)' });
     const card = (x, name, acct, gaugeLabel) => {
       const c = h('div', 'a', this.root);
-      css(c, { left: x + 'px', top: '170px', width: '500px', height: '660px', background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: '20px' });
-      const n = h('div', 'a', c, name); css(n, { left: '40px', top: '36px', fontSize: '40px', fontWeight: 600, letterSpacing: '-0.02em' });
-      const a = h('div', 'a', c, acct); css(a, { left: '40px', top: '92px', fontSize: '24px', color: 'var(--ink3)' });
-      const st = h('div', 'a', c); css(st, { left: '40px', top: '150px', height: '36px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '24px', color: 'var(--ink2)' });
+      css(c, { left: x + 'px', top: '170px', width: '500px', height: '660px', borderTop: '2px solid var(--line2)' });   // 카드 대신 규칙선 열(BRAND v3)
+      const n = h('div', 'a', c, name); css(n, { left: '0px', top: '30px', fontSize: '40px', fontWeight: 600, letterSpacing: '-0.02em' });
+      const a = h('div', 'a', c, acct); css(a, { left: '0px', top: '86px', fontSize: '24px', color: 'var(--ink3)' });
+      const st = h('div', 'a', c); css(st, { left: '0px', top: '150px', height: '36px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '24px', color: 'var(--ink2)' });
       const icRun = icon(st, 'circle-notch', 30, 'var(--accent)'); css(icRun, { position: 'relative' });
       const icWait = icon(st, 'pause-circle', 30, 'var(--ink3)'); css(icWait, { position: 'relative' });
       const stText = h('span', '', st);
-      const gl = h('div', 'a', c, gaugeLabel); css(gl, { left: '40px', top: '236px', fontSize: '22px', color: 'var(--ink3)' });
-      const num = h('div', 'a', c); css(num, { right: '40px', top: '214px', fontSize: '56px', fontWeight: 600, letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums' });
-      const bars = h('div', 'a', c); css(bars, { left: '40px', right: '40px', top: '300px', height: '16px', display: 'flex', gap: '5px' });
+      const gl = h('div', 'a', c, gaugeLabel); css(gl, { left: '0px', top: '236px', fontSize: '22px', color: 'var(--ink3)' });
+      const num = h('div', 'a', c); css(num, { right: '0px', top: '214px', fontSize: '56px', fontWeight: 600, letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums' });
+      const bars = h('div', 'a', c); css(bars, { left: '0px', right: '0px', top: '300px', height: '16px', display: 'flex', gap: '5px' });
       const segs = Array.from({ length: 20 }, () => { const b = h('i', '', bars); css(b, { flex: 1, background: 'var(--sunken)', borderRadius: '3px' }); return b; });
       return { c, icRun, icWait, stText, num, segs };
     };
@@ -286,20 +289,20 @@ REEL.scene({
     this.B = card(1300, 'Codex', COPY.codexAcct, COPY.weekly);
     // 작업 카드: Claude 열에서 Codex 열로 넘어간다
     this.task = h('div', 'a', this.root);
-    css(this.task, { left: '800px', top: '572px', width: '420px', height: '236px', background: 'var(--sunken)', borderRadius: '14px', padding: '30px', boxSizing: 'border-box' });
+    css(this.task, { left: '760px', top: '572px', width: '500px', height: '236px', background: 'var(--sunken)', borderRadius: '14px', padding: '30px', boxSizing: 'border-box' });
     const tt = h('div', '', this.task, COPY.task); css(tt, { fontSize: '28px', fontWeight: 600, letterSpacing: '-0.01em' });
     const td = h('div', 'mono', this.task); css(td, { fontSize: '24px', marginTop: '18px', color: 'var(--ink2)' });
     td.innerHTML = `<span style="color:var(--success)">+412</span> <span style="color:var(--danger-text)">−188</span> · ${COPY.files}`;
     const ts = h('div', '', this.task, COPY.summary); css(ts, { fontSize: '22px', marginTop: '18px', color: 'var(--ink3)', lineHeight: 1.35 });
     this.log = ['Edit PaywallView.swift', 'Edit SubscriptionStore.swift', 'Run swift test  PASS 64', 'git commit'].map((t, i) => {
       const ln = h('div', 'a mono', this.root, t);
-      css(ln, { left: '800px', top: '512px', fontSize: '21px', color: 'var(--ink2)' });
+      css(ln, { left: '760px', top: '512px', fontSize: '21px', color: 'var(--ink2)' });
       return ln;
     });
     this.root = root;
     this.cap = caption(this.root, COPY.c4, 120, 214, 'var(--ink)', 'var(--ink2)');
     css(this.cap.el, { width: '600px' });
-    this.pro = h('div', 'a', this.root, COPY.proFeature); css(this.pro, { left: '120px', bottom: '150px', fontSize: '24px', fontWeight: 600, color: 'var(--on-accent-c)', background: 'var(--accent-c)', borderRadius: '6px', padding: '2px 12px' });
+    this.pro = h('div', 'a', this.root, COPY.proFeature); css(this.pro, { left: '120px', bottom: '150px', fontSize: '24px', fontWeight: 600, color: 'var(--ink)', border: '1.5px solid var(--ink)', borderRadius: '6px', padding: '0 12px' });
   },
   render(lt) {
     const t0 = 0.2;
@@ -322,7 +325,7 @@ REEL.scene({
     this.B.num.textContent = '46%';
     const hv = prog(lt, tHand, 0.4, BE);
     this.A.c.style.opacity = String(Number(this.A.c.style.opacity || 1) * (1 - 0.35 * hv));
-    this.B.c.style.boxShadow = `0 0 0 ${2 * hv}px var(--accent)`;
+    this.B.c.style.borderTop = `${2 + 4 * hv}px solid var(--accent)`;   // 이어받은 쪽의 규칙선이 굵어진다
     this.B.segs.forEach((b, i) => { b.style.background = (i + 1) * 5 <= 46 ? 'var(--ink)' : 'var(--sunken)'; });
     // 상태: Claude 실행 중 → 리셋 대기, Codex 대기 → 실행 중(화면에서 도는 아이콘은 하나)
     this.A.icRun.style.display = handed ? 'none' : ''; this.A.icWait.style.display = handed ? '' : 'none';
@@ -378,6 +381,20 @@ REEL.scene({
     const cur = acc && [...this.logo.querySelectorAll('rect')].find((e) => (e.getAttribute('fill') || '').toLowerCase() === acc);
     if (cur) cur.style.opacity = 0;                                    // 영상의 커서가 이 자리를 채운다
     this.mark = this.logo.querySelector('svg');
+    // 마크를 획으로 그릴 수 있으면(브랜드가 획 원본을 주면) 선을 그은 뒤 워드마크가 나타난다.
+    this.draw = null;
+    if (window.LOGO.stroke) {
+      const paths = [...this.mark.querySelectorAll('path')];
+      const sym = paths[0], bb = sym.getBBox();
+      const src = new DOMParser().parseFromString(window.LOGO.stroke, 'image/svg+xml').documentElement.querySelector('path');
+      const d = src.getAttribute('d'), sw = Number(src.getAttribute('stroke-width'));
+      const probe = s('path', { d }, this.mark); const b2 = probe.getBBox(); probe.remove();
+      const k = bb.width / b2.width;                                   // 끝이 평평한 선이라 가로 길이가 같다
+      const tx = bb.x - b2.x * k, ty = bb.y + bb.height - (b2.y + b2.height + sw / 2) * k;
+      const line = s('path', { d, fill: 'none', stroke: window.LOGO.ink, 'stroke-width': sw, 'stroke-linejoin': 'miter', 'stroke-miterlimit': 4, transform: `translate(${tx} ${ty}) scale(${k})` }, this.mark);
+      const len = line.getTotalLength(); line.style.strokeDasharray = len;
+      this.draw = { sym, line, len, rest: paths.slice(1) };
+    }
     this.dev = h('div', 'a', this.root); css(this.dev, { left: LOCK.x + 'px', top: LOCK.y + LOGO_GEO.vh * LOCK.k + 64 + 'px', fontSize: '42px', fontWeight: 500, color: 'var(--ink2)' });
     this.dev.textContent = `${COPY.devices}  ·  ${COPY.soon}`;
     this.xs = xs;
@@ -400,8 +417,18 @@ REEL.scene({
     css(this.z2, { opacity: z2 * (1 - out), transform: `translateY(${(1 - z2) * 40 - out * 30}px)` });
     // 로고 조립: 커서가 자리를 잡고(34.9) 프레임이 자란 뒤(35.0–35.7) 워드마크(35.6–36.3)
     const tl = 34.55 - (T.s05 - 0.2);
-    const fr = prog(lt, tl, 1.1, BE);                                  // 로고가 왼쪽부터 드러난다
-    css(this.mark, { clipPath: `inset(0 ${(1 - fr) * 100}% 0 0)`, opacity: fr > 0 ? 1 : 0, transform: `translateX(${(1 - fr) * -12}px)` });
+    if (this.draw) {                                                  // 평평한 선을 긋고, 한 번 솟고, 워드마크
+      const dr = prog(lt, tl - 0.2, 1.2, bezier(0.45, 0, 0.2, 1));
+      this.mark.style.opacity = dr > 0 ? 1 : 0;
+      this.draw.line.style.strokeDashoffset = this.draw.len * (1 - dr);
+      const done = dr >= 1;
+      this.draw.line.style.opacity = done ? 0 : 1; this.draw.sym.style.opacity = done ? 1 : 0;
+      const wd = prog(lt, tl + 0.85, 0.6, BE);
+      this.draw.rest.forEach((p) => { p.style.opacity = wd; });
+    } else {
+      const fr = prog(lt, tl, 1.1, BE);                                // 로고가 왼쪽부터 드러난다
+      css(this.mark, { clipPath: `inset(0 ${(1 - fr) * 100}% 0 0)`, opacity: fr > 0 ? 1 : 0, transform: `translateX(${(1 - fr) * -12}px)` });
+    }
     const dv = prog(lt, tl + 1.4, 0.6, BE);
     css(this.dev, { opacity: dv, transform: `translateY(${(1 - dv) * 16}px)` });
   },
@@ -422,8 +449,8 @@ REEL.overlay((t) => {
     x -= outS01 * 120 * (1 - m);                                  // 목록과 함께 잠깐 밀렸다가 떠난다
     y += (-18 * prog(t, 0, 5.2, ease.inOutSine) + (rowIndex(TURN_ROW, t) - TURN_ROW) * LIST.row) * (1 - m);
     vis = 1 - prog(t, 6.45, 0.25, ease.linear);                   // 시안의 같은 타일에 겹치며 사라진다
-    const pop = t < 1.6 ? lerp(0.92, 1, prog(t, 1.2, 0.25, BE)) : 1;
-    w *= pop; hh *= pop;
+    const pop = t < 1.6 ? lerp(0.6, 1, prog(t, 1.2, 0.25, BE)) : 1;   // 당신 차례 진입: 0.6 → 1.0 한 번(BRAND v3 §7)
+    x += (w - w * pop) / 2; y += (hh - hh * pop) / 2; w *= pop; hh *= pop;
   } else if (t >= 34.15 && CUR_END) {
     vis = prog(t, 34.15, 0.25, BE);
     const m = prog(t, 34.15, 0.55, BE);
@@ -435,6 +462,5 @@ REEL.overlay((t) => {
   c.firstChild.style.opacity = icon;
 }, { layer: 'top', setup: (p) => {
   const c = h('div', 'a', p); window.__cursor = c; c.style.zIndex = 50;
-  const ic = h('span', 'ico a', c); ic.innerHTML = window.ICONS['hand-tap'];
-  css(ic, { left: '18%', top: '18%', width: '64%', height: '64%', color: 'var(--on-signal)' });
+  h('span', 'a', c);                                                  // (빈 자리: 예전 아이콘 슬롯)
 } });
