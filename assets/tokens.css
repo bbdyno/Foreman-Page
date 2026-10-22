@@ -30,6 +30,9 @@
   --code-fg: #0B0F19;
   --code-dim: #5E6878;
   --shot-edge: rgba(11,15,25,.10);
+  --shadow-rgb: 11, 15, 25;
+  --ink-rgb: 11, 15, 25;
+  --signal-rgb: 198, 240, 58;
   --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --ease: cubic-bezier(0.2, 0, 0, 1);
@@ -68,6 +71,9 @@
     --code-fg: #E3E7EE;
     --code-dim: #8790A0;
     --shot-edge: rgba(237,240,245,.10);
+    --shadow-rgb: 0, 0, 0;
+    --ink-rgb: 237, 240, 245;
+    --signal-rgb: 212, 247, 76;
     color-scheme: dark;
   }
 }
@@ -102,5 +108,8 @@
   --code-fg: #E3E7EE;
   --code-dim: #8790A0;
   --shot-edge: rgba(237,240,245,.10);
+  --shadow-rgb: 0, 0, 0;
+  --ink-rgb: 237, 240, 245;
+  --signal-rgb: 212, 247, 76;
   color-scheme: dark;
 }

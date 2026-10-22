@@ -10,14 +10,24 @@ const BRAND = process.argv[2] || path.resolve(ROOT, '../Foreman/docs/design');
 const out = path.join(ROOT, 'assets/brand');
 fs.mkdirSync(out, { recursive: true });
 
-const copy = (from, to) => fs.copyFileSync(path.join(BRAND, from), path.join(out, to));
-copy('logo/lockup-ink.svg', 'lockup.svg');          // inlined in the header (frame follows text color)
-copy('logo/lockup-ink.svg', 'lockup-ink.svg');
-copy('logo/lockup-white.svg', 'lockup-white.svg');
-copy('logo/favicon.svg', 'favicon.svg');            // plate version: legible at 16–32 px on light tabs
-copy('logo/symbol-ink.svg', 'symbol-ink.svg');
-copy('logo/symbol-white.svg', 'symbol-white.svg');
-copy('app-icon/ios/AppIcon-default.svg', 'app-icon.svg');
+// Where each brand file is looked for, in order. A new brand version that names its files
+// differently only needs a new candidate here; nothing else in the site refers to these paths.
+const FILES = {
+  'lockup.svg': ['logo/lockup-ink.svg', 'logo/lockup-black.svg', 'logo/lockup.svg'],          // inlined in the header; ink parts follow the text color
+  'lockup-ink.svg': ['logo/lockup-ink.svg', 'logo/lockup-black.svg', 'logo/lockup.svg'],
+  'lockup-white.svg': ['logo/lockup-white.svg', 'logo/lockup-inverse.svg'],
+  'favicon.svg': ['logo/favicon.svg', 'logo/symbol-plate.svg'],                              // must stay legible at 16–32 px
+  'symbol-ink.svg': ['logo/symbol-ink.svg', 'logo/symbol-black.svg', 'logo/symbol.svg'],
+  'symbol-white.svg': ['logo/symbol-white.svg', 'logo/symbol-inverse.svg'],
+  'app-icon.svg': ['app-icon/ios/AppIcon-default.svg', 'app-icon/AppIcon.svg', 'app-icon/ios/AppIcon.svg'],
+};
+const missing = [];
+for (const [to, candidates] of Object.entries(FILES)) {
+  const from = candidates.find((c) => fs.existsSync(path.join(BRAND, c)));
+  if (!from) { missing.push(`${to} (looked for ${candidates.join(', ')})`); continue; }
+  fs.copyFileSync(path.join(BRAND, from), path.join(out, to));
+}
+if (missing.length) { console.error('brand files not found:\n  ' + missing.join('\n  ')); process.exit(1); }
 
 const theme = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'theme/theme.json'), 'utf8'));
 const fontsCss = path.join(ROOT, 'assets/fonts/fonts.css');

@@ -74,5 +74,9 @@
     "exit": "cubic-bezier(0.3, 0, 1, 1)",
     "short": 150,
     "medium": 250
+  },
+  "logo": {
+    "ink": "#0B0F19",
+    "accent": "#C6F03A"
   }
 }

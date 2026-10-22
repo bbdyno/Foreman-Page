@@ -245,7 +245,7 @@ main > .wrap { padding-bottom: clamp(56px, 8vw, 104px); }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 
 .shot-menu { width: min(360px, 100%); }
-.shot-menu img { border-radius: 12px; box-shadow: 0 0 0 1px var(--shot-edge), 0 12px 32px rgba(11, 15, 25, .12); }
+.shot-menu img { border-radius: 12px; box-shadow: 0 0 0 1px var(--shot-edge), 0 12px 32px rgba(var(--shadow-rgb), .12); }
 .shots .shot-mac + .shot-menu, .shots .shot-mac + .shot-mac { margin-top: 0; }
 
 /* Download channels: four stores with the same weight; they become links at launch */

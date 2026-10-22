@@ -20,12 +20,30 @@ const MAP = {
   success: 'success', 'success-text': 'successText', danger: 'danger', 'danger-text': 'dangerText',
   'code-bg': 'terminalBackground', 'code-fg': 'terminalText', 'code-dim': 'terminalDim',
 };
+// If a brand does not define a role (a monochrome brand may have no separate signal or success
+// color), the role falls back to the nearest one it does define. Missing roles are listed.
+const FALLBACK = {
+  attention: ['accent', 'textPrimary'], onAttention: ['onAccent', 'background'], attentionText: ['accentText', 'accent', 'textPrimary'],
+  attentionContainer: ['accentContainer', 'surfaceSunken'], onAttentionContainer: ['onAccentContainer', 'textPrimary'],
+  accentText: ['accent'], accentContainer: ['surfaceSunken'], onAccentContainer: ['textPrimary'], focusRing: ['accent', 'textPrimary'],
+  running: ['accent', 'textPrimary'], runningText: ['accentText', 'accent', 'textPrimary'],
+  success: ['textPrimary'], successText: ['success', 'textPrimary'], danger: ['textPrimary'], dangerText: ['danger', 'textPrimary'],
+  fill: ['surfaceSunken'], surfaceSunken: ['surface'],
+  terminalBackground: ['surfaceSunken', 'surface'], terminalText: ['textPrimary'], terminalDim: ['textTertiary', 'textSecondary'],
+};
+const missing = new Set();
+const pick = (name, seen = new Set()) => {
+  if (sem[name]) return sem[name];
+  seen.add(name);
+  for (const n of FALLBACK[name] || []) {
+    if (seen.has(n)) continue;
+    try { const v = pick(n, seen); missing.add(`${name}→${n}`); return v; } catch { /* try the next fallback */ }
+  }
+  throw new Error(`token ${name} missing in ${src} and has no fallback`);
+};
 const side = (mode) => {
   const o = {};
-  for (const [k, v] of Object.entries(MAP)) {
-    if (!sem[v]) throw new Error(`token ${v} missing in ${src}`);
-    o[k] = sem[v][mode];
-  }
+  for (const [k, v] of Object.entries(MAP)) o[k] = pick(v)[mode];
   o['shot-edge'] = mode === 'light' ? 'rgba(11,15,25,.10)' : 'rgba(237,240,245,.10)';
   return o;
 };
@@ -39,7 +57,10 @@ const theme = {
     sans: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
     mono: '"JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace',
   },
-  motion: { ease: t.motion.easeStandard, exit: t.motion.easeExit, short: t.motion.durationShort, medium: t.motion.durationMedium },
+  motion: { ease: t.motion?.easeStandard || 'cubic-bezier(0.2, 0, 0, 1)', exit: t.motion?.easeExit || 'cubic-bezier(0.3, 0, 1, 1)', short: t.motion?.durationShort || 150, medium: t.motion?.durationMedium || 250 },
+  // Logo colors as drawn in the brand SVGs: the ink becomes currentColor, the accent (if any) var(--signal).
+  logo: { ink: t.palette?.ink || sem.textPrimary.light, accent: t.palette?.signal || null },
 };
 fs.writeFileSync(path.join(import.meta.dirname, 'theme.json'), JSON.stringify(theme, null, 2) + '\n');
 console.log('wrote theme.json from', theme.name);
+if (missing.size) console.log('roles filled by fallback:', [...missing].join(', '));

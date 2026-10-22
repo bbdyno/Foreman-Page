@@ -54,6 +54,27 @@ sh video/build.sh                        # music, render (ko, en), mix, finish, 
 
 `build.sh` writes `assets/video/foreman-<lang>-1080p.mp4` (download, with music), `foreman-loop-<lang>.{webm,mp4}` (720p, muted, for the landing page) and `foreman-poster-<lang>.jpg`. The landing page shows the film only when these files exist.
 
+## Changing the brand
+
+Everything visual comes from the Foreman design repository (`Foreman/docs/design`, read only). A new brand version needs no edits to pages, CSS or scenes, only a rebuild:
+
+```sh
+cd tools
+node theme/from-brand.mjs            # tokens.json -> theme/theme.json (prints roles it had to fill by fallback)
+node brand.mjs                       # logo, favicon, touch icon, OG images
+.venv/bin/python screens.py          # mockups -> assets/screens
+node site/build.mjs                  # assets/tokens.css + pages
+node a11y.mjs                        # axe-core on all pages, light and dark (needs a local server on :8765)
+sh video/prepare.sh && sh video/build.sh    # film tokens (reel/theme.css), logo, mockups; render ko/en
+node verify.mjs                      # after pushing: live links, film playback, screenshots
+```
+
+- `theme/from-brand.mjs` maps the brand's semantic tokens to the site's roles. A brand that leaves a role out (a monochrome brand may have no separate signal, success or danger color) gets the nearest role it does define; the script lists those substitutions.
+- `brand.mjs` looks for each logo file under several names (`FILES` at the top). A brand that names its files differently needs a new candidate there.
+- Logo colors: parts drawn in the brand ink become `currentColor` (so the header logo follows light/dark); parts in the brand accent, if any, take `--signal`.
+- The film reads the same `theme.json` (`video/brandjs.mjs` writes `reel/theme.css`). Its closing logo works with any lockup SVG: if the logo has a block drawn in the brand accent, the film's cursor flies into that spot; otherwise the logo is revealed from the left. The lock screen scene paints over the notification with the mockup's own background color, sampled by `prepare.sh`.
+- If the brand changes fonts, update `fonts` in `from-brand.mjs`, the font packages in `vendor.mjs`, and add the font to the film with `new_project.py video --fonts "Family:wght@400;600"`.
+
 ## Real captures (replacing mockups later)
 
 Until the apps adopt the v2 theme, every product image is a design mockup. Real captures replace them without touching the pages or the film code: put a PNG with the **same file name as the mockup** into `tools/captures/` (2x, no device frame), then rebuild (`.venv/bin/python screens.py && node site/build.mjs`, and for the film `sh video/prepare.sh && sh video/build.sh`).

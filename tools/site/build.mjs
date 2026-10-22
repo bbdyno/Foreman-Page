@@ -16,14 +16,14 @@ const exists = (p) => fs.existsSync(path.join(ROOT, p));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // Brand lockup (assets/brand/lockup.svg, copied from the brand repository by tools/brand.mjs).
-// The frame and wordmark follow the text color; the cursor block takes --signal.
+// Logo parts drawn in the brand ink follow the text color; a brand accent (if any) takes --signal.
 function lockup() {
   const svg = fs.readFileSync(path.join(ROOT, 'assets/brand/lockup.svg'), 'utf8')
     .replace(/<title>.*?<\/title>/, '')
     .replace(/ width="[\d.]+" height="[\d.]+"/, '')
     .replace(/role="img" aria-label="[^"]*"/, 'aria-hidden="true" focusable="false"')
-    .replace(/fill="#0B0F19"/gi, 'fill="currentColor"')
-    .replace(/fill="#C6F03A"/gi, 'style="fill:var(--signal)"');
+    .replace(new RegExp(`fill="${theme.logo.ink}"`, 'gi'), 'fill="currentColor"')
+    .replace(theme.logo.accent ? new RegExp(`fill="${theme.logo.accent}"`, 'gi') : /$^/, 'style="fill:var(--signal)"');
   return svg.replace('<svg ', '<svg class="lockup" ');
 }
 const LOCKUP = lockup();

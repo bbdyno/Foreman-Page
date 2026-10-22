@@ -100,8 +100,18 @@ const rowIndex = (i, t) => (i === TURN_ROW ? lerp(TURN_ROW, 0, SORT(t)) : i < TU
 const PHONE2 = { x: 1210, y: 60, h: 960 };
 const K2 = PHONE2.h / 2622;
 const TILE1 = { x: PHONE2.x + 84 * K2, y: PHONE2.y + 1498 * K2, s: 60 * K2, r: 15 * K2 };   // Live Activity 의 당신 차례 타일
-const LOCK = { x: 120, y: 330, k: 2.4 };                                                         // 엔드카드 로고(lockup 438×96 의 2배)
-const CUR_END = { x: LOCK.x + 35.2 * LOCK.k, y: LOCK.y + 38.4 * LOCK.k, w: 35.2 * LOCK.k, h: 25.6 * LOCK.k, r: 4 * LOCK.k };
+// 엔드카드 로고: 브랜드 lockup SVG 의 크기와(있다면) 브랜드 강조색으로 칠한 커서 블록 위치를 읽는다.
+// 커서가 있는 로고면 영상의 커서가 그 자리로 들어가고, 없으면 로고가 왼쪽부터 드러난다.
+const LOGO_GEO = (() => {
+  const svg = new DOMParser().parseFromString(window.LOGO.lockup, 'image/svg+xml').documentElement;
+  const [, , vw, vh] = svg.getAttribute('viewBox').split(/[\s,]+/).map(Number);
+  const acc = (window.LOGO.accent || '').toLowerCase();
+  const el = acc ? [...svg.querySelectorAll('rect')].find((e) => (e.getAttribute('fill') || '').toLowerCase() === acc) : null;
+  const num = (e, a) => Number(e.getAttribute(a) || 0);
+  return { vw, vh, cursor: el ? { x: num(el, 'x'), y: num(el, 'y'), w: num(el, 'width'), h: num(el, 'height'), r: num(el, 'rx') } : null };
+})();
+const LOCK = { x: 120, y: 330, k: 1051 / LOGO_GEO.vw };
+const CUR_END = LOGO_GEO.cursor && { x: LOCK.x + LOGO_GEO.cursor.x * LOCK.k, y: LOCK.y + LOGO_GEO.cursor.y * LOCK.k, w: LOGO_GEO.cursor.w * LOCK.k, h: LOGO_GEO.cursor.h * LOCK.k, r: LOGO_GEO.cursor.r * LOCK.k };
 
 // ── 배경: 밤(s01–s02) ────────────────────────────────────────────────────
 REEL.overlay(() => {}, { layer: 'back', setup: (p) => { const b = h('div', 'full', p); css(b, { background: 'var(--night)' }); } });
@@ -153,7 +163,7 @@ REEL.scene({
         r.run.style.opacity = on ? 0 : 1;
         r.rt.textContent = on ? COPY.turn : COPY.running;
         css(r.rt, { color: on ? 'var(--signal-d)' : 'var(--night-3)', fontWeight: on ? 600 : 400 });
-        r.row.style.background = on ? `linear-gradient(rgba(212,247,76,${0.06 * prog(lt, 1.2, 0.25, BE)}), rgba(212,247,76,${0.06 * prog(lt, 1.2, 0.25, BE)})), var(--night)` : 'var(--night)';
+        r.row.style.background = on ? `linear-gradient(rgba(var(--signal-d-rgb),${0.06 * prog(lt, 1.2, 0.25, BE)}), rgba(var(--signal-d-rgb),${0.06 * prog(lt, 1.2, 0.25, BE)})), var(--night)` : 'var(--night)';
       }
     });
     css(this.last, { opacity: 1 - out, transform: `translateY(${-18 * prog(lt, 0, 5.2, ease.inOutSine)}px) translateX(${-out * 420}px)` });
@@ -168,7 +178,7 @@ REEL.scene({
     this.ph = phoneImg(el, '../assets/img/iOS-Lock-dark.png', PHONE2.x, PHONE2.y, PHONE2.h);
     const g = this.ph.g;
     // 알림과 메뉴 자리는 잠금화면 바탕색으로 덮었다가, 같은 시안을 잘라 낸 조각으로 차례로 보여 준다
-    this.cover = h('div', 'a', g); css(this.cover, { left: 0, top: '1606px', width: '1206px', height: '734px', background: '#0E1424' });
+    this.cover = h('div', 'a', g); css(this.cover, { left: 0, top: '1606px', width: '1206px', height: '734px', background: (window.MOCKUP_BG || {})['iOS-Lock-dark'] || 'var(--night)' });
     const piece = (inset, origin) => {
       const im = REEL.img('../assets/img/iOS-Lock-dark.png'); g.appendChild(im);
       css(im, { position: 'absolute', left: 0, top: 0, width: '1206px', height: '2622px', clipPath: `inset(${inset})`, transformOrigin: origin });
@@ -176,7 +186,7 @@ REEL.scene({
     };
     this.note = piece('1622px 24px 722px 24px', '603px 1760px');
     this.menu = piece('1912px 20px 286px 352px', '1170px 1912px');
-    this.tap = h('div', 'a', g); css(this.tap, { left: '700px', top: '1928px', width: '120px', height: '120px', borderRadius: '60px', background: 'rgba(237,240,245,.28)' });
+    this.tap = h('div', 'a', g); css(this.tap, { left: '700px', top: '1928px', width: '120px', height: '120px', borderRadius: '60px', background: 'rgba(var(--night-text-rgb), .28)' });
     this.watch = frameImg(el, '../assets/img/watchOS-Approve-dark.png', 624, 744, 820, 470, 300, 0);
     this.cap = caption(el, [...COPY.c2, COPY.wrist], 120, 150, 'var(--night-text)', 'var(--night-2)');
     this.ok = h('div', 'a', el); css(this.ok, { left: '120px', bottom: '84px', fontSize: '30px', color: 'var(--night-2)', display: 'flex', alignItems: 'center', gap: '12px', height: '36px' });
@@ -212,7 +222,7 @@ function frameImg(parent, src, w0, h0, x, y, width, radius) {
   const k = width / w0;
   const vp = h('div', 'a', parent);
   css(vp, { left: x + 'px', top: y + 'px', width: width + 'px', height: h0 * k + 'px', borderRadius: radius + 'px', overflow: 'hidden',
-    boxShadow: radius ? '0 0 0 1.5px rgba(11,15,25,.16), 0 30px 60px rgba(11,15,25,.10)' : 'none' });
+    boxShadow: radius ? '0 0 0 1.5px rgba(var(--shadow-rgb),.16), 0 30px 60px rgba(var(--shadow-rgb),.10)' : 'none' });
   const im = REEL.img(src); vp.appendChild(im);
   css(im, { position: 'absolute', left: 0, top: 0, width: w0 + 'px', height: h0 + 'px', transformOrigin: '0 0', transform: `scale(${k})` });
   // z 배 확대하되 시안 좌표 (px, py) 가 제자리에 머물게 한다
@@ -279,7 +289,7 @@ REEL.scene({
     css(this.task, { left: '800px', top: '572px', width: '420px', height: '236px', background: 'var(--sunken)', borderRadius: '14px', padding: '30px', boxSizing: 'border-box' });
     const tt = h('div', '', this.task, COPY.task); css(tt, { fontSize: '28px', fontWeight: 600, letterSpacing: '-0.01em' });
     const td = h('div', 'mono', this.task); css(td, { fontSize: '24px', marginTop: '18px', color: 'var(--ink2)' });
-    td.innerHTML = `<span style="color:var(--success)">+412</span> <span style="color:#C01D37">−188</span> · ${COPY.files}`;
+    td.innerHTML = `<span style="color:var(--success)">+412</span> <span style="color:var(--danger-text)">−188</span> · ${COPY.files}`;
     const ts = h('div', '', this.task, COPY.summary); css(ts, { fontSize: '22px', marginTop: '18px', color: 'var(--ink3)', lineHeight: 1.35 });
     this.log = ['Edit PaywallView.swift', 'Edit SubscriptionStore.swift', 'Run swift test  PASS 64', 'git commit'].map((t, i) => {
       const ln = h('div', 'a mono', this.root, t);
@@ -329,7 +339,7 @@ REEL.scene({
       css(ln, { opacity: a * (1 - b) * (1 - out), transform: `translate(${(1 - prog(lt, t0 + 0.1, 0.8, BE)) * 700}px, ${(1 - a) * 12 - b * 12 - out * 160}px)` });
     });
     css(this.task, { opacity: te * (1 - out), transform: `translate(${(1 - te) * 700 + mv * 540}px, ${-lift * 18 - out * 160}px) scale(${1 + lift * 0.03})`,
-      boxShadow: `0 ${lift * 18}px ${lift * 36}px rgba(11,15,25,${0.12 * lift})` });
+      boxShadow: `0 ${lift * 18}px ${lift * 36}px rgba(var(--shadow-rgb),${0.12 * lift})` });
     showLines(this.cap.spans, lt, t0 + 0.7, 8.2 - 0.6);
     const pr = prog(lt, t0 + 1.6, 0.4, bezier(0.34, 1.56, 0.64, 1)) * (1 - prog(lt, 8.2 - 0.6, 0.35, BX));
     css(this.pro, { opacity: clamp(pr), transform: `scale(${lerp(0.92, 1, clamp(pr))})`, transformOrigin: '0 50%' });
@@ -362,14 +372,13 @@ REEL.scene({
     this.z1 = h('div', 'a', this.root, COPY.z1); css(this.z1, { left: '120px', top: '660px', fontSize: '80px', fontWeight: 600, letterSpacing: '-0.025em' });
     this.z2 = h('div', 'a', this.root, COPY.z2); css(this.z2, { left: '120px', top: '762px', width: '1680px', fontSize: L === 'en' ? '60px' : '72px', fontWeight: 600, letterSpacing: '-0.025em', color: 'var(--ink2)', textWrap: 'balance' });
     // 엔드카드 로고: 브랜드 lockup SVG 를 그대로 쓰고, 커서는 전역 커서가 들어와 채운다
-    this.logo = h('div', 'a', this.root); css(this.logo, { left: LOCK.x + 'px', top: LOCK.y + 'px', width: 438 * LOCK.k + 'px', height: 96 * LOCK.k + 'px' });
+    this.logo = h('div', 'a', this.root); css(this.logo, { left: LOCK.x + 'px', top: LOCK.y + 'px', width: LOGO_GEO.vw * LOCK.k + 'px', height: LOGO_GEO.vh * LOCK.k + 'px' });
     this.logo.innerHTML = window.LOGO.lockup.replace(/<title>.*?<\/title>/, '').replace(/ width="[\d.]+" height="[\d.]+"/, ' width="100%" height="100%"');
-    const paths = this.logo.querySelectorAll('path');
-    this.frame = paths[0];
-    this.word = s('g', {}, this.logo.querySelector('svg'));          // 워드마크 path 는 자체 transform 이 있어 g 로 감싸 움직인다
-    [...paths].slice(1).forEach((p) => this.word.appendChild(p));
-    this.logo.querySelector('rect').style.opacity = 0;
-    this.dev = h('div', 'a', this.root); css(this.dev, { left: LOCK.x + 'px', top: LOCK.y + 96 * LOCK.k + 64 + 'px', fontSize: '42px', fontWeight: 500, color: 'var(--ink2)' });
+    const acc = (window.LOGO.accent || '').toLowerCase();
+    const cur = acc && [...this.logo.querySelectorAll('rect')].find((e) => (e.getAttribute('fill') || '').toLowerCase() === acc);
+    if (cur) cur.style.opacity = 0;                                    // 영상의 커서가 이 자리를 채운다
+    this.mark = this.logo.querySelector('svg');
+    this.dev = h('div', 'a', this.root); css(this.dev, { left: LOCK.x + 'px', top: LOCK.y + LOGO_GEO.vh * LOCK.k + 64 + 'px', fontSize: '42px', fontWeight: 500, color: 'var(--ink2)' });
     this.dev.textContent = `${COPY.devices}  ·  ${COPY.soon}`;
     this.xs = xs;
   },
@@ -391,11 +400,8 @@ REEL.scene({
     css(this.z2, { opacity: z2 * (1 - out), transform: `translateY(${(1 - z2) * 40 - out * 30}px)` });
     // 로고 조립: 커서가 자리를 잡고(34.9) 프레임이 자란 뒤(35.0–35.7) 워드마크(35.6–36.3)
     const tl = 34.55 - (T.s05 - 0.2);
-    const fr = prog(lt, tl, 0.7, BE);
-    this.frame.style.clipPath = `polygon(0 0, ${fr * 100}% 0, ${fr * 100}% ${Math.min(1, fr * 1.6) * 100}%, 0 ${Math.min(1, fr * 1.6) * 100}%)`;
-    this.frame.style.opacity = fr > 0 ? 1 : 0;
-    const wd = prog(lt, tl + 0.6, 0.7, BE);
-    this.word.style.opacity = wd; this.word.style.transform = `translateX(${(1 - wd) * -12}px)`;
+    const fr = prog(lt, tl, 1.1, BE);                                  // 로고가 왼쪽부터 드러난다
+    css(this.mark, { clipPath: `inset(0 ${(1 - fr) * 100}% 0 0)`, opacity: fr > 0 ? 1 : 0, transform: `translateX(${(1 - fr) * -12}px)` });
     const dv = prog(lt, tl + 1.4, 0.6, BE);
     css(this.dev, { opacity: dv, transform: `translateY(${(1 - dv) * 16}px)` });
   },
@@ -418,7 +424,7 @@ REEL.overlay((t) => {
     vis = 1 - prog(t, 6.45, 0.25, ease.linear);                   // 시안의 같은 타일에 겹치며 사라진다
     const pop = t < 1.6 ? lerp(0.92, 1, prog(t, 1.2, 0.25, BE)) : 1;
     w *= pop; hh *= pop;
-  } else if (t >= 34.15) {
+  } else if (t >= 34.15 && CUR_END) {
     vis = prog(t, 34.15, 0.25, BE);
     const m = prog(t, 34.15, 0.55, BE);
     const cx = lerp(960, CUR_END.x + CUR_END.w / 2, m), cy = lerp(540, CUR_END.y + CUR_END.h / 2, m);
