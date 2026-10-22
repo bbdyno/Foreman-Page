@@ -54,16 +54,16 @@ for (const [name, viewport, mobile] of [['desktop', { width: 1440, height: 900 }
     for (const lang of ['ko', 'en']) {
       const url = BASE + (lang === 'ko' ? 'ko/' : '');
       await page.goto(url, { waitUntil: 'networkidle' });
-      await page.screenshot({ path: path.join(shots, `${lang}-home-${name}-${scheme}.png`) });
-      await page.screenshot({ path: path.join(shots, `${lang}-home-${name}-${scheme}-full.png`), fullPage: true });
+      await page.screenshot({ path: path.join(shots, `${lang}-home-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
+      await page.screenshot({ path: path.join(shots, `${lang}-home-${name}-${scheme}-full.jpg`), type: 'jpeg', quality: 82, fullPage: true });
       await page.locator('#film').scrollIntoViewIfNeeded();
       await page.waitForTimeout(3000);
       const st = await page.evaluate(() => { const v = document.getElementById('film'); return { paused: v.paused, t: v.currentTime, src: v.currentSrc.split('/').pop(), w: v.videoWidth }; });
       film[`${lang}-${name}-${scheme}`] = st;
       if (st.paused || st.t < 1 || !st.w) problems.push(`film not playing: ${lang} ${name} ${scheme} ${JSON.stringify(st)}`);
-      await page.locator('.film').screenshot({ path: path.join(shots, `${lang}-film-${name}-${scheme}.png`) });
+      await page.locator('.film').screenshot({ path: path.join(shots, `${lang}-film-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
       await page.goto(BASE + (lang === 'ko' ? 'ko/' : '') + 'pricing/', { waitUntil: 'networkidle' });
-      await page.screenshot({ path: path.join(shots, `${lang}-pricing-${name}-${scheme}.png`) });
+      await page.screenshot({ path: path.join(shots, `${lang}-pricing-${name}-${scheme}.jpg`), type: 'jpeg', quality: 82 });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       if (overflow > 0) problems.push(`horizontal overflow ${overflow}px: ${lang} pricing ${name}`);
     }
@@ -77,3 +77,4 @@ fs.writeFileSync(path.join(shots, 'report.json'), JSON.stringify(report, null, 2
 console.log(`checked ${seen.size} internal URLs on ${pages.length} pages`);
 console.log('film:', JSON.stringify(film));
 console.log(problems.length ? 'PROBLEMS:\n' + problems.join('\n') : 'no problems');
+process.exit(0);   // fetch keep-alive sockets would otherwise hold the process open

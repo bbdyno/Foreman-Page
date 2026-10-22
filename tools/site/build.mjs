@@ -122,11 +122,11 @@ ${body}
 // ---------------------------------------------------------------- parts ---
 
 // A product screen: one image, or a light/dark pair that follows the color scheme.
-function shot(c, page, s) {
+function shot(c, page, s, eager = false) {
   const sc = SCREENS[s.key];
   if (!sc) return '';
   const r = (p) => rel(c.lang, page, p);
-  const img = `<img src="${r(sc.light)}" width="${sc.w}" height="${sc.h}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`;
+  const img = `<img src="${r(sc.light)}" width="${sc.w}" height="${sc.h}" alt="${esc(s.alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
   const pic = sc.dark ? `<picture><source srcset="${r(sc.dark)}" media="(prefers-color-scheme: dark)">${img}</picture>` : img;
   return `<figure class="shot shot-${sc.kind}">${pic}<figcaption>${s.cap}</figcaption></figure>`;
 }
@@ -163,7 +163,7 @@ function section(c, page, s, i) {
 function home(c) {
   const h = c.home;
   const r = (p) => rel(c.lang, 'home', p);
-  const heroShot = shot(c, 'home', h.heroShot);
+  const heroShot = shot(c, 'home', h.heroShot, true);
   const body = `
 <section class="hero${heroShot ? ' has-shot' : ''}">
   <div class="wrap hero-grid">
