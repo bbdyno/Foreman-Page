@@ -1,52 +1,52 @@
 {
   "base": "https://bbdyno.github.io/Foreman-Page/",
-  "checked": 81,
+  "checked": 106,
   "film": {
     "ko-desktop-light": {
       "paused": false,
-      "t": 2.9685,
+      "t": 2.9719,
       "src": "foreman-loop-ko.webm",
       "w": 1280
     },
     "en-desktop-light": {
       "paused": false,
-      "t": 2.9739,
+      "t": 2.9759,
       "src": "foreman-loop-en.webm",
       "w": 1280
     },
     "ko-desktop-dark": {
       "paused": false,
-      "t": 2.9749,
+      "t": 2.9724,
       "src": "foreman-loop-ko.webm",
       "w": 1280
     },
     "en-desktop-dark": {
       "paused": false,
-      "t": 2.9727,
+      "t": 2.9759,
       "src": "foreman-loop-en.webm",
       "w": 1280
     },
     "ko-mobile-light": {
       "paused": false,
-      "t": 2.9712,
+      "t": 2.9746,
       "src": "foreman-loop-ko.webm",
       "w": 1280
     },
     "en-mobile-light": {
       "paused": false,
-      "t": 2.972,
+      "t": 2.9741,
       "src": "foreman-loop-en.webm",
       "w": 1280
     },
     "ko-mobile-dark": {
       "paused": false,
-      "t": 2.9727,
+      "t": 2.9764,
       "src": "foreman-loop-ko.webm",
       "w": 1280
     },
     "en-mobile-dark": {
       "paused": false,
-      "t": 2.9729,
+      "t": 2.9763,
       "src": "foreman-loop-en.webm",
       "w": 1280
     }
