@@ -62,6 +62,15 @@
     "dark": "assets/screens/ios-inbox-dark.webp",
     "light": "assets/screens/ios-inbox-light.webp"
   },
+  "ios-inbox-danger": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "iOS-InboxDanger",
+    "capture": false,
+    "dark": "assets/screens/ios-inbox-danger-dark.webp",
+    "light": "assets/screens/ios-inbox-danger-light.webp"
+  },
   "ios-lock": {
     "kind": "phone",
     "w": 804,

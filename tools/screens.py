@@ -22,7 +22,7 @@ CAPTURES = Path(__file__).resolve().parent / 'captures'
 
 # mockup name (without mode) -> (site key, kind)
 KEYS = {
-    'iOS-Lock': ('ios-lock', 'phone'), 'iOS-Inbox': ('ios-inbox', 'phone'), 'iOS-Home': ('ios-home', 'phone'),
+    'iOS-Lock': ('ios-lock', 'phone'), 'iOS-Inbox': ('ios-inbox', 'phone'), 'iOS-InboxDanger': ('ios-inbox-danger', 'phone'), 'iOS-Home': ('ios-home', 'phone'),
     'iOS-Session': ('ios-session', 'phone'), 'iOS-Terminal': ('ios-terminal', 'phone'), 'iOS-Agents': ('ios-agents', 'phone'),
     'iOS-NewSession': ('ios-new-session', 'phone'), 'iOS-Autopilot': ('ios-autopilot', 'phone'),
     'watchOS-Approve': ('watch-approve', 'watch'),

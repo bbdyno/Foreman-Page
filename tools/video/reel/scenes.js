@@ -1,6 +1,6 @@
-/* Foreman 홍보 영상 — concept.md "켜진 커서 하나".
- * 라임 커서 블록 하나(전역 레이어)가 장면을 잇는다: 세션 목록의 "당신 차례" → 잠금화면 Live Activity → 마지막 Γ 심볼.
- * 제품 화면은 v2 시안 PNG(assets/img, prepare.sh)만 쓰고, 코드로는 모션 그래픽 레이어만 그린다.
+/* Foreman 홍보 영상 — concept.md "켜진 표지 하나"(브랜드 v3: 흑백, 펄스 심볼).
+ * "당신 차례" 표지 ● 하나(전역 레이어)가 장면을 잇는다: 세션 목록 → 잠금화면 Live Activity, 마지막에 펄스 마크를 긋는다.
+ * 제품 화면은 디자인 시스템의 시안 PNG(assets/img, prepare.sh)만 쓰고, 코드로는 모션 그래픽 레이어만 그린다.
  * 화면은 시각 t 의 순수 함수다(engine.js 규칙). 언어는 lang.js 의 window.LANG. */
 const { ease, prog, kf, clamp, lerp, css, h, s, cue, bezier } = REEL;
 REEL.config({ duration: 40, fps: 30, width: 1920, height: 1080, audio: null });

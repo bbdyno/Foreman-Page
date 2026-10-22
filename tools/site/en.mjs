@@ -65,6 +65,7 @@ export default {
         ],
         shots: [
           { key: 'ios-inbox', alt: 'Approval inbox. A git push request is marked low risk; a prisma migrate deploy request is marked high risk with an Allow with Face ID button.', cap: 'iPhone · Approval inbox' },
+          { key: 'ios-inbox-danger', alt: 'The approval inbox filtered to risky requests. Irreversible requests, such as a production database migration or a force push to main, are set apart with an outline and a warning mark and can only be allowed with Face ID.', cap: 'iPhone · Irreversible requests' },
           { key: 'ios-lock', alt: 'Lock Screen. A Live Activity shows three running sessions, and a notification below lets you allow or deny a git push.', cap: 'iPhone · Lock Screen' },
           { key: 'watch-approve', alt: 'Apple Watch showing an approval request for git push in the Kumquat session, with Deny and Allow buttons.', cap: 'Apple Watch' },
         ],

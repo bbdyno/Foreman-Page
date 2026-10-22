@@ -1,6 +1,6 @@
 # Foreman 사이트 디자인 기록
 
-> 2026-10-22: 브랜드 v2(코발트·라임)는 사용자가 거부했고, 흑백 모노크롬 v3를 디자인 세션이 만드는 중입니다. 아래 원칙(레이아웃·이미지·피할 것)은 그대로 유효하고, 4절의 토큰 표는 v3가 확정되면 `tools/theme/from-brand.mjs` 결과로 바뀝니다.
+> 2026-10-22: 브랜드 v2(코발트·라임)는 폐기되고 흑백 v3(펄스 심볼)로 확정됐습니다. 2절의 v2 기준 서술 가운데 색에 관한 것은 4절과 v3 문서가 대체합니다.
 
 ## 1. 레퍼런스 조사 (Pinterest, 2026-10-22)
 
@@ -19,13 +19,13 @@
 
 ## 2. 공통 원칙과 이 사이트에서의 적용
 
-2026-10-22 Foreman 브랜드 v2(`Foreman/docs/design/BRAND.md`, `tokens.json`)가 확정되어, 레퍼런스에서 뽑은 원칙 가운데 브랜드와 맞는 것만 남겼다. 브랜드와 부딪히는 것(거대 숫자 히어로, 대문자 고정폭 라벨)은 버렸다.
+Foreman 브랜드 v3(`Foreman/docs/design/v3/BRAND-v3.md`, `tokens-v3.json`)에 맞춰, 레퍼런스에서 뽑은 원칙 가운데 브랜드와 맞는 것만 남겼다. 브랜드와 부딪히는 것(거대 숫자 히어로, 대문자 고정폭 라벨)은 버렸다.
 
 | 레퍼런스의 공통 원칙 | 적용 | 버린 것과 이유 |
 | --- | --- | --- |
 | 가운데 정렬보다 왼쪽 정렬, 12열 격자, 1px 선으로 나눈 칸 | 모든 섹션을 왼쪽 정렬하고, 섹션 사이는 1px 선, 왼쪽 3열에 번호와 섹션 이름, 오른쪽 9열에 본문과 화면 | 섹션마다 eyebrow + pill + 둥근 카드 반복(브랜드 §9.3) |
-| 제품을 실물 비율로 크게, 주변은 비움 | 디자인 시스템의 v2 시안 PNG를 실제 크기의 2배 해상도로 쓰고, 기기 테두리를 그리지 않는다. 라이트·다크 시안이 모두 있으면 화면 모드를 따라 바뀐다 | 손으로 그린 화면, 3D 블롭, 그라데이션 메시(브랜드 §8) |
-| 회색 지면 + 먹 + 강조색 하나, 강조는 작게 | 쿨그레이 바탕, 잉크 글자, 코발트는 링크·버튼·선택, 라임 시그널은 "당신 차례" 배지 한 곳 | 레퍼런스의 주황 강조와 웜그레이(Claude 계열과 겹침, 브랜드 §5.4) |
+| 제품을 실물 비율로 크게, 주변은 비움 | 디자인 시스템의 v3 시안 PNG를 실제 크기의 2배 해상도로 쓰고, 기기 테두리를 그리지 않는다. 라이트·다크 시안이 모두 있으면 화면 모드를 따라 바뀐다 | 손으로 그린 화면, 3D 블롭, 그라데이션 메시(브랜드 §8) |
+| 회색 지면 + 먹 + 강조색 하나, 강조는 작게 | 흰/검정 바탕과 회색 3단 글자. 색 강조는 없고, "당신 차례" ● 표지가 들어간 반전 블록 한 곳만 강조한다 | 레퍼런스의 주황 강조와 웜그레이(Claude 계열과 겹침), v2의 코발트·라임(폐기) |
 | 큰 숫자 하나로 시선 고정 | 쓰지 않음 | 브랜드 §6.5·§9.7이 큰 숫자 히어로를 금지. 대신 사실 세 개(우리 서버 0대 · 데이터가 지나는 곳은 내 컴퓨터·내 기기·내 클라우드 계정 · 가입 없음)를 작은 표로 |
 | 작은 대문자 자간 라벨 | 쓰지 않음. 라벨은 문장형 산세리프 14px | 브랜드 §6.3: 고정폭은 명령·경로처럼 다시 칠 수 있는 것에만 |
 
@@ -40,15 +40,16 @@
 - 점선 캡션 pill, 작업용 라벨, 해칭 플레이스홀더 박스(시안이 아직 없는 화면은 자리를 비우지 않고 아예 빼고 빌드한다)
 - 텍스트 글리프 아이콘(✓ → ↗)과 이모지. 아이콘은 Phosphor Light SVG만.
 
-## 4. 토큰
+## 4. 토큰 (브랜드 v3, `tools/theme/theme.json`)
 
-색은 `tools/theme/from-brand.mjs`가 브랜드 `tokens.json`의 의미 토큰에서 `tools/theme/theme.json`을 만들고, `assets/tokens.css`로 내보낸다. 사이트 CSS는 이 변수만 쓴다.
+색은 `tools/theme/from-brand.mjs`가 브랜드 `v3/tokens-v3.json`의 의미 토큰에서 만들고 `assets/tokens.css`로 내보냅니다. 사이트 CSS는 이 변수만 씁니다.
 
 | 사이트 변수 | 브랜드 토큰 | 라이트 | 다크 |
 | --- | --- | --- | --- |
-| `--paper` | background | #F3F5F8 | #08090D |
-| `--panel` | surface | #FFFFFF | #12151B |
-| `--ink` / `--ink-2` / `--mute` | textPrimary / Secondary / Tertiary | #0B0F19 / #4A5363 / #5E6879 | #EDF0F5 / #A3ACBA / #7F8899 |
-| `--rule` / `--rule-strong` | separator / separatorStrong | #DFE3EA / #858E9E | #242932 / #5F6878 |
-| `--accent`, `--accent-text` | accent, accentText | #2040C8 | #7C93FF, #93A6FF |
-| `--signal` / `--on-signal` | attention / onAttention | #C6F03A / #0B0F19 | #D4F74C / #0B0F19 |
+| `--paper` / `--panel` | background / surface | #FFFFFF / #FFFFFF | #000000 / #000000 |
+| `--ink` / `--ink-2` / `--mute` | textPrimary / Secondary / Tertiary | #000000 / #4F4F4F / #6B6B6B | #FFFFFF / #A6A6A6 / #8C8C8C |
+| `--rule` / `--rule-strong` | separator / separatorStrong | #E3E3E3 / #000000 | #262626 / #FFFFFF |
+| `--accent` | accent | #000000 | #FFFFFF |
+| `--signal-container` / `--on-signal-container` | attentionContainer / onAttentionContainer (당신 차례 반전 블록) | #000000 / #FFFFFF | #FFFFFF / #000000 |
+
+상태는 색이 아니라 모양으로: 당신 차례 ●, 위험 ▲, 실행 중 ◌, 완료 ✓, 대기 —. 카드 격자 대신 헤어라인 행과 1px 섹션 규칙선. 서체는 Pretendard Variable + JetBrains Mono(명령·경로만), 자체 호스팅.

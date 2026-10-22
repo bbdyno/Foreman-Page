@@ -65,6 +65,7 @@ export default {
         ],
         shots: [
           { key: 'ios-inbox', alt: '승인 인박스. git push 요청은 위험도 낮음, prisma migrate deploy 요청은 위험도 높음으로 표시되고 Face ID로 허용 버튼이 있습니다.', cap: 'iPhone · 승인 인박스' },
+          { key: 'ios-inbox-danger', alt: '위험한 요청만 모아 본 승인 인박스. 운영 DB 마이그레이션, main 브랜치 강제 푸시처럼 되돌릴 수 없는 요청은 테두리와 경고 표지로 구분되고 Face ID로만 허용됩니다.', cap: 'iPhone · 되돌릴 수 없는 요청' },
           { key: 'ios-lock', alt: '잠금화면. Live Activity에 실행 중인 세션 세 개가 보이고, 아래 알림에서 git push를 허용하거나 거부할 수 있습니다.', cap: 'iPhone · 잠금화면' },
           { key: 'watch-approve', alt: 'Apple Watch 화면. Kumquat 세션의 git push 승인 요청과 거부·허용 버튼.', cap: 'Apple Watch' },
         ],
