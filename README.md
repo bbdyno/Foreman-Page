@@ -75,26 +75,27 @@ node verify.mjs                      # after pushing: live links, film playback,
 - The film reads the same `theme.json` (`video/brandjs.mjs` writes `reel/theme.css`). Its closing logo works with any lockup SVG: if the logo has a block drawn in the brand accent, the film's cursor flies into that spot; otherwise the logo is revealed from the left. The lock screen scene paints over the notification with the mockup's own background color, sampled by `prepare.sh`.
 - If the brand changes fonts, update `fonts` in `from-brand.mjs`, the font packages in `vendor.mjs`, and add the font to the film with `new_project.py video --fonts "Family:wght@400;600"`.
 
-## Real captures (replacing mockups later)
+## Real captures
 
-Until the apps adopt the v2 theme, every product image is a design mockup. Real captures replace them without touching the pages or the film code: put a PNG with the **same file name as the mockup** into `tools/captures/` (2x, no device frame), then rebuild (`.venv/bin/python screens.py && node site/build.mjs`, and for the film `sh video/prepare.sh && sh video/build.sh`).
+The site shows captures of the built apps wherever they exist, and the brand mockups only for screens that have no capture yet. `tools/screens.py` takes them from the Foreman repository (read only): `docs/screens` for the Apple apps and `clients/flutter/docs/screens` for Android and Windows (the Windows set is drawn by the Flutter test renderer). A PNG in `tools/captures/` with the **mockup's file name** overrides both. Rebuild with `.venv/bin/python screens.py && node site/build.mjs`.
 
-Site (`tools/screens.py` → `assets/screens/<key>-<light|dark>.webp`):
+Site (`tools/screens.py` → `assets/screens/<key>-<light|dark>.webp`; `REAL` in the script maps keys to captures):
 
-| Mockup file name | Site key | Shown in |
+| Site key | Real capture | Shown in |
 | --- | --- | --- |
-| `iOS-Lock-{light,dark}` | `ios-lock` | Hero; Approvals |
-| `iOS-Inbox-*`, `watchOS-Approve-dark` | `ios-inbox`, `watch-approve` | Approvals |
-| `iOS-Home-*`, `iOS-Session-*`, `iOS-Terminal-*` | `ios-home`, `ios-session`, `ios-terminal` | Sessions |
-| `iOS-Agents-*`, `iOS-NewSession-*` | `ios-agents`, `ios-new-session` | Agents |
-| `Mac-Orchestrate-*` | `mac-orchestrate` | Agent handoff (Pro) |
-| `iOS-Autopilot-*` | `ios-autopilot` | Autopilot (Pro) |
-| `iPad-Grid-*` | `ipad-grid` | iPad |
-| `Mac-Workspace-*`, `Mac-MenuBar-*` | `mac-workspace`, `mac-menubar` | Mac |
-| `Mac-Capture-*` | `mac-capture` | Mac. An extra slot for the real Mac app; it appears only once this file exists |
-| `Android-Home-*`, `Android-Shade-*`, `Windows-Main-*` | `android-home`, `android-shade`, `windows-main` | Platforms |
+| `ios-lock` | `iPhone-Widgets-*` (Live Activity and widgets) | Hero |
+| `ios-inbox`, `ios-inbox-danger`, `watch-approve` | `iPhone-Inbox-*`, `iPhone-SessionDanger-*`, `Watch-Approve-dark` | Approvals |
+| `ios-home`, `ios-session`, `ios-terminal` | `iPhone-Home-*`, `iPhone-Session-*`, `iPhone-Terminal-*` | Sessions |
+| `ios-agents`, `ios-new-session` | `iPhone-Agents-*`, `iPhone-NewSession-*` | Agents |
+| `ios-autopilot` | `iPhone-Autopilot-*` | Autopilot (Pro) |
+| `ipad-grid` | `iPad-Grid-*` (portrait) | iPad |
+| `mac-workspace`, `mac-menubar` | `Mac-Workspace-*`, `Mac-MenuBar-*` | Mac |
+| `android-home`, `android-shade`, `windows-main` | `android-home-*`, `android-notifications-*` (cropped), `windows-home-*` | Platforms |
+| `mac-orchestrate` | none yet (no mockup either, so the slot is left out) | Agent handoff (Pro) |
 
-Film (`tools/video/reel/scenes.js`; the film uses the @3x mockups from `docs/design/mockups/`, copied by `prepare.sh`):
+The user guide takes its captures the same way through `tools/guide_screens.py` (see `assets/guide/guide.json`).
+
+The film still uses the mockups: its opening zooms into a Lock Screen notification that has no real capture yet. To swap in captures later, keep these coordinates in mind. Film (`tools/video/reel/scenes.js`; the film uses the @3x mockups from `docs/design/mockups/`, copied by `prepare.sh`):
 
 | Time | Image | Coordinates the scene depends on |
 | --- | --- | --- |

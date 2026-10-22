@@ -51,7 +51,7 @@ export default {
       ['Where your data goes', 'Your computer · your devices · your cloud account'],
       ['Sign-up', 'None'],
     ],
-    heroShot: { key: 'ios-lock', alt: 'iPhone Lock Screen. From the Foreman notification you can allow or deny an agent’s command right away.', cap: 'iPhone · Approve from the Lock Screen' },
+    heroShot: { key: 'ios-lock', alt: 'iPhone Lock Screen Live Activity and widgets: 5 running, 3 waiting for you, and a widget that allows the git push in Kumquat right away.', cap: 'iPhone · Live Activity and widgets' },
     filmLabel: 'Foreman introduction video',
     filmCaption: '40 seconds · plays here without sound; the download has music.',
     filmDownload: 'Download 1080p MP4',
@@ -67,10 +67,9 @@ export default {
           ['gauge', '<b>Live Activity</b> for test and build progress (Pro)'],
         ],
         shots: [
-          { key: 'ios-inbox', alt: 'Approval inbox. A git push request is marked low risk; a prisma migrate deploy request is marked high risk with an Allow with Face ID button.', cap: 'iPhone · Approval inbox' },
-          { key: 'ios-inbox-danger', alt: 'The approval inbox filtered to risky requests. Irreversible requests, such as a production database migration or a force push to main, are set apart with an outline and a warning mark and can only be allowed with Face ID.', cap: 'iPhone · Irreversible requests' },
-          { key: 'ios-lock', alt: 'Lock Screen. A Live Activity shows three running sessions, and a notification below lets you allow or deny a git push.', cap: 'iPhone · Lock Screen' },
-          { key: 'watch-approve', alt: 'Apple Watch showing an approval request for git push in the Kumquat session, with Deny and Allow buttons.', cap: 'Apple Watch' },
+          { key: 'ios-inbox', alt: 'Approval inbox. A git push in Kumquat is reversible and has an Allow button; a prisma migrate deploy in FitBoost-Backend is set apart with a ▲ risky mark and a heavy outline and can only be allowed with Face ID.', cap: 'iPhone · Approval inbox' },
+          { key: 'ios-inbox-danger', alt: 'A risky request inside a session conversation. The production database migration sits in a heavy outlined box with only Deny and Allow with Face ID.', cap: 'iPhone · Irreversible requests' },
+          { key: 'watch-approve', alt: 'Apple Watch showing an approval request for git push origin feat/paywall in the Kumquat session, with Deny and Allow buttons.', cap: 'Apple Watch' },
         ],
       },
       {
@@ -84,9 +83,9 @@ export default {
           ['plugs-connected', '<b>Sessions started as usual</b> show up without any wrapper'],
         ],
         shots: [
-          { key: 'ios-home', alt: 'Status screen: 3 waiting for you, 5 running, 14 done today, and the list of sessions waiting for an answer.', cap: 'iPhone · Status' },
-          { key: 'ios-session', alt: 'Conversation view with a diff of a retry policy and a question about the retry limit, with 3 and 5 as answers.', cap: 'iPhone · Conversation view' },
-          { key: 'ios-terminal', alt: 'Terminal view. Gemini CLI runs xcodebuild tests: 42 of 118 passed, 1 failed.', cap: 'iPhone · Terminal view' },
+          { key: 'ios-home', alt: 'Status screen: 3 waiting for you, 5 running, 14 done today, with the sessions waiting for an answer and the running ones.', cap: 'iPhone · Status' },
+          { key: 'ios-session', alt: 'Conversation view with a diff of a retry policy and a question about the retry limit, with 3 and 5 (recommended) as answers.', cap: 'iPhone · Conversation view' },
+          { key: 'ios-terminal', alt: 'Terminal view. The Kumquat session, watched together with the local terminal on the Mac mini, shows xcodebuild test output, with the key bar below.', cap: 'iPhone · Terminal view' },
         ],
       },
       {
@@ -100,8 +99,8 @@ export default {
           ['lock-simple', '<b>API keys</b> stay on the host computer'],
         ],
         shots: [
-          { key: 'ios-agents', alt: 'Agents screen with Claude Code, Codex, Gemini CLI and OpenCode connected and limit failover turned on.', cap: 'iPhone · Agents' },
-          { key: 'ios-new-session', alt: 'New session screen. Pick a host and folder, then start a race between Claude Code and Codex.', cap: 'iPhone · New session' },
+          { key: 'ios-agents', alt: 'Agents screen: Claude Code, Codex, Gemini CLI and OpenCode connected with their accounts and limits, and Copilot CLI and Goose found on the host with Connect buttons.', cap: 'iPhone · Agents' },
+          { key: 'ios-new-session', alt: 'New session screen with Mac mini as the host, ~/Personal/Kumquat as the folder and Claude Code as the agent.', cap: 'iPhone · New session' },
         ],
       },
       {
@@ -129,7 +128,7 @@ export default {
           ['sun', '<b>Morning briefing</b> at the time you choose'],
         ],
         shots: [
-          { key: 'ios-autopilot', alt: 'Autopilot. When the Claude 5-hour limit resets in 1 hour 42 minutes, two stopped sessions continue; read-only commands, tests and feat/* pushes are allowed automatically, and irreversible actions always need Face ID. The morning briefing setting is below.', cap: 'iPhone · Autopilot' },
+          { key: 'ios-autopilot', alt: 'Autopilot. When the Claude 5-hour limit resets in 1 hour 41 minutes, two stopped sessions continue; read-only commands, tests and builds, and feat/* pushes are allowed automatically, and irreversible actions always need Face ID. The morning briefing setting is below.', cap: 'iPhone · Autopilot' },
         ],
       },
       {
@@ -137,7 +136,7 @@ export default {
         title: 'iPad becomes the control room.',
         text: ['Lay out the sessions from all your computers as tiles. Sessions waiting for you come first, and you can allow or answer right on the tile.'],
         shots: [
-          { key: 'ipad-grid', alt: 'iPad control grid. Nine sessions laid out as tiles: tiles waiting for you have Allow and Deny buttons, running tiles show their latest output and progress.', cap: 'iPad · Control grid' },
+          { key: 'ipad-grid', alt: 'iPad control grid. Twelve sessions in a table divided by shared lines: cells waiting for you have Allow and Deny buttons, running cells show their latest output.', cap: 'iPad · Control grid' },
         ],
       },
       {
@@ -145,8 +144,8 @@ export default {
         title: 'On the Mac, a full workspace.',
         text: ['The Mac app keeps sessions by host, plus conversation, terminal and changes views, in one window. Approval requests appear right above the conversation, with host status and limits on the right. On the Mac where agents run, a small menu bar helper keeps that Mac working as a host.'],
         shots: [
-          { key: 'mac-workspace', alt: 'Mac workspace. Sessions grouped by Mac mini, MacBook Pro and Mac Studio on the left; the Kumquat conversation with a git push approval request in the middle; a terminal below; host details and limits on the right.', cap: 'Mac · Workspace' },
-          { key: 'mac-menubar', alt: 'The Foreman menu in the Mac menu bar. This Mac is running as a host, with two sessions waiting for you and three running.', cap: 'Host Mac · Menu bar' },
+          { key: 'mac-workspace', alt: 'Mac workspace: sessions by host in the sidebar, a session conversation with an approval request in the middle, the terminal in a drawer below and host details on the right.', cap: 'Mac · Workspace' },
+          { key: 'mac-menubar', alt: 'The Foreman Host menu in the Mac menu bar. This Mac is running as a host, with two sessions waiting for you and three running.', cap: 'Host Mac · Menu bar' },
           { key: 'mac-capture', alt: 'The Foreman Mac app, as it runs.', cap: 'Mac · The app as it runs' },
         ],
       },
@@ -174,9 +173,9 @@ export default {
           ['Hosts', 'macOS · Windows. A Mac mini or a Windows PC that stays on works best.'],
         ],
         shots: [
-          { key: 'android-home', alt: 'Status screen of the Android app: counts of waiting, running and finished sessions and the session list, in Material 3 style.', cap: 'Android · Status' },
-          { key: 'android-shade', alt: 'Android notification shade. From the Foreman notification you can allow or deny an agent’s request right away.', cap: 'Android · Approve from notifications' },
-          { key: 'windows-main', alt: 'Main window of the Windows app: session list on the left and the session on the right, in Fluent style.', cap: 'Windows · Main window' },
+          { key: 'android-home', alt: 'Status screen of the Android app: counts of waiting, running and finished sessions, the session list and four tabs at the bottom.', cap: 'Android · Status' },
+          { key: 'android-shade', alt: 'Android notification shade with Foreman notifications: a question in DynoCam and an approval needed in NudgeMate.', cap: 'Android · Notifications' },
+          { key: 'windows-main', alt: 'Status screen of the Windows app: the menu and host list on the left, three sessions waiting for you and four running in the middle.', cap: 'Windows · Status' },
         ],
       },
       {

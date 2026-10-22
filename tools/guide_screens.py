@@ -3,7 +3,7 @@
   .venv/bin/python guide_screens.py
 
 Sources (read only): Foreman/docs/screens (Apple apps, brand v3) and the Flutter app's
-clients/flutter/docs/screens (Android, Windows). Captures marked as taken with the old
+clients/flutter/docs/screens (Android; Windows rendered by the Flutter test renderer). Captures marked as taken with the old
 brand colors (android-real-*) are not used. A file in tools/captures/ with the same name
 replaces the source capture. Only captures the guide pages use (tools/site/guide-*.mjs) are
 published.
@@ -40,12 +40,16 @@ SHOTS = {
     'android-new-session': ('flutter', 'android-new-session', 'phone', 2.625), 'android-agents': ('flutter', 'android-agents-h-macmini', 'phone', 2.625),
     'android-sessions': ('flutter', 'android-sessions', 'phone', 2.625), 'android-hosts': ('flutter', 'android-hosts', 'phone', 2.625),
     'android-host-offline': ('flutter', 'android-host-h-macstudio', 'phone', 2.625), 'android-settings': ('flutter', 'android-settings', 'phone', 2.625),
-    'android-subscription': ('flutter', 'android-subscription', 'phone', 2.625), 'android-pairing': ('flutter', 'android-pairing', 'phone', 2.625),
+    'android-pairing': ('flutter', 'android-pairing', 'phone', 2.625),
     'android-notifications': ('flutter', 'android-notifications', 'phone', 2.625),
     'windows-home': ('flutter', 'windows-home', 'desktop', 2), 'windows-sessions': ('flutter', 'windows-sessions', 'desktop', 2),
     'windows-inbox': ('flutter', 'windows-inbox', 'desktop', 2), 'windows-host': ('flutter', 'windows-host', 'desktop', 2),
     'windows-settings': ('flutter', 'windows-settings', 'desktop', 2),
+    'iphone-briefing': ('apple', 'iPhone-Briefing', 'phone', 3),
+    'mac-cloud': ('apple', 'host-cloud-window', 'panel', 2, 'dark'),   # one capture, dark mode
 }
+# crop boxes in source pixels: the Android shade without the unrelated system notification below
+CROP = {'android-notifications': (0, 0, 1080, 1172)}
 MAX_W = {'phone': 2 * 402, 'tablet': 1600, 'watch': 2 * 208, 'desktop': 1800, 'panel': 2 * 320}
 
 SITE = Path(__file__).resolve().parent / 'site'
@@ -58,16 +62,20 @@ OUT.mkdir(parents=True, exist_ok=True)
 for old in OUT.glob('*.webp'):
     old.unlink()
 manifest, missing = {}, []
-for key, (where, stem, kind, scale) in SHOTS.items():
+for key, (where, stem, kind, scale, *only) in SHOTS.items():
     if key not in USED:
         continue
     base = FOREMAN / 'docs/screens' if where == 'apple' else FLUTTER
     for mode in ('light', 'dark'):
-        name = f'{stem}-{mode}.png'
+        if only and mode != only[0]:
+            continue
+        name = f'{stem}.png' if only else f'{stem}-{mode}.png'
         src = CAPTURES / name if (CAPTURES / name).exists() else (base / name if base else None)
         if not src or not src.exists():
             continue
         im = Image.open(src).convert('RGB')
+        if key in CROP:
+            im = im.crop(CROP[key])
         w = min(round(im.width * 2 / scale), MAX_W[kind])
         if w != im.width:
             im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)

@@ -328,3 +328,5 @@ kbd { font-family: var(--mono); font-size: .88em; border: 1px solid var(--rule-s
   .gtable td { margin-top: 6px; }
   .gtable td[data-label]::before { content: attr(data-label); display: block; font-size: 13px; color: var(--mute); }
 }
+.shot-tablet { width: min(520px, 100%); }
+.shot-tablet img { border-radius: 20px; box-shadow: 0 0 0 1px var(--shot-edge); }

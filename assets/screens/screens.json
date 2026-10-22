@@ -1,101 +1,155 @@
 {
-  "android-home": {
+  "ios-lock": {
     "kind": "phone",
-    "w": 824,
-    "h": 1830,
-    "source": "Android-Home",
-    "capture": false,
-    "dark": "assets/screens/android-home-dark.webp",
-    "light": "assets/screens/android-home-light.webp"
-  },
-  "android-inbox": {
-    "kind": "phone",
-    "w": 824,
-    "h": 1830,
-    "source": "Android-Inbox",
-    "capture": false,
-    "dark": "assets/screens/android-inbox-dark.webp",
-    "light": "assets/screens/android-inbox-light.webp"
-  },
-  "android-shade": {
-    "kind": "phone",
-    "w": 824,
-    "h": 1830,
-    "source": "Android-Shade",
-    "capture": false,
-    "dark": "assets/screens/android-shade-dark.webp",
-    "light": "assets/screens/android-shade-light.webp"
-  },
-  "mac-workspace": {
-    "kind": "mac",
-    "w": 2880,
-    "h": 1800,
-    "source": "Mac-Workspace",
-    "capture": false,
-    "dark": "assets/screens/mac-workspace-dark.webp",
-    "light": "assets/screens/mac-workspace-light.webp"
-  },
-  "windows-main": {
-    "kind": "mac",
-    "w": 2880,
-    "h": 1800,
-    "source": "Windows-Main",
-    "capture": false,
-    "dark": "assets/screens/windows-main-dark.webp",
-    "light": "assets/screens/windows-main-light.webp"
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Widgets-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-lock-light.webp",
+    "dark": "assets/screens/ios-lock-dark.webp"
   },
   "ios-home": {
     "kind": "phone",
     "w": 804,
     "h": 1748,
-    "source": "iOS-Home",
-    "capture": false,
-    "dark": "assets/screens/ios-home-dark.webp",
-    "light": "assets/screens/ios-home-light.webp"
+    "source": "docs/screens/iPhone-Home-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-home-light.webp",
+    "dark": "assets/screens/ios-home-dark.webp"
   },
   "ios-inbox": {
     "kind": "phone",
     "w": 804,
     "h": 1748,
-    "source": "iOS-Inbox",
-    "capture": false,
-    "dark": "assets/screens/ios-inbox-dark.webp",
-    "light": "assets/screens/ios-inbox-light.webp"
+    "source": "docs/screens/iPhone-Inbox-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-inbox-light.webp",
+    "dark": "assets/screens/ios-inbox-dark.webp"
   },
   "ios-inbox-danger": {
     "kind": "phone",
     "w": 804,
     "h": 1748,
-    "source": "iOS-InboxDanger",
-    "capture": false,
-    "dark": "assets/screens/ios-inbox-danger-dark.webp",
-    "light": "assets/screens/ios-inbox-danger-light.webp"
-  },
-  "ios-lock": {
-    "kind": "phone",
-    "w": 804,
-    "h": 1748,
-    "source": "iOS-Lock",
-    "capture": false,
-    "dark": "assets/screens/ios-lock-dark.webp",
-    "light": "assets/screens/ios-lock-light.webp"
+    "source": "docs/screens/iPhone-SessionDanger-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-inbox-danger-light.webp",
+    "dark": "assets/screens/ios-inbox-danger-dark.webp"
   },
   "ios-session": {
     "kind": "phone",
     "w": 804,
     "h": 1748,
-    "source": "iOS-Session",
-    "capture": false,
-    "dark": "assets/screens/ios-session-dark.webp",
-    "light": "assets/screens/ios-session-light.webp"
+    "source": "docs/screens/iPhone-Session-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-session-light.webp",
+    "dark": "assets/screens/ios-session-dark.webp"
+  },
+  "ios-terminal": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Terminal-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-terminal-light.webp",
+    "dark": "assets/screens/ios-terminal-dark.webp"
+  },
+  "ios-agents": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Agents-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-agents-light.webp",
+    "dark": "assets/screens/ios-agents-dark.webp"
+  },
+  "ios-new-session": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-NewSession-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-new-session-light.webp",
+    "dark": "assets/screens/ios-new-session-dark.webp"
+  },
+  "ios-autopilot": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Autopilot-light.png",
+    "capture": true,
+    "light": "assets/screens/ios-autopilot-light.webp",
+    "dark": "assets/screens/ios-autopilot-dark.webp"
+  },
+  "watch-approve": {
+    "kind": "watch",
+    "w": 416,
+    "h": 496,
+    "source": "docs/screens/Watch-Approve-dark.png",
+    "capture": true,
+    "dark": "assets/screens/watch-approve-dark.webp",
+    "light": "assets/screens/watch-approve-dark.webp"
   },
   "ipad-grid": {
-    "kind": "ipad",
-    "w": 2752,
-    "h": 2064,
-    "source": "iPad-Grid",
-    "capture": false,
-    "dark": "assets/screens/ipad-grid-dark.webp",
-    "light": "assets/screens/ipad-grid-light.webp"
+    "kind": "tablet",
+    "w": 1400,
+    "h": 1867,
+    "source": "docs/screens/iPad-Grid-light.png",
+    "capture": true,
+    "light": "assets/screens/ipad-grid-light.webp",
+    "dark": "assets/screens/ipad-grid-dark.webp"
+  },
+  "mac-workspace": {
+    "kind": "mac",
+    "w": 2880,
+    "h": 1772,
+    "source": "docs/screens/Mac-Workspace-light.png",
+    "capture": true,
+    "light": "assets/screens/mac-workspace-light.webp",
+    "dark": "assets/screens/mac-workspace-dark.webp"
+  },
+  "mac-menubar": {
+    "kind": "menu",
+    "w": 640,
+    "h": 1012,
+    "source": "docs/screens/Mac-MenuBar-light.png",
+    "capture": true,
+    "light": "assets/screens/mac-menubar-light.webp",
+    "dark": "assets/screens/mac-menubar-dark.webp"
+  },
+  "android-home": {
+    "kind": "phone",
+    "w": 823,
+    "h": 1847,
+    "source": "clients/flutter/docs/screens/android-home-light.png",
+    "capture": true,
+    "light": "assets/screens/android-home-light.webp",
+    "dark": "assets/screens/android-home-dark.webp"
+  },
+  "android-inbox": {
+    "kind": "phone",
+    "w": 823,
+    "h": 1847,
+    "source": "clients/flutter/docs/screens/android-inbox-light.png",
+    "capture": true,
+    "light": "assets/screens/android-inbox-light.webp",
+    "dark": "assets/screens/android-inbox-dark.webp"
+  },
+  "android-shade": {
+    "kind": "phone",
+    "w": 823,
+    "h": 893,
+    "source": "clients/flutter/docs/screens/android-notifications-light.png",
+    "capture": true,
+    "light": "assets/screens/android-shade-light.webp",
+    "dark": "assets/screens/android-shade-dark.webp"
+  },
+  "windows-main": {
+    "kind": "mac",
+    "w": 2880,
+    "h": 1800,
+    "source": "clients/flutter/docs/screens/windows-home-light.png",
+    "capture": true,
+    "light": "assets/screens/windows-main-light.webp",
+    "dark": "assets/screens/windows-main-dark.webp"
   }
 }

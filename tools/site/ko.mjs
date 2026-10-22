@@ -51,7 +51,7 @@ export default {
       ['데이터가 지나는 곳', '내 컴퓨터 · 내 기기 · 내 클라우드 계정'],
       ['회원 가입', '없음'],
     ],
-    heroShot: { key: 'ios-lock', alt: 'iPhone 잠금화면. Foreman 알림에서 에이전트의 명령을 바로 허용하거나 거부할 수 있습니다.', cap: 'iPhone · 잠금화면 승인' },
+    heroShot: { key: 'ios-lock', alt: 'iPhone 잠금화면의 Live Activity와 위젯. 실행 중 5, 당신 차례 3이 보이고, 위젯에서 Kumquat의 git push를 바로 허용할 수 있습니다.', cap: 'iPhone · Live Activity와 위젯' },
     filmLabel: 'Foreman 소개 영상',
     filmCaption: '40초 · 여기서는 소리 없이 재생되고, 내려받는 파일에는 음악이 있습니다.',
     filmDownload: '1080p MP4 내려받기',
@@ -67,10 +67,9 @@ export default {
           ['gauge', '<b>Live Activity</b>로 테스트·빌드 진행률 확인 (Pro)'],
         ],
         shots: [
-          { key: 'ios-inbox', alt: '승인 인박스. git push 요청은 위험도 낮음, prisma migrate deploy 요청은 위험도 높음으로 표시되고 Face ID로 허용 버튼이 있습니다.', cap: 'iPhone · 승인 인박스' },
-          { key: 'ios-inbox-danger', alt: '위험한 요청만 모아 본 승인 인박스. 운영 DB 마이그레이션, main 브랜치 강제 푸시처럼 되돌릴 수 없는 요청은 테두리와 경고 표지로 구분되고 Face ID로만 허용됩니다.', cap: 'iPhone · 되돌릴 수 없는 요청' },
-          { key: 'ios-lock', alt: '잠금화면. Live Activity에 실행 중인 세션 세 개가 보이고, 아래 알림에서 git push를 허용하거나 거부할 수 있습니다.', cap: 'iPhone · 잠금화면' },
-          { key: 'watch-approve', alt: 'Apple Watch 화면. Kumquat 세션의 git push 승인 요청과 거부·허용 버튼.', cap: 'Apple Watch' },
+          { key: 'ios-inbox', alt: '승인 인박스. Kumquat의 git push 요청은 되돌릴 수 있음으로 허용 버튼이 있고, FitBoost-Backend의 prisma migrate deploy 요청은 ▲ 위험 표지와 두꺼운 테두리로 구분되며 Face ID로만 허용됩니다.', cap: 'iPhone · 승인 인박스' },
+          { key: 'ios-inbox-danger', alt: '세션 대화 안의 위험한 요청. 운영 DB 마이그레이션 명령이 두꺼운 테두리 상자로 표시되고, 거부와 Face ID로 허용 버튼만 있습니다.', cap: 'iPhone · 되돌릴 수 없는 요청' },
+          { key: 'watch-approve', alt: 'Apple Watch 화면. Kumquat 세션의 git push origin feat/paywall 승인 요청과 거부·허용 버튼.', cap: 'Apple Watch' },
         ],
       },
       {
@@ -84,9 +83,9 @@ export default {
           ['plugs-connected', '<b>평소처럼 실행</b>한 세션도 그대로 가져오기'],
         ],
         shots: [
-          { key: 'ios-home', alt: '현황 화면. 당신 차례 3, 실행 중 5, 오늘 완료 14와 답을 기다리는 세션 목록이 보입니다.', cap: 'iPhone · 현황' },
-          { key: 'ios-session', alt: '대화 뷰. 재시도 정책을 고친 diff와 재시도 상한을 묻는 질문, 3회와 5회 선택 버튼.', cap: 'iPhone · 대화 뷰' },
-          { key: 'ios-terminal', alt: '터미널 뷰. Gemini CLI가 xcodebuild 테스트를 돌리며 118개 중 42개 통과, 1개 실패를 보여 줍니다.', cap: 'iPhone · 터미널 뷰' },
+          { key: 'ios-home', alt: '현황 화면. 당신 차례 3, 실행 중 5, 오늘 완료 14와 답을 기다리는 세션, 실행 중인 세션 목록이 보입니다.', cap: 'iPhone · 현황' },
+          { key: 'ios-session', alt: '대화 뷰. 재시도 정책을 고친 diff와 재시도 상한을 묻는 질문, 3회와 5회(권장) 선택 버튼.', cap: 'iPhone · 대화 뷰' },
+          { key: 'ios-terminal', alt: '터미널 뷰. Mac mini의 로컬 터미널과 함께 보는 Kumquat 세션에서 xcodebuild 테스트 출력이 나오고, 아래에 키 막대가 있습니다.', cap: 'iPhone · 터미널 뷰' },
         ],
       },
       {
@@ -100,8 +99,8 @@ export default {
           ['lock-simple', '<b>API 키</b>는 호스트 컴퓨터에만 보관'],
         ],
         shots: [
-          { key: 'ios-agents', alt: '에이전트 연결 화면. Claude Code, Codex, Gemini CLI, OpenCode 네 개가 연결되어 있고 한도 페일오버가 켜져 있습니다.', cap: 'iPhone · 에이전트' },
-          { key: 'ios-new-session', alt: '새 세션 화면. 호스트와 폴더를 고르고, Claude Code와 Codex 두 에이전트로 레이스를 시작합니다.', cap: 'iPhone · 새 세션' },
+          { key: 'ios-agents', alt: '에이전트 화면. Claude Code, Codex, Gemini CLI, OpenCode 네 개가 계정·한도와 함께 연결되어 있고, 호스트에서 발견된 Copilot CLI와 Goose에는 연결 버튼이 있습니다.', cap: 'iPhone · 에이전트' },
+          { key: 'ios-new-session', alt: '새 세션 화면. 호스트로 Mac mini, 폴더로 ~/Personal/Kumquat, 에이전트로 Claude Code를 골랐습니다.', cap: 'iPhone · 새 세션' },
         ],
       },
       {
@@ -129,7 +128,7 @@ export default {
           ['sun', '<b>아침 브리핑</b>: 정한 시각에 밤사이 결과를 요약'],
         ],
         shots: [
-          { key: 'ios-autopilot', alt: 'Autopilot 화면. Claude 5시간 한도가 1시간 42분 뒤 리셋되면 멈춘 세션 두 개를 이어 가고, 읽기 전용 명령·테스트·feat/* 브랜치 푸시는 자동 허용, 되돌릴 수 없는 작업은 항상 Face ID입니다. 아래에 아침 브리핑 설정이 있습니다.', cap: 'iPhone · Autopilot' },
+          { key: 'ios-autopilot', alt: 'Autopilot 화면. Claude 5시간 한도가 1시간 41분 뒤 리셋되면 멈춘 세션 두 개를 이어 가고, 읽기 전용 명령·테스트·빌드·feat/* 브랜치 푸시는 자동 허용, 되돌릴 수 없는 작업은 항상 Face ID입니다. 아래에 아침 브리핑 설정이 있습니다.', cap: 'iPhone · Autopilot' },
         ],
       },
       {
@@ -137,7 +136,7 @@ export default {
         title: 'iPad는 관제 화면이 됩니다.',
         text: ['여러 컴퓨터의 세션을 타일로 펼쳐 봅니다. 답을 기다리는 세션이 앞에 오고, 타일에서 바로 허용하거나 답할 수 있습니다.'],
         shots: [
-          { key: 'ipad-grid', alt: 'iPad 관제 그리드. 세션 아홉 개가 타일로 펼쳐져 있고, 답을 기다리는 타일에는 허용·거부 버튼, 실행 중인 타일에는 최근 출력과 진행률이 보입니다.', cap: 'iPad · 관제 그리드' },
+          { key: 'ipad-grid', alt: 'iPad 관제 그리드. 세션 열두 개가 공유 선으로 나뉜 표에 펼쳐져 있고, 답을 기다리는 칸에는 허용·거부 버튼, 실행 중인 칸에는 최근 출력이 보입니다.', cap: 'iPad · 관제 그리드' },
         ],
       },
       {
@@ -145,8 +144,8 @@ export default {
         title: 'Mac에서는 넓은 작업 공간으로.',
         text: ['Mac 앱은 호스트별 세션 목록과 대화·터미널·변경 보기를 한 창에 둡니다. 승인 요청은 대화 위에 바로 뜨고, 오른쪽에는 호스트 상태와 한도가 함께 보입니다. 에이전트가 도는 Mac에서는 메뉴 막대의 작은 도우미가 그 Mac을 호스트로 유지합니다.'],
         shots: [
-          { key: 'mac-workspace', alt: 'Mac 워크스페이스. 왼쪽에 Mac mini·MacBook Pro·Mac Studio별 세션 목록, 가운데에 Kumquat 세션의 대화와 git push 승인 요청, 아래에 터미널, 오른쪽에 호스트 정보와 한도가 있습니다.', cap: 'Mac · 워크스페이스' },
-          { key: 'mac-menubar', alt: 'Mac 메뉴 막대의 Foreman 메뉴. 이 Mac이 호스트로 동작 중이며, 당신 차례인 세션 두 개와 실행 중인 세션 세 개가 보입니다.', cap: '호스트 Mac · 메뉴 막대' },
+          { key: 'mac-workspace', alt: 'Mac 워크스페이스. 왼쪽 사이드바에 호스트별 세션 목록, 가운데에 세션 대화와 승인 요청, 아래 서랍에 터미널, 오른쪽에 호스트 정보가 있습니다.', cap: 'Mac · 워크스페이스' },
+          { key: 'mac-menubar', alt: 'Mac 메뉴 막대의 Foreman Host 메뉴. 이 Mac이 호스트로 동작 중이며, 당신 차례인 세션 두 개와 실행 중인 세션 세 개가 보입니다.', cap: '호스트 Mac · 메뉴 막대' },
           { key: 'mac-capture', alt: 'Foreman Mac 앱의 실제 화면.', cap: 'Mac · 실제 앱 화면' },
         ],
       },
@@ -174,9 +173,9 @@ export default {
           ['호스트', 'macOS · Windows. Mac mini나 늘 켜 두는 Windows PC가 잘 맞습니다.'],
         ],
         shots: [
-          { key: 'android-home', alt: 'Android 앱의 현황 화면. 당신 차례·실행 중·완료 수와 세션 목록이 Material 3 스타일로 보입니다.', cap: 'Android · 현황' },
-          { key: 'android-shade', alt: 'Android 알림 창. Foreman 알림에서 에이전트의 승인 요청을 바로 허용하거나 거부할 수 있습니다.', cap: 'Android · 알림에서 승인' },
-          { key: 'windows-main', alt: 'Windows 앱의 메인 창. 왼쪽 세션 목록과 오른쪽 세션 내용이 Fluent 스타일로 보입니다.', cap: 'Windows · 메인 창' },
+          { key: 'android-home', alt: 'Android 앱의 현황 화면. 당신 차례·실행 중·오늘 완료 수와 세션 목록, 아래쪽 네 개의 탭.', cap: 'Android · 현황' },
+          { key: 'android-shade', alt: 'Android 알림 창. Foreman의 DynoCam 질문 알림과 NudgeMate 승인 필요 알림이 보입니다.', cap: 'Android · 알림' },
+          { key: 'windows-main', alt: 'Windows 앱의 현황 화면. 왼쪽 메뉴와 호스트 목록, 가운데 당신 차례 세 개와 실행 중 세션 네 개.', cap: 'Windows · 현황' },
         ],
       },
       {

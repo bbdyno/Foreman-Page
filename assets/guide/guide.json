@@ -142,5 +142,68 @@
     "source": "docs/screens/Mac-MenuBar-light.png",
     "light": "assets/guide/mac-menubar-light.webp",
     "dark": "assets/guide/mac-menubar-dark.webp"
+  },
+  "android-home": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1805,
+    "source": "docs/screens/android-home-light.png",
+    "light": "assets/guide/android-home-light.webp",
+    "dark": "assets/guide/android-home-dark.webp"
+  },
+  "android-inbox": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1805,
+    "source": "docs/screens/android-inbox-light.png",
+    "light": "assets/guide/android-inbox-light.webp",
+    "dark": "assets/guide/android-inbox-dark.webp"
+  },
+  "android-pairing": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1805,
+    "source": "docs/screens/android-pairing-light.png",
+    "light": "assets/guide/android-pairing-light.webp",
+    "dark": "assets/guide/android-pairing-dark.webp"
+  },
+  "android-notifications": {
+    "kind": "phone",
+    "w": 804,
+    "h": 872,
+    "source": "docs/screens/android-notifications-light.png",
+    "light": "assets/guide/android-notifications-light.webp",
+    "dark": "assets/guide/android-notifications-dark.webp"
+  },
+  "windows-home": {
+    "kind": "desktop",
+    "w": 1800,
+    "h": 1125,
+    "source": "docs/screens/windows-home-light.png",
+    "light": "assets/guide/windows-home-light.webp",
+    "dark": "assets/guide/windows-home-dark.webp"
+  },
+  "windows-inbox": {
+    "kind": "desktop",
+    "w": 1800,
+    "h": 1125,
+    "source": "docs/screens/windows-inbox-light.png",
+    "light": "assets/guide/windows-inbox-light.webp",
+    "dark": "assets/guide/windows-inbox-dark.webp"
+  },
+  "iphone-briefing": {
+    "kind": "phone",
+    "w": 804,
+    "h": 1748,
+    "source": "docs/screens/iPhone-Briefing-light.png",
+    "light": "assets/guide/iphone-briefing-light.webp"
+  },
+  "mac-cloud": {
+    "kind": "panel",
+    "w": 640,
+    "h": 473,
+    "source": "docs/screens/host-cloud-window.png",
+    "dark": "assets/guide/mac-cloud-dark.webp",
+    "light": "assets/guide/mac-cloud-dark.webp"
   }
 }
