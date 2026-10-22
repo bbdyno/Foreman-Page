@@ -14,8 +14,8 @@ export default {
     nav: { home: '소개', features: '기능', pricing: '요금제', support: '지원', privacy: '개인정보 처리방침', terms: '이용약관' },
     otherLang: 'English',
     status: '출시 준비 중',
-    footLine: '내 Mac에서 도는 코딩 에이전트를 iPhone·iPad·Mac·Apple Watch에서 관리하는 앱. 우리 서버 없이 동작합니다.',
-    legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud, Face ID는 Apple Inc.의 상표입니다. Claude는 Anthropic, Codex는 OpenAI, Gemini는 Google의 상표입니다. Foreman은 이 회사들과 제휴하지 않은 독립 앱입니다.',
+    footLine: '내 컴퓨터에서 도는 코딩 에이전트를 iPhone·iPad·Mac·Apple Watch·Android·Windows에서 관리하는 앱. 우리 서버 없이 동작합니다.',
+    legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud, Face ID, App Store는 Apple Inc.의 상표입니다. Android, Google Play는 Google LLC의, Windows, Microsoft Store는 Microsoft Corporation의 상표입니다. Claude는 Anthropic, Codex는 OpenAI, Gemini는 Google의 상표입니다. Foreman은 이 회사들과 제휴하지 않은 독립 앱입니다.',
     toc: '목차',
     ogAlt: 'Foreman 로고와 문구: 내 Mac의 코딩 에이전트를 어디서든 관리합니다.',
     yes: '포함',
@@ -23,12 +23,20 @@ export default {
   },
 
   home: {
-    metaTitle: 'Foreman — 내 Mac의 코딩 에이전트를 어디서든',
-    metaDescription: 'Claude Code, Codex, Gemini CLI 세션을 iPhone·iPad·Mac·Apple Watch에서 이어 보고, 답하고, 승인합니다. Remote Control을 켤 필요도, 우리 서버도 없습니다.',
-    devices: 'iPhone · iPad · Mac · Apple Watch',
-    title: '내 Mac의 코딩 에이전트를 어디서든 관리합니다.',
-    lede: '세션마다 Remote Control을 켤 필요가 없습니다. Mac에서 평소처럼 Claude Code, Codex, Gemini CLI를 실행하면 Foreman이 세션을 맡고, iPhone·iPad·Mac·Apple Watch에서 이어 보고, 답하고, 승인할 수 있습니다.',
-    launch: '아직 출시 전입니다. iPhone·iPad·Mac·Apple Watch용 첫 버전을 만들고 있고, Android와 Windows는 v1.1에서 지원합니다. App Store에 올라가면 이 페이지에 링크를 걸겠습니다.',
+    metaTitle: 'Foreman — 내 컴퓨터의 코딩 에이전트를 어디서든',
+    metaDescription: 'Claude Code, Codex, Gemini CLI 세션을 iPhone·iPad·Mac·Apple Watch·Android·Windows에서 이어 보고, 답하고, 승인합니다. Remote Control을 켤 필요도, 우리 서버도 없습니다.',
+    devices: 'iPhone · iPad · Mac · Apple Watch · Android · Windows',
+    title: '내 컴퓨터의 코딩 에이전트를 어디서든 관리합니다.',
+    lede: '세션마다 Remote Control을 켤 필요가 없습니다. Mac이나 Windows PC에서 평소처럼 Claude Code, Codex, Gemini CLI를 실행하면 Foreman이 세션을 맡고, iPhone·iPad·Mac·Apple Watch·Android·Windows에서 이어 보고, 답하고, 승인할 수 있습니다.',
+    launch: '아직 출시 전입니다. 첫 버전부터 모든 기기용 앱을 함께 내고, 에이전트를 돌리는 컴퓨터(호스트)로는 Mac과 Windows PC를 지원합니다.',
+    storesTitle: '출시하면 여기서 내려받습니다',
+    stores: [
+      ['app-store-logo', 'App Store', 'iPhone · iPad · Apple Watch'],
+      ['google-play-logo', 'Google Play', 'Android'],
+      ['windows-logo', 'Microsoft Store', 'Windows 앱 · Windows 호스트'],
+      ['apple-logo', 'Mac 직접 다운로드', 'Mac 앱 · Mac 호스트'],
+    ],
+    storeState: '출시 준비 중',
     jumpFeatures: '무엇을 하는지 보기',
     jumpZero: '서버 없이 동작하는 방식',
     turnBadge: '당신 차례',
@@ -133,6 +141,7 @@ export default {
         shots: [
           { key: 'mac-workspace', alt: 'Mac 워크스페이스. 왼쪽에 Mac mini·MacBook Pro·Mac Studio별 세션 목록, 가운데에 Kumquat 세션의 대화와 git push 승인 요청, 아래에 터미널, 오른쪽에 호스트 정보와 한도가 있습니다.', cap: 'Mac · 워크스페이스' },
           { key: 'mac-menubar', alt: 'Mac 메뉴 막대의 Foreman 메뉴. 이 Mac이 호스트로 동작 중이며, 당신 차례인 세션 두 개와 실행 중인 세션 세 개가 보입니다.', cap: '호스트 Mac · 메뉴 막대' },
+          { key: 'mac-capture', alt: 'Foreman Mac 앱의 실제 화면.', cap: 'Mac · 실제 앱 화면' },
         ],
       },
       {
@@ -149,16 +158,16 @@ export default {
       },
       {
         key: 'platforms', label: '지원 기기',
-        title: '첫 버전은 Apple 기기부터.',
-        text: ['에이전트가 도는 컴퓨터(호스트)는 macOS입니다. 관리하는 쪽은 아래 순서로 지원합니다.'],
+        title: '첫 버전부터 모든 기기에서.',
+        text: ['에이전트가 도는 컴퓨터(호스트)와 관리하는 기기 모두 첫 출시에 함께 지원합니다. 앱은 각 플랫폼의 디자인 문법을 따릅니다.'],
         rows: [
-          ['v1', 'iPhone · iPad · Mac · Apple Watch'],
-          ['v1.1', 'Android · Windows'],
-          ['호스트', 'macOS. Mac mini처럼 늘 켜 두는 Mac이 잘 맞습니다.'],
+          ['앱', 'iPhone · iPad · Mac · Apple Watch · Android · Windows'],
+          ['호스트', 'macOS · Windows. Mac mini나 늘 켜 두는 Windows PC가 잘 맞습니다.'],
         ],
         shots: [
-          { key: 'android-home', alt: 'Android 앱의 현황 화면. 당신 차례·실행 중·완료 수와 세션 목록이 Material 3 스타일로 보입니다.', cap: 'Android · v1.1에서 지원' },
-          { key: 'windows-main', alt: 'Windows 앱의 메인 창. 왼쪽 세션 목록과 오른쪽 세션 내용이 Fluent 스타일로 보입니다.', cap: 'Windows · v1.1에서 지원' },
+          { key: 'android-home', alt: 'Android 앱의 현황 화면. 당신 차례·실행 중·완료 수와 세션 목록이 Material 3 스타일로 보입니다.', cap: 'Android · 현황' },
+          { key: 'android-shade', alt: 'Android 알림 창. Foreman 알림에서 에이전트의 승인 요청을 바로 허용하거나 거부할 수 있습니다.', cap: 'Android · 알림에서 승인' },
+          { key: 'windows-main', alt: 'Windows 앱의 메인 창. 왼쪽 세션 목록과 오른쪽 세션 내용이 Fluent 스타일로 보입니다.', cap: 'Windows · 메인 창' },
         ],
       },
       {
@@ -180,9 +189,9 @@ export default {
     metaDescription: 'Foreman의 Free, Pro, Team 요금제와 기능 비교. 출시 예정 가격입니다.',
     kicker: '출시 예정 가격',
     title: '요금제',
-    lede: '아래는 출시 예정 가격이며 출시 때 바뀔 수 있습니다. 결제는 App Store에서 하고, 나라별 가격은 App Store가 정합니다.',
+    lede: '아래는 출시 예정 가격이며 출시 때 바뀔 수 있습니다. 결제는 App Store, Google Play, Microsoft Store에서 하고, 나라별 가격은 각 스토어가 정합니다.',
     tiers: [
-      { id: 'free', name: 'Free', price: '무료', unit: '', alt: '&nbsp;', for: 'Mac 한 대로 시작하는 개인', items: ['에이전트 2종까지 한 화면에서', '호스트 1대 · 동시 세션 3개', '대화 뷰와 터미널 뷰', '승인·질문 알림', 'P2P 직결 · iCloud 경유 · LAN', '세션 기록 7일'] },
+      { id: 'free', name: 'Free', price: '무료', unit: '', alt: '&nbsp;', for: '컴퓨터 한 대로 시작하는 개인', items: ['에이전트 2종까지 한 화면에서', '호스트 1대 · 동시 세션 3개', '대화 뷰와 터미널 뷰', '승인·질문 알림', 'P2P 직결 · iCloud 경유 · LAN', '세션 기록 7일'] },
       { id: 'pro', name: 'Pro', pro: false, price: '$7.99', unit: '/월', alt: '연간 $69', for: '여러 에이전트를 엮어 쓰는 개인', items: ['한도 페일오버 · 에이전트 간 인계', '파이프라인 · 레이스', '에이전트 · 계정 무제한', '호스트 · 세션 무제한', 'Autopilot 승인 규칙 · 리셋 자동 재개', 'Live Activity · Apple Watch · 위젯', '아침 브리핑 · 기록 무제한 검색'] },
       { id: 'team', name: 'Team', price: '$14', unit: '/인·월', alt: '&nbsp;', for: '빌드 머신을 같이 쓰는 팀', items: ['Pro의 모든 기능', '공유 호스트 · 세션 넘겨받기', '승인 위임 · 2인 승인', '감사 로그 내보내기', 'iCloud 공유로 팀원 초대'] },
     ],
@@ -219,7 +228,7 @@ export default {
     faqTitle: '결제에 대해',
     faq: [
       ['Mac 앱도 따로 구독해야 하나요?', ['아니요. iPhone이나 iPad에서 구독하면 같은 Apple 계정으로 로그인한 Mac 앱에서도 Pro를 씁니다. Mac 앱은 App Store가 서명한 구독 내역을 내 iCloud에서 읽어 확인합니다.']],
-      ['구독은 어떻게 해지하나요?', ['iPhone 설정 앱에서 내 이름을 누르고 [구독]으로 들어가 Foreman을 골라 해지합니다. 해지해도 이미 결제한 기간이 끝날 때까지 Pro를 쓸 수 있고, 그 뒤에는 Free로 바뀝니다. 세션 기록은 Free 범위(7일)만 남습니다.']],
+      ['구독은 어떻게 해지하나요?', ['구독한 스토어에서 해지합니다. iPhone·iPad는 설정 앱에서 내 이름을 누르고 [구독]으로, Android는 Google Play 앱의 [결제 및 정기 결제]로, Windows는 Microsoft 계정의 [서비스 및 구독]으로 들어가 Foreman을 고릅니다. 해지해도 이미 결제한 기간이 끝날 때까지 Pro를 쓸 수 있고, 그 뒤에는 Free로 바뀝니다. 세션 기록은 Free 범위(7일)만 남습니다.']],
       ['Team은 어떻게 결제하나요?', ['Team의 결제와 초대 방식은 출시 때 이 페이지에 안내합니다. 팀원 초대는 iCloud 공유를 씁니다.']],
       ['무료 체험이 있나요?', ['Free 요금제는 기간 제한 없이 씁니다. Pro 체험 기간은 출시 때 정합니다.']],
     ],
@@ -248,7 +257,7 @@ export default {
         <li><strong>공개 STUN 서버</strong>(stun.cloudflare.com, stun.l.google.com): 기기 사이 직접 연결 경로를 찾을 때 이용자의 공인 IP 주소를 확인하는 데만 씁니다. 세션 내용은 보내지 않습니다. 각 서버 운영자의 정책이 적용됩니다.</li>
         <li><strong>에이전트 제공자</strong>: Claude Code, Codex, Gemini CLI 같은 에이전트는 이용자의 Mac에서 이용자가 직접 실행하며, 각 제공자의 약관과 개인정보 처리방침에 따라 해당 서비스와 통신합니다. Foreman은 에이전트의 통신에 끼어들거나 대신 데이터를 보내지 않습니다.</li>
       </ul>` },
-      { id: 'crash', h: '크래시 리포트와 진단 정보', body: `<p>앱 안에 별도의 크래시 수집 도구를 넣지 않습니다. 개발자가 받는 크래시 정보는 App Store(Android 버전은 Google Play)가 기본으로 제공하는 범위에 한하며, 이용자가 기기 설정에서 개발자와 공유하기로 동의한 경우에만 Apple 또는 Google을 통해 전달됩니다. 이 정보에는 이용자를 식별하는 정보가 포함되지 않습니다.</p>` },
+      { id: 'crash', h: '크래시 리포트와 진단 정보', body: `<p>앱 안에 별도의 크래시 수집 도구를 넣지 않습니다. 개발자가 받는 크래시 정보는 각 스토어(App Store, Google Play, Microsoft Store)가 기본으로 제공하는 범위에 한하며, 이용자가 기기 설정에서 개발자와 공유하기로 동의한 경우에만 Apple, Google, Microsoft를 통해 전달됩니다. 이 정보에는 이용자를 식별하는 정보가 포함되지 않습니다.</p>` },
       { id: 'payment', h: '결제', body: `<p>구독 결제는 App Store가 처리합니다. 개발자는 결제 수단이나 청구 정보를 받지 않습니다. Mac 앱은 App Store가 서명한 구독 내역을 이용자 iCloud에서 읽어 구독 상태를 확인합니다.</p>` },
       { id: 'delete', h: '보관과 삭제', body: `<p>데이터는 이용자가 지울 때까지 이용자의 기기와 iCloud에 남습니다. Free 요금제의 세션 기록은 7일이 지나면 자동으로 지워집니다. 앱을 삭제하면 해당 기기의 데이터가 지워지고, iCloud에 남은 데이터는 iPhone 설정 앱에서 내 이름, [iCloud], [계정 저장 공간 관리] 순으로 들어가 Foreman을 골라 지울 수 있습니다. Mac의 세션 기록은 Mac 앱 설정에서 지웁니다.</p>` },
       { id: 'website', h: '이 웹사이트', body: `<p>이 웹사이트는 GitHub Pages에서 제공됩니다. 쿠키, 분석 도구, 외부 글꼴 서버를 쓰지 않습니다. GitHub는 서비스 운영을 위해 접속 기록(IP 주소 등)을 처리할 수 있으며, 이는 <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보 처리방침</a>을 따릅니다.</p>` },
@@ -263,13 +272,13 @@ export default {
     metaDescription: 'Foreman 앱 이용약관.',
     kicker: `시행일 ${EFFECTIVE}`,
     title: '이용약관',
-    lede: 'Foreman 앱과 이 웹사이트를 이용할 때 적용되는 약관입니다. App Store에서 받은 앱에는 Apple의 표준 최종 사용자 사용권 계약(EULA)도 함께 적용됩니다.',
+    lede: 'Foreman 앱과 이 웹사이트를 이용할 때 적용되는 약관입니다. 스토어에서 받은 앱에는 그 스토어의 사용권 계약(App Store의 Apple 표준 EULA 등)도 함께 적용됩니다.',
     sections: [
-      { id: 'scope', h: '적용 범위', body: `<p>이 약관은 Foreman의 iPhone, iPad, Mac, Apple Watch 앱과 이후 출시되는 Android, Windows 앱, 그리고 이 웹사이트에 적용됩니다. 앱을 설치하거나 사용하면 이 약관에 동의한 것으로 봅니다. 이 약관과 Apple 표준 EULA가 충돌하면 해당 스토어에서 받은 앱에는 Apple 표준 EULA가 우선합니다.</p>` },
+      { id: 'scope', h: '적용 범위', body: `<p>이 약관은 Foreman의 iPhone, iPad, Mac, Apple Watch, Android, Windows 앱과 호스트 프로그램, 그리고 이 웹사이트에 적용됩니다. 앱을 설치하거나 사용하면 이 약관에 동의한 것으로 봅니다. 이 약관과 각 스토어의 사용권 계약(Apple 표준 EULA 등)이 충돌하면 그 스토어에서 받은 앱에는 스토어의 계약이 우선합니다.</p>` },
       { id: 'service', h: '앱이 하는 일', body: `<p>Foreman은 이용자의 Mac에서 실행되는 코딩 에이전트 세션을 이용자의 다른 기기에서 보고, 입력하고, 승인할 수 있게 하는 도구입니다. Foreman은 에이전트를 제공하지 않습니다. Claude Code, Codex, Gemini CLI 같은 에이전트의 이용에는 각 제공자의 약관이 적용되며, 이용자가 직접 계정과 이용 한도를 관리합니다.</p>` },
       { id: 'responsibility', h: '승인과 명령에 대한 책임', body: `<p>Foreman에서 허용하거나 Autopilot 규칙으로 자동 허용한 명령은 이용자의 Mac에서 이용자의 권한으로 실행됩니다. 앱이 보여 주는 위험도는 참고용 판단이며 정확성을 보장하지 않습니다. 명령 실행으로 생긴 결과(파일 변경·삭제, 배포, 데이터베이스 변경, 비용 발생 등)에 대한 책임은 이용자에게 있습니다. 중요한 작업은 승인 전에 내용을 확인하세요.</p>` },
       { id: 'subscription', h: '구독과 결제', body: `<ul>
-        <li>Pro와 Team은 자동 갱신 구독입니다. 결제와 갱신, 환불은 App Store(이후 Google Play) 정책을 따릅니다.</li>
+        <li>Pro와 Team은 자동 갱신 구독입니다. 결제와 갱신, 환불은 구독한 스토어(App Store, Google Play, Microsoft Store)의 정책을 따릅니다.</li>
         <li>구독은 현재 기간이 끝나기 최소 24시간 전에 해지하지 않으면 자동으로 갱신됩니다. 해지는 기기 설정의 구독 관리에서 합니다.</li>
         <li>이 웹사이트에 적힌 가격은 출시 예정 가격이며, 실제 가격은 스토어에 표시된 가격을 따릅니다.</li>
       </ul>` },
@@ -298,9 +307,9 @@ export default {
     ],
     faqTitle: '자주 묻는 질문',
     faq: [
-      ['Foreman은 무엇인가요?', ['Mac에서 도는 코딩 에이전트(Claude Code, Codex, Gemini CLI 등)의 세션을 iPhone, iPad, Mac, Apple Watch에서 보고 입력하고 승인하는 앱입니다. 세션마다 원격 기능을 따로 켤 필요 없이, Mac에서 평소처럼 실행한 세션을 가져옵니다.']],
-      ['언제 출시되나요?', ['지금은 개발 중이고 출시일은 정하지 않았습니다. iPhone·iPad·Mac·Apple Watch용 첫 버전을 먼저 내고, Android와 Windows는 v1.1에서 지원합니다. 출시하면 이 사이트에 App Store 링크를 올립니다.']],
-      ['어떤 컴퓨터를 호스트로 쓸 수 있나요?', ['에이전트가 도는 호스트는 macOS만 지원합니다. 늘 켜 두는 Mac mini가 잘 맞고, MacBook도 됩니다. 밖에서 쓰려면 호스트 Mac이 잠자기에 들지 않도록 설정해 두세요.']],
+      ['Foreman은 무엇인가요?', ['Mac이나 Windows PC에서 도는 코딩 에이전트(Claude Code, Codex, Gemini CLI 등)의 세션을 iPhone, iPad, Mac, Apple Watch, Android, Windows에서 보고 입력하고 승인하는 앱입니다. 세션마다 원격 기능을 따로 켤 필요 없이, 평소처럼 실행한 세션을 가져옵니다.']],
+      ['언제 출시되나요?', ['지금은 개발 중이고 출시일은 정하지 않았습니다. 첫 버전부터 iPhone·iPad·Mac·Apple Watch·Android·Windows 앱과 Mac·Windows 호스트를 함께 냅니다. 출시하면 이 사이트에 App Store, Google Play, Microsoft Store, Mac 직접 다운로드 링크를 올립니다.']],
+      ['어떤 컴퓨터를 호스트로 쓸 수 있나요?', ['Mac과 Windows PC입니다. 늘 켜 두는 Mac mini나 데스크톱 PC가 잘 맞고, 노트북도 됩니다. 밖에서 쓰려면 호스트가 잠자기에 들지 않도록 설정해 두세요.']],
       ['정말 서버를 거치지 않나요?', ['개발자가 운영하는 서버는 없습니다. 같은 네트워크에서는 직접, 밖에서는 WebRTC로 직접 연결하고, 그것도 안 될 때만 이용자의 iCloud를 거칩니다. 직접 연결 경로를 찾을 때 공개 STUN 서버에 공인 IP 주소를 확인하는 것이 유일한 외부 통신입니다.']],
       ['밖에서 연결이 안 돼요.', ['호스트 Mac이 켜져 있고 잠자기 상태가 아닌지, 두 기기가 같은 Apple 계정으로 iCloud에 로그인되어 있는지 확인해 주세요. 회사망처럼 직접 연결을 막는 네트워크에서는 자동으로 iCloud 경유로 바뀌며, 이때 터미널 출력은 1~2초씩 늦게 보일 수 있습니다.']],
       ['Free에서 연결할 수 있는 에이전트는 몇 개인가요?', ['두 종류까지입니다. 예를 들어 Claude Code와 Codex를 함께 쓸 수 있습니다. 호스트는 1대, 동시 세션은 3개까지이며, 에이전트 사이 인계와 페일오버 같은 연계 기능은 Pro에 있습니다.']],

@@ -3,6 +3,7 @@
   .venv/bin/python screens.py [path/to/mockups]
 
 Each mockup <Platform>-<Screen>-<light|dark>.png becomes assets/screens/<key>-<mode>.webp,
+A file with the same name in tools/captures/ (a real app capture) takes the mockup's place.
 scaled to 2x of its point size, and assets/screens/screens.json lists what exists. The brand
 repository is only read. Screens that are not in the mockups yet are simply left out of the site.
 """
@@ -14,8 +15,9 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / 'Foreman/docs/design/mockups'
+SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / 'Foreman/docs/design/mockups/2x'   # @2x, no device frame, square corners
 OUT = ROOT / 'assets/screens'
+CAPTURES = Path(__file__).resolve().parent / 'captures'
 
 # mockup name (without mode) -> (site key, kind)
 KEYS = {
@@ -26,16 +28,19 @@ KEYS = {
     'iPad-Grid': ('ipad-grid', 'ipad'),
     'Mac-Workspace': ('mac-workspace', 'mac'), 'Mac-MenuBar': ('mac-menubar', 'menu'),
     'Mac-Orchestrate': ('mac-orchestrate', 'mac'), 'Mac-Pipeline': ('mac-orchestrate', 'mac'),
-    'Android-Home': ('android-home', 'phone'), 'Windows-Main': ('windows-main', 'mac'),
+    'Mac-Capture': ('mac-capture', 'mac'),
+    'Android-Home': ('android-home', 'phone'), 'Android-Shade': ('android-shade', 'phone'), 'Android-Inbox': ('android-inbox', 'phone'), 'Windows-Main': ('windows-main', 'mac'),
 }
-# device scale of the mockups, by kind (iPhone 17 Pro and Apple Watch are @3x, iPad and Mac @2x)
-SCALE = {'phone': 3, 'watch': 3, 'ipad': 2, 'mac': 2, 'menu': 2}
+# device scale of the source images, by kind (mockups/2x and real captures are @2x)
+SCALE = {'phone': 2, 'watch': 2, 'ipad': 2, 'mac': 2, 'menu': 2}
 
 OUT.mkdir(parents=True, exist_ok=True)
 for old in OUT.glob('*.webp'):
     old.unlink()
 manifest, unknown = {}, []
-for f in sorted(SRC.glob('*.png')):
+files = {f.name: f for f in SRC.glob('*.png')}
+files.update({f.name: f for f in CAPTURES.glob('*.png')} if CAPTURES.exists() else {})
+for f in sorted(files.values(), key=lambda p: p.name):
     m = re.match(r'(.+)-(light|dark|aod)$', f.stem)
     if m and m.group(2) == 'aod':
         continue
@@ -50,7 +55,7 @@ for f in sorted(SRC.glob('*.png')):
         im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
     dst = OUT / f'{key}-{mode}.webp'
     im.save(dst, 'WEBP', quality=90, method=6)
-    e = manifest.setdefault(key, {'kind': kind, 'w': im.width, 'h': im.height, 'source': name})
+    e = manifest.setdefault(key, {'kind': kind, 'w': im.width, 'h': im.height, 'source': name, 'capture': f.parent == CAPTURES})
     e[mode] = f'assets/screens/{dst.name}'
 for e in manifest.values():
     e.setdefault('light', e.get('dark'))

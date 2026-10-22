@@ -53,6 +53,36 @@ sh video/build.sh                        # music, render (ko, en), mix, finish, 
 
 `build.sh` writes `assets/video/foreman-<lang>-1080p.mp4` (download, with music), `foreman-loop-<lang>.{webm,mp4}` (720p, muted, for the landing page) and `foreman-poster-<lang>.jpg`. The landing page shows the film only when these files exist.
 
+## Real captures (replacing mockups later)
+
+Until the apps adopt the v2 theme, every product image is a design mockup. Real captures replace them without touching the pages or the film code: put a PNG with the **same file name as the mockup** into `tools/captures/` (2x, no device frame), then rebuild (`.venv/bin/python screens.py && node site/build.mjs`, and for the film `sh video/prepare.sh && sh video/build.sh`).
+
+Site (`tools/screens.py` → `assets/screens/<key>-<light|dark>.webp`):
+
+| Mockup file name | Site key | Shown in |
+| --- | --- | --- |
+| `iOS-Lock-{light,dark}` | `ios-lock` | Hero; Approvals |
+| `iOS-Inbox-*`, `watchOS-Approve-dark` | `ios-inbox`, `watch-approve` | Approvals |
+| `iOS-Home-*`, `iOS-Session-*`, `iOS-Terminal-*` | `ios-home`, `ios-session`, `ios-terminal` | Sessions |
+| `iOS-Agents-*`, `iOS-NewSession-*` | `ios-agents`, `ios-new-session` | Agents |
+| `Mac-Orchestrate-*` | `mac-orchestrate` | Agent handoff (Pro) |
+| `iOS-Autopilot-*` | `ios-autopilot` | Autopilot (Pro) |
+| `iPad-Grid-*` | `ipad-grid` | iPad |
+| `Mac-Workspace-*`, `Mac-MenuBar-*` | `mac-workspace`, `mac-menubar` | Mac |
+| `Mac-Capture-*` | `mac-capture` | Mac. An extra slot for the real Mac app; it appears only once this file exists |
+| `Android-Home-*`, `Android-Shade-*`, `Windows-Main-*` | `android-home`, `android-shade`, `windows-main` | Platforms |
+
+Film (`tools/video/reel/scenes.js`; the film uses the @3x mockups from `docs/design/mockups/`, copied by `prepare.sh`):
+
+| Time | Image | Coordinates the scene depends on |
+| --- | --- | --- |
+| 0:05–0:14 | `iOS-Lock-dark.png` (1206×2622) | Live Activity "your turn" tile at x 84, y 1498 (`TILE1`); notification crop y 1622–1900, menu crop y 1912–2336, Allow row centre (760, 1988) |
+| 0:11–0:14 | `watchOS-Approve-dark.png` (624×744) | none |
+| 0:14–0:18 | `iPad-Grid-light.png` (2752×2064) | zoom point (985, 300) on the waiting Kumquat tile |
+| 0:18–0:22 | `Mac-Workspace-light.png` (2880×1800) | zoom point (1430, 430) on the approval bar |
+
+A capture with a different pixel size or layout needs those numbers re-measured in `scenes.js`.
+
 ## Mac app updates (Sparkle), reserved
 
 The Mac app is distributed with Developer ID and will update through Sparkle, served from this Pages site without any server of ours:

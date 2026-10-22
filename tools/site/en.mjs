@@ -14,8 +14,8 @@ export default {
     nav: { home: 'Overview', features: 'Features', pricing: 'Pricing', support: 'Support', privacy: 'Privacy Policy', terms: 'Terms of Use' },
     otherLang: '한국어',
     status: 'In development',
-    footLine: 'An app for managing the coding agents that run on your Mac from iPhone, iPad, Mac and Apple Watch. It works without any servers of ours.',
-    legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud and Face ID are trademarks of Apple Inc. Claude is a trademark of Anthropic, Codex of OpenAI and Gemini of Google. Foreman is an independent app and is not affiliated with these companies.',
+    footLine: 'An app for managing the coding agents that run on your computer from iPhone, iPad, Mac, Apple Watch, Android and Windows. It works without any servers of ours.',
+    legal: '© 2026 Foreman. Apple, iPhone, iPad, Mac, Apple Watch, iCloud, Face ID and App Store are trademarks of Apple Inc. Android and Google Play are trademarks of Google LLC; Windows and Microsoft Store of Microsoft Corporation. Claude is a trademark of Anthropic, Codex of OpenAI and Gemini of Google. Foreman is an independent app and is not affiliated with these companies.',
     toc: 'Contents',
     ogAlt: 'Foreman logo and the line: Manage the coding agents on your Mac from anywhere.',
     yes: 'Included',
@@ -23,12 +23,20 @@ export default {
   },
 
   home: {
-    metaTitle: 'Foreman — your Mac’s coding agents, from anywhere',
-    metaDescription: 'Follow, answer and approve Claude Code, Codex and Gemini CLI sessions from iPhone, iPad, Mac and Apple Watch. No Remote Control per session, and no servers of ours.',
-    devices: 'iPhone · iPad · Mac · Apple Watch',
-    title: 'Manage the coding agents on your Mac from anywhere.',
-    lede: 'No need to turn on Remote Control for every session. Start Claude Code, Codex or Gemini CLI on your Mac the way you always do. Foreman picks the session up, and you can follow it, answer it and approve it from iPhone, iPad, Mac and Apple Watch.',
-    launch: 'Foreman isn’t out yet. The first version is for iPhone, iPad, Mac and Apple Watch; Android and Windows follow in v1.1. When it reaches the App Store, the link will be on this page.',
+    metaTitle: 'Foreman — your computer’s coding agents, from anywhere',
+    metaDescription: 'Follow, answer and approve Claude Code, Codex and Gemini CLI sessions from iPhone, iPad, Mac, Apple Watch, Android and Windows. No Remote Control per session, and no servers of ours.',
+    devices: 'iPhone · iPad · Mac · Apple Watch · Android · Windows',
+    title: 'Manage the coding agents on your computer from anywhere.',
+    lede: 'No need to turn on Remote Control for every session. Start Claude Code, Codex or Gemini CLI on your Mac or Windows PC the way you always do. Foreman picks the session up, and you can follow it, answer it and approve it from iPhone, iPad, Mac, Apple Watch, Android and Windows.',
+    launch: 'Foreman isn’t out yet. The apps for every device ship together in the first version, and the computer that runs your agents (the host) can be a Mac or a Windows PC.',
+    storesTitle: 'Where to get it at launch',
+    stores: [
+      ['app-store-logo', 'App Store', 'iPhone · iPad · Apple Watch'],
+      ['google-play-logo', 'Google Play', 'Android'],
+      ['windows-logo', 'Microsoft Store', 'Windows app · Windows host'],
+      ['apple-logo', 'Direct download for Mac', 'Mac app · Mac host'],
+    ],
+    storeState: 'Coming at launch',
     jumpFeatures: 'See what it does',
     jumpZero: 'How it works without servers',
     turnBadge: 'Your turn',
@@ -133,6 +141,7 @@ export default {
         shots: [
           { key: 'mac-workspace', alt: 'Mac workspace. Sessions grouped by Mac mini, MacBook Pro and Mac Studio on the left; the Kumquat conversation with a git push approval request in the middle; a terminal below; host details and limits on the right.', cap: 'Mac · Workspace' },
           { key: 'mac-menubar', alt: 'The Foreman menu in the Mac menu bar. This Mac is running as a host, with two sessions waiting for you and three running.', cap: 'Host Mac · Menu bar' },
+          { key: 'mac-capture', alt: 'The Foreman Mac app, as it runs.', cap: 'Mac · The app as it runs' },
         ],
       },
       {
@@ -149,16 +158,16 @@ export default {
       },
       {
         key: 'platforms', label: 'Platforms',
-        title: 'Apple devices first.',
-        text: ['The computer your agents run on (the host) is a Mac. The devices you manage them from arrive in this order.'],
+        title: 'Every device, from the first version.',
+        text: ['The computers that run your agents (hosts) and the devices you manage them from are all supported at launch. Each app follows its own platform’s design conventions.'],
         rows: [
-          ['v1', 'iPhone · iPad · Mac · Apple Watch'],
-          ['v1.1', 'Android · Windows'],
-          ['Host', 'macOS. A Mac that stays on, like a Mac mini, works best.'],
+          ['Apps', 'iPhone · iPad · Mac · Apple Watch · Android · Windows'],
+          ['Hosts', 'macOS · Windows. A Mac mini or a Windows PC that stays on works best.'],
         ],
         shots: [
-          { key: 'android-home', alt: 'Status screen of the Android app: counts of waiting, running and finished sessions and the session list, in Material 3 style.', cap: 'Android · coming in v1.1' },
-          { key: 'windows-main', alt: 'Main window of the Windows app: session list on the left and the session on the right, in Fluent style.', cap: 'Windows · coming in v1.1' },
+          { key: 'android-home', alt: 'Status screen of the Android app: counts of waiting, running and finished sessions and the session list, in Material 3 style.', cap: 'Android · Status' },
+          { key: 'android-shade', alt: 'Android notification shade. From the Foreman notification you can allow or deny an agent’s request right away.', cap: 'Android · Approve from notifications' },
+          { key: 'windows-main', alt: 'Main window of the Windows app: session list on the left and the session on the right, in Fluent style.', cap: 'Windows · Main window' },
         ],
       },
       {
@@ -180,9 +189,9 @@ export default {
     metaDescription: 'Foreman Free, Pro and Team plans and how they compare. Planned launch prices.',
     kicker: 'Planned launch prices',
     title: 'Pricing',
-    lede: 'These are planned launch prices and may change at release. You pay through the App Store, and the App Store sets the price in each country.',
+    lede: 'These are planned launch prices and may change at release. You pay through the App Store, Google Play or Microsoft Store, and each store sets the price in each country.',
     tiers: [
-      { id: 'free', name: 'Free', price: '$0', unit: '', alt: '&nbsp;', for: 'For one person and one Mac', items: ['Up to 2 kinds of agent in one place', '1 host · 3 sessions at a time', 'Conversation and terminal views', 'Approval and question notifications', 'LAN direct · peer to peer · through iCloud', '7 days of session history'] },
+      { id: 'free', name: 'Free', price: '$0', unit: '', alt: '&nbsp;', for: 'For one person and one computer', items: ['Up to 2 kinds of agent in one place', '1 host · 3 sessions at a time', 'Conversation and terminal views', 'Approval and question notifications', 'LAN direct · peer to peer · through iCloud', '7 days of session history'] },
       { id: 'pro', name: 'Pro', price: '$7.99', unit: '/month', alt: '$69 a year', for: 'For people who combine several agents', items: ['Limit failover · handoff between agents', 'Pipelines · races', 'Unlimited agents and accounts', 'Unlimited hosts and sessions', 'Autopilot rules · resume after reset', 'Live Activity · Apple Watch · widgets', 'Morning briefing · unlimited searchable history'] },
       { id: 'team', name: 'Team', price: '$14', unit: '/user/month', alt: '&nbsp;', for: 'For teams sharing build machines', items: ['Everything in Pro', 'Shared hosts · take over sessions', 'Delegated approval · two-person approval', 'Audit log export', 'Invite teammates with iCloud sharing'] },
     ],
@@ -219,7 +228,7 @@ export default {
     faqTitle: 'About billing',
     faq: [
       ['Do I need a separate subscription for the Mac app?', ['No. Subscribe on iPhone or iPad and the Mac app signed in with the same Apple Account gets Pro too. The Mac app reads the App Store–signed subscription record from your iCloud.']],
-      ['How do I cancel?', ['On iPhone, open Settings, tap your name, then Subscriptions, choose Foreman and cancel. Pro stays on until the end of the period you paid for, then you’re on Free, which keeps 7 days of session history.']],
+      ['How do I cancel?', ['Cancel in the store you subscribed through: on iPhone or iPad, open Settings, tap your name, then Subscriptions; on Android, open Google Play and go to Payments & subscriptions; on Windows, go to Services & subscriptions in your Microsoft account. Pro stays on until the end of the period you paid for, then you’re on Free, which keeps 7 days of session history.']],
       ['How does Team billing work?', ['Team billing and invitations will be described on this page at launch. Teammates are invited through iCloud sharing.']],
       ['Is there a free trial?', ['The Free plan has no time limit. The length of a Pro trial will be set at launch.']],
     ],
@@ -248,7 +257,7 @@ export default {
         <li><strong>Public STUN servers</strong> (stun.cloudflare.com, stun.l.google.com): used only to learn your public IP address while finding a direct route between your devices. No session content is sent. Each operator’s own policy applies.</li>
         <li><strong>Agent providers</strong>: agents such as Claude Code, Codex and Gemini CLI run on your Mac because you start them, and they talk to their own services under their providers’ terms and privacy policies. Foreman does not intercept their traffic or send data on their behalf.</li>
       </ul>` },
-      { id: 'crash', h: 'Crash reports and diagnostics', body: `<p>The app contains no crash-reporting tool of its own. The only crash information the developer receives is what the App Store (and Google Play, for the Android version) provides by default, and only if you agreed in your device settings to share it with developers. It does not identify you.</p>` },
+      { id: 'crash', h: 'Crash reports and diagnostics', body: `<p>The app contains no crash-reporting tool of its own. The only crash information the developer receives is what each store (App Store, Google Play, Microsoft Store) provides by default, and only if you agreed in your device settings to share it with developers. It does not identify you.</p>` },
       { id: 'payment', h: 'Payments', body: `<p>Subscriptions are processed by the App Store. The developer receives no payment or billing details. The Mac app checks your subscription by reading the App Store–signed record from your iCloud.</p>` },
       { id: 'delete', h: 'Retention and deletion', body: `<p>Data stays on your devices and in your iCloud until you delete it. On the Free plan, session history older than 7 days is deleted automatically. Deleting the app removes its data from that device; data left in iCloud can be removed on iPhone: open Settings, tap your name, then iCloud and Manage Account Storage, and choose Foreman. Session history on your Mac is deleted from the Mac app’s settings.</p>` },
       { id: 'website', h: 'This website', body: `<p>This website is served by GitHub Pages. It uses no cookies, no analytics and no external font services. GitHub may process access logs (such as IP addresses) to operate its service, under the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>.</p>` },
@@ -263,13 +272,13 @@ export default {
     metaDescription: 'Terms of use for the Foreman apps.',
     kicker: `Effective ${EFFECTIVE}`,
     title: 'Terms of Use',
-    lede: 'These terms apply when you use the Foreman apps and this website. Apps downloaded from the App Store are also covered by Apple’s standard End User License Agreement (EULA).',
+    lede: 'These terms apply when you use the Foreman apps and this website. Apps downloaded from a store are also covered by that store’s license terms, such as Apple’s standard End User License Agreement (EULA) for the App Store.',
     sections: [
-      { id: 'scope', h: 'Scope', body: `<p>These terms cover the Foreman apps for iPhone, iPad, Mac and Apple Watch, the Android and Windows apps released later, and this website. By installing or using the apps you agree to these terms. Where these terms conflict with Apple’s standard EULA, the standard EULA prevails for apps obtained from the App Store.</p>` },
+      { id: 'scope', h: 'Scope', body: `<p>These terms cover the Foreman apps for iPhone, iPad, Mac, Apple Watch, Android and Windows, the host program, and this website. By installing or using the apps you agree to these terms. Where these terms conflict with a store’s license terms (such as Apple’s standard EULA), the store’s terms prevail for apps obtained from that store.</p>` },
       { id: 'service', h: 'What the app does', body: `<p>Foreman is a tool that lets you view, type into and approve the coding agent sessions running on your Mac from your other devices. Foreman does not provide the agents. Your use of agents such as Claude Code, Codex and Gemini CLI is governed by their providers’ terms, and you manage your own accounts and usage limits.</p>` },
       { id: 'responsibility', h: 'Responsibility for approvals and commands', body: `<p>Commands you allow in Foreman, or that Autopilot rules allow for you, run on your Mac with your permissions. The risk level the app shows is guidance and is not guaranteed to be accurate. You are responsible for the results of running commands, including changed or deleted files, deployments, database changes and costs. Check important actions before you approve them.</p>` },
       { id: 'subscription', h: 'Subscriptions and payment', body: `<ul>
-        <li>Pro and Team are auto-renewing subscriptions. Payment, renewal and refunds follow the App Store’s (and later Google Play’s) policies.</li>
+        <li>Pro and Team are auto-renewing subscriptions. Payment, renewal and refunds follow the policies of the store you subscribed through (App Store, Google Play, Microsoft Store).</li>
         <li>A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. Cancel in your device’s subscription settings.</li>
         <li>Prices on this website are planned launch prices; the price shown in the store applies.</li>
       </ul>` },
@@ -298,9 +307,9 @@ export default {
     ],
     faqTitle: 'Common questions',
     faq: [
-      ['What is Foreman?', ['An app for viewing, typing into and approving the sessions of coding agents (Claude Code, Codex, Gemini CLI and others) running on your Mac, from iPhone, iPad, Mac and Apple Watch. You don’t turn on a remote feature per session; sessions you start on your Mac as usual come along.']],
-      ['When will it be released?', ['It’s in development and there’s no release date yet. The first version is for iPhone, iPad, Mac and Apple Watch; Android and Windows follow in v1.1. When it’s out, the App Store link will be on this site.']],
-      ['Which computers can be a host?', ['Hosts, where the agents run, must be Macs. A Mac mini that stays on is a good fit, and a MacBook works too. To use Foreman away from home, set the host Mac so it doesn’t go to sleep.']],
+      ['What is Foreman?', ['An app for viewing, typing into and approving the sessions of coding agents (Claude Code, Codex, Gemini CLI and others) running on your Mac or Windows PC, from iPhone, iPad, Mac, Apple Watch, Android and Windows. You don’t turn on a remote feature per session; sessions you start as usual come along.']],
+      ['When will it be released?', ['It’s in development and there’s no release date yet. The first version ships the iPhone, iPad, Mac, Apple Watch, Android and Windows apps together with Mac and Windows hosts. When it’s out, links to the App Store, Google Play, Microsoft Store and the Mac download will be on this site.']],
+      ['Which computers can be a host?', ['A Mac or a Windows PC. A Mac mini or desktop PC that stays on is a good fit, and laptops work too. To use Foreman away from home, set the host so it doesn’t go to sleep.']],
       ['Does it really not go through a server?', ['There’s no server run by the developer. On the same network the app connects directly; away from home it connects directly over WebRTC; only when that fails does it go through your iCloud. Asking a public STUN server for your public IP address while finding a direct route is the only other outside traffic.']],
       ['It won’t connect when I’m away.', ['Check that the host Mac is on and not asleep, and that both devices are signed in to iCloud with the same Apple Account. On networks that block direct connections, such as some office networks, the app switches to iCloud automatically; terminal output may then arrive a second or two late.']],
       ['How many agents can I connect on Free?', ['Two kinds, for example Claude Code and Codex together. Free includes one host and three sessions at a time; handoff and failover between agents are in Pro.']],

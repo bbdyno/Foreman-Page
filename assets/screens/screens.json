@@ -4,14 +4,34 @@
     "w": 824,
     "h": 1830,
     "source": "Android-Home",
+    "capture": false,
     "dark": "assets/screens/android-home-dark.webp",
     "light": "assets/screens/android-home-light.webp"
+  },
+  "android-inbox": {
+    "kind": "phone",
+    "w": 824,
+    "h": 1830,
+    "source": "Android-Inbox",
+    "capture": false,
+    "dark": "assets/screens/android-inbox-dark.webp",
+    "light": "assets/screens/android-inbox-light.webp"
+  },
+  "android-shade": {
+    "kind": "phone",
+    "w": 824,
+    "h": 1830,
+    "source": "Android-Shade",
+    "capture": false,
+    "dark": "assets/screens/android-shade-dark.webp",
+    "light": "assets/screens/android-shade-light.webp"
   },
   "mac-menubar": {
     "kind": "menu",
     "w": 800,
     "h": 1080,
     "source": "Mac-MenuBar",
+    "capture": false,
     "dark": "assets/screens/mac-menubar-dark.webp",
     "light": "assets/screens/mac-menubar-light.webp"
   },
@@ -20,6 +40,7 @@
     "w": 2880,
     "h": 1800,
     "source": "Mac-Orchestrate",
+    "capture": false,
     "dark": "assets/screens/mac-orchestrate-dark.webp",
     "light": "assets/screens/mac-orchestrate-light.webp"
   },
@@ -28,6 +49,7 @@
     "w": 2880,
     "h": 1800,
     "source": "Mac-Workspace",
+    "capture": false,
     "dark": "assets/screens/mac-workspace-dark.webp",
     "light": "assets/screens/mac-workspace-light.webp"
   },
@@ -36,6 +58,7 @@
     "w": 2880,
     "h": 1800,
     "source": "Windows-Main",
+    "capture": false,
     "dark": "assets/screens/windows-main-dark.webp",
     "light": "assets/screens/windows-main-light.webp"
   },
@@ -44,6 +67,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Agents",
+    "capture": false,
     "dark": "assets/screens/ios-agents-dark.webp",
     "light": "assets/screens/ios-agents-light.webp"
   },
@@ -52,6 +76,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Autopilot",
+    "capture": false,
     "dark": "assets/screens/ios-autopilot-dark.webp",
     "light": "assets/screens/ios-autopilot-light.webp"
   },
@@ -60,6 +85,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Home",
+    "capture": false,
     "dark": "assets/screens/ios-home-dark.webp",
     "light": "assets/screens/ios-home-light.webp"
   },
@@ -68,6 +94,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Inbox",
+    "capture": false,
     "dark": "assets/screens/ios-inbox-dark.webp",
     "light": "assets/screens/ios-inbox-light.webp"
   },
@@ -76,6 +103,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Lock",
+    "capture": false,
     "dark": "assets/screens/ios-lock-dark.webp",
     "light": "assets/screens/ios-lock-light.webp"
   },
@@ -84,6 +112,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-NewSession",
+    "capture": false,
     "dark": "assets/screens/ios-new-session-dark.webp",
     "light": "assets/screens/ios-new-session-light.webp"
   },
@@ -92,6 +121,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Session",
+    "capture": false,
     "dark": "assets/screens/ios-session-dark.webp",
     "light": "assets/screens/ios-session-light.webp"
   },
@@ -100,6 +130,7 @@
     "w": 804,
     "h": 1748,
     "source": "iOS-Terminal",
+    "capture": false,
     "dark": "assets/screens/ios-terminal-dark.webp",
     "light": "assets/screens/ios-terminal-light.webp"
   },
@@ -108,6 +139,7 @@
     "w": 2752,
     "h": 2064,
     "source": "iPad-Grid",
+    "capture": false,
     "dark": "assets/screens/ipad-grid-dark.webp",
     "light": "assets/screens/ipad-grid-light.webp"
   },
@@ -116,6 +148,7 @@
     "w": 416,
     "h": 496,
     "source": "watchOS-Approve",
+    "capture": false,
     "dark": "assets/screens/watch-approve-dark.webp",
     "light": "assets/screens/watch-approve-dark.webp"
   }

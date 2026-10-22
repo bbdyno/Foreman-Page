@@ -43,8 +43,8 @@ await shoot(fit(svg('app-icon.svg')), 180, 180, 'apple-touch-icon.png');
 // OG images: brand background, lockup, one line of copy, the "your turn" badge as the one signal.
 const L = theme.light;
 const og = {
-  ko: { title: '내 Mac의 코딩 에이전트를<br>어디서든 관리합니다.', sub: 'iPhone · iPad · Mac · Apple Watch. 우리 서버 0대, 내 Mac과 내 iCloud만.', badge: '당신 차례' },
-  en: { title: 'Manage the coding agents<br>on your Mac from anywhere.', sub: 'iPhone · iPad · Mac · Apple Watch. Zero servers of ours: only your Mac and your iCloud.', badge: 'Your turn' },
+  ko: { title: '내 컴퓨터의 코딩 에이전트를<br>어디서든 관리합니다.', sub: 'iPhone · iPad · Mac · Apple Watch · Android · Windows. 우리 서버 0대.', badge: '당신 차례' },
+  en: { title: 'Manage the coding agents<br>on your computer from anywhere.', sub: 'iPhone · iPad · Mac · Apple Watch · Android · Windows. Zero servers of ours.', badge: 'Your turn' },
 };
 const hand = fs.readFileSync(path.join(ROOT, 'assets/icons/hand-tap.svg'), 'utf8').replace('<svg ', '<svg width="30" height="30" ');
 for (const [lang, t] of Object.entries(og)) {
