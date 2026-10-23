@@ -1,0 +1,1 @@
+Follow the sessions of the coding agents running on your computer, and answer their approval requests and questions. Risky requests are verified with Windows Hello.

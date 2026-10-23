@@ -1,0 +1,1 @@
+coding,agent,approve,terminal,remote,session,developer,cli,notification,worktree,ai

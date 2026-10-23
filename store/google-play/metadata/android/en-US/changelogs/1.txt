@@ -1,0 +1,1 @@
+First release: the approval inbox, allow, deny and reply from notifications, verification for risky requests, conversation, terminal and changes views of a session, and QR pairing.

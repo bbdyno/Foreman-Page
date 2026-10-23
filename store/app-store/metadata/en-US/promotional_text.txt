@@ -1,0 +1,1 @@
+When an agent waits for your approval while you are away, answer from the Lock Screen or Apple Watch. Irreversible actions are allowed only with Face ID.

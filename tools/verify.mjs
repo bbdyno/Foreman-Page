@@ -12,7 +12,7 @@ const shots = path.join(ROOT, 'screenshots', day);
 fs.mkdirSync(shots, { recursive: true });
 
 const pages = ['', 'guide/', 'pricing/', 'privacy/', 'terms/', 'support/'].flatMap((p) => [p, 'ko/' + p]);
-const browser = await chromium.launch();
+const browser = await chromium.launch().catch(() => chromium.launch({ channel: 'chrome' }));   // installed Chrome when Playwright's own browser is missing
 const problems = [];
 
 // 1) links and assets
@@ -43,6 +43,13 @@ const check = async (url) => {
     }
   }
   await ctx.close();
+}
+
+// Sparkle feeds (docs/mac-updates.md): served as XML with a <channel>
+for (const f of ['appcast/appcast.xml', 'appcast/host.xml']) {
+  const r = await fetch(BASE + f).then(async (x) => ({ st: x.status, type: x.headers.get('content-type') || '', body: await x.text() })).catch((e) => ({ st: String(e) }));
+  seen.set(BASE + f, r.st);
+  if (r.st !== 200 || !/xml/.test(r.type) || !r.body.includes('<channel>')) problems.push(`${f} -> ${r.st} ${r.type}`);
 }
 
 // 2) film playback and screenshots

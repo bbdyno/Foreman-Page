@@ -8,7 +8,7 @@ import { chromium } from 'playwright';
 const BASE = (process.argv[2] || 'http://localhost:8765/').replace(/\/?$/, '/');
 const AXE = fs.readFileSync(path.join(import.meta.dirname, 'node_modules/axe-core/axe.min.js'), 'utf8');
 const pages = ['', 'guide/', 'pricing/', 'privacy/', 'terms/', 'support/'].flatMap((p) => [p, 'ko/' + p]);
-const browser = await chromium.launch();
+const browser = await chromium.launch().catch(() => chromium.launch({ channel: 'chrome' }));   // installed Chrome when Playwright's own browser is missing
 const found = new Map();
 for (const scheme of ['light', 'dark']) {
   const ctx = await browser.newContext({ colorScheme: scheme, viewport: { width: 1280, height: 900 } });

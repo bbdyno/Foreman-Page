@@ -1,0 +1,7 @@
+coding agent
+approve
+terminal
+remote session
+developer tools
+CLI
+AI coding

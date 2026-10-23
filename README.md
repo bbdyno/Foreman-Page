@@ -24,12 +24,12 @@ The HTML is generated and committed. All links are relative, so the site works f
 | Cloud mailbox wording (iCloud for Apple devices, Google Drive app folder for Android/Windows) | `tools/site/relay.mjs`, the one place to change it | used by the copy, the privacy policy and the FAQ |
 | Colors, fonts, easing | Foreman brand `docs/design/tokens.json` (Foreman repository, read only) | `tools/theme/from-brand.mjs` → `tools/theme/theme.json` → `assets/tokens.css` |
 | Logo, favicon, touch icon, OG images | Foreman brand `docs/design/logo`, `app-icon` | `tools/brand.mjs` → `assets/brand/` |
-| Product screens | Foreman brand `docs/design/mockups/*-{light,dark}.png` | `tools/screens.py` → `assets/screens/*.webp`, `screens.json` |
+| Product screens | Real app captures (`Foreman/docs/screens`, `clients/flutter/docs/screens`), brand mockups where none exists | `tools/screens.py` → `assets/screens/*.webp`, `screens.json` |
 | Layout and type | `assets/site.css` (uses only the token variables) | by hand |
 | Fonts, icons | npm packages pinned in `tools/package.json` | `tools/vendor.mjs` → `assets/fonts/`, `assets/icons/` |
 | Promo film | `tools/video/` (concept, storyboard, scenes, music spec) | `tools/video/build.sh` → `assets/video/` |
 
-Screens that are not in the mockups yet are left out of the pages, not replaced by placeholders. When the design repository adds a mockup, map its name in `tools/screens.py` (`KEYS`) and reference the key from the copy.
+Screens with neither a capture nor a mockup are left out of the pages, not replaced by placeholders. When the design repository adds a mockup, map its name in `tools/screens.py` (`KEYS`) and reference the key from the copy.
 
 ## Build
 
@@ -40,7 +40,7 @@ python3 -m venv .venv && .venv/bin/pip install pillow numpy
 node vendor.mjs                          # fonts and icons into assets/
 node theme/from-brand.mjs                # brand tokens -> theme.json
 node brand.mjs                           # logo, favicon, touch icon, OG images
-.venv/bin/python screens.py              # mockups -> assets/screens
+.venv/bin/python screens.py              # captures (or mockups) -> assets/screens
 node site/build.mjs                      # tokens.css + the ten pages
 ```
 
@@ -48,7 +48,7 @@ The film uses the showreel skill's engine (`~/.claude/skills/showreel`, not vend
 
 ```sh
 python3 ~/.claude/skills/showreel/scripts/new_project.py video --ratio 16:9 --duration 40   # engine.js, fx.js, fonts
-sh video/prepare.sh                      # mockups and logo into the film project
+sh video/prepare.sh                      # captures and logo into the film project
 sh video/build.sh                        # music, render (ko, en), mix, finish, site encodes
 ```
 
@@ -62,10 +62,10 @@ Everything visual comes from the Foreman design repository (`Foreman/docs/design
 cd tools
 node theme/from-brand.mjs            # tokens.json -> theme/theme.json (prints roles it had to fill by fallback)
 node brand.mjs                       # logo, favicon, touch icon, OG images
-.venv/bin/python screens.py          # mockups -> assets/screens
+.venv/bin/python screens.py          # captures (or mockups) -> assets/screens
 node site/build.mjs                  # assets/tokens.css + pages
 node a11y.mjs                        # axe-core on all pages, light and dark (needs a local server on :8765)
-sh video/prepare.sh && sh video/build.sh    # film tokens (reel/theme.css), logo, mockups; render ko/en
+sh video/prepare.sh && sh video/build.sh    # film tokens (reel/theme.css), logo, captures; render ko/en
 node verify.mjs                      # after pushing: live links, film playback, screenshots
 ```
 
@@ -95,24 +95,24 @@ Site (`tools/screens.py` → `assets/screens/<key>-<light|dark>.webp`; `REAL` in
 
 The user guide takes its captures the same way through `tools/guide_screens.py` (see `assets/guide/guide.json`).
 
-The film still uses the mockups: its opening zooms into a Lock Screen notification that has no real capture yet. To swap in captures later, keep these coordinates in mind. Film (`tools/video/reel/scenes.js`; the film uses the @3x mockups from `docs/design/mockups/`, copied by `prepare.sh`):
+The film uses real captures too. `tools/video/prepare.sh` copies them from `Foreman/docs/screens` (a PNG of the same name in `tools/captures/` wins), and `scenes.js` depends on these coordinates:
 
 | Time | Image | Coordinates the scene depends on |
 | --- | --- | --- |
-| 0:05–0:14 | `iOS-Lock-dark.png` (1206×2622) | Live Activity "your turn" tile at x 84, y 1498 (`TILE1`); notification crop y 1622–1900, menu crop y 1912–2336, Allow row centre (760, 1988) |
-| 0:11–0:14 | `watchOS-Approve-dark.png` (624×744) | none |
-| 0:14–0:18 | `iPad-Grid-light.png` (2752×2064) | zoom point (985, 300) on the waiting Kumquat tile |
-| 0:18–0:22 | `Mac-Workspace-light.png` (2880×1800) | zoom point (1430, 430) on the approval bar |
+| 0:05–0:14 | `iPhone-Widgets-dark.png` (1206×2622) | Kumquat ● in the "your turn" widget at x 112, y 2010, 25 px (`CAP.dot`, the match cut); that row at y 1968–2090 (`CAP.row`, hidden after Allow); Allow button centre (1025, 2021) (`CAP.allow`) |
+| 0:11–0:14 | `Watch-Approve-dark.png` (416×496) | none |
+| 0:14–0:18 | `iPad-Grid-light.png` (2064×2752, portrait) | zoom point (40, 620), so the waiting Kumquat tile stays whole |
+| 0:18–0:22 | `Mac-Workspace-light.png` (2880×1772) | zoom point (1430, 780) on the approval card |
 
-A capture with a different pixel size or layout needs those numbers re-measured in `scenes.js`.
+A capture with a different pixel size or layout needs those numbers re-measured in `scenes.js`. Rebuild with `sh video/prepare.sh && sh video/build.sh` (needs the showreel skill engine).
 
-## Mac app updates (Sparkle), reserved
+## Store listings
 
-The Mac app is distributed with Developer ID and will update through Sparkle, served from this Pages site without any server of ours:
+`store/` holds the App Store, Google Play and Microsoft Store listing text and screenshot sets; see [store/README.md](store/README.md).
 
-- `updates/appcast.xml`: the feed, `SUFeedURL = https://bbdyno.github.io/Foreman-Page/updates/appcast.xml`
-- `updates/notes/<version>.html`: release notes linked from each `<item>`
-- Signed and notarized `.zip`/`.dmg` files go to GitHub Releases of this repository (tag `mac-v<version>`), not into git: Pages has a 1 GB site limit and git a 100 MB file limit. Each `enclosure` points at `https://github.com/bbdyno/Foreman-Page/releases/download/mac-v<version>/Foreman-<version>.zip` with its EdDSA signature.
+## Mac app updates (Sparkle)
+
+The Mac apps update through Sparkle from this Pages site, with no server of ours: feeds at `appcast/appcast.xml` (Foreman) and `appcast/host.xml` (Foreman Host), files in this repository's GitHub Releases. The full procedure (keys, signing, item template, checks) is in [docs/mac-updates.md](docs/mac-updates.md).
 
 `.nojekyll` is present so Pages serves every path as is.
 

@@ -1,0 +1,29 @@
+Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from your Android phone or tablet. When an agent asks whether it may run a command, or asks you a question, you get a notification and answer on the spot.
+
+The app’s interface is currently in Korean.
+
+Approvals and questions
+- Approval requests and questions from all your computers gather in one Approvals tab, filtered by all, approvals, questions and risky.
+- Reversible requests can be allowed with the Allow button in the notification.
+- Irreversible actions, such as changing a production database or force-pushing, are allowed only inside the app after you verify with your fingerprint or screen lock.
+- Answer question notifications with the options or a reply.
+
+Sessions
+- Follow a session as a conversation, a terminal or a list of changes.
+- See the host’s terminal as it is, with a key bar for esc, tab and ctrl.
+- Dictate your next instruction.
+- New sessions can run in their own git worktree, leaving your working folder alone.
+- Closing the terminal does not end a session: it keeps running on the host, and the app can attach again at any time.
+
+Connection and security
+- Install Foreman Host on the Mac or Windows PC that runs your agents and pair with a QR code. Six digits on both screens confirm you are talking to each other.
+- Every connection is encrypted end to end with the Noise protocol.
+- There are no servers run by the developer. The app connects to your host directly and keeps the connection while closed so notifications arrive.
+
+Foreman Pro
+- Free connects two kinds of agent; Pro has no limit.
+- The subscription is billed through Google Play and applies to every host you have paired.
+
+Requires Foreman Host on the Mac or Windows PC (Windows 10 version 1809 or later) that runs your agents.
+
+Privacy Policy: https://bbdyno.github.io/Foreman-Page/privacy/

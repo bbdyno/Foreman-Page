@@ -1,0 +1,4 @@
+windows-home.png	현황: 당신 차례와 실행 중인 세션을 한눈에
+windows-inbox.png	승인 요청과 질문을 한곳에서. 위험한 요청은 Windows Hello로
+windows-sessions.png	세션 목록과 터미널을 나란히
+windows-host.png	호스트 연결 상태와 키 지문

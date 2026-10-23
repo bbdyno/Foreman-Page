@@ -1,0 +1,37 @@
+Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from iPhone, iPad, Apple Watch and Mac. When an agent asks whether it may run a command, or asks you a question, you get a notification and answer on the spot.
+
+The app’s interface is currently in Korean.
+
+Approvals and questions
+- Approval requests and questions from all your computers gather in one Approvals tab.
+- Reversible requests can be allowed straight from notifications, the Lock Screen, widgets and Apple Watch.
+- Irreversible actions, such as changing a production database or force-pushing, are allowed only inside the app after Face ID.
+- Answer questions with the option buttons or your own reply.
+
+Sessions
+- Follow a session as a conversation, a terminal or a list of changes.
+- See the host’s terminal as it is, and type into it.
+- New sessions can run in their own git worktree, leaving your working folder alone.
+- The control grid on iPad and Mac lays out many sessions on one screen.
+- Closing the terminal does not end a session: it keeps running on the host, and the app can attach again at any time.
+
+Connection and security
+- Install Foreman Host on the Mac or Windows PC that runs your agents and pair with a QR code. Six digits on both screens confirm you are talking to each other.
+- Every connection is encrypted end to end with the Noise protocol.
+- Connect the host to your own iCloud account to get approval requests as notifications even when the app is closed, and to reach the host away from home.
+- There are no servers run by the developer. Session content travels only between your computer, your devices and your own iCloud account.
+
+Foreman Pro
+- No limit on kinds of agent (Free connects two)
+- Turn an approval request into an auto-allow rule
+- Limit failover: when one agent hits its usage limit, the next one picks up
+- Hand a session to another agent; race two agents and compare
+- Resume after a limit reset; morning briefing
+- A subscription applies to every host you have paired.
+
+Foreman Pro is an auto-renewing monthly or yearly subscription. Payment is charged to your Apple Account at confirmation of purchase, and the subscription renews automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel it in your App Store account settings.
+
+Terms of Use: https://bbdyno.github.io/Foreman-Page/terms/
+Privacy Policy: https://bbdyno.github.io/Foreman-Page/privacy/
+
+Requires Foreman Host on the Mac or Windows PC (Windows 10 version 1809 or later) that runs your agents.

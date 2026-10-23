@@ -1,0 +1,8 @@
+Approval requests and questions from all your computers in one Approvals screen
+Allow, deny and reply from toast notifications
+Irreversible actions allowed only after Windows Hello
+See the host’s terminal as it is, and type into it
+Home shows sessions waiting for you, running and done today
+Ctrl+N new session, Ctrl+K search, Ctrl+] next approval request
+New sessions isolated in a git worktree
+End-to-end encryption with the Noise protocol, no developer servers

@@ -1,0 +1,4 @@
+windows-home.png	Home: sessions waiting for you and running, at a glance
+windows-inbox.png	Approvals and questions in one place; risky requests need Windows Hello
+windows-sessions.png	Sessions and the terminal side by side
+windows-host.png	Host connection status and key fingerprints

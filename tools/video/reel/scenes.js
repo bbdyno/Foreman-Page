@@ -1,6 +1,6 @@
 /* Foreman 홍보 영상 — concept.md "켜진 표지 하나"(브랜드 v3: 흑백, 펄스 심볼).
  * "당신 차례" 표지 ● 하나(전역 레이어)가 장면을 잇는다: 세션 목록 → 잠금화면 Live Activity, 마지막에 펄스 마크를 긋는다.
- * 제품 화면은 디자인 시스템의 시안 PNG(assets/img, prepare.sh)만 쓰고, 코드로는 모션 그래픽 레이어만 그린다.
+ * 제품 화면은 실제 앱 캡처 PNG(Foreman/docs/screens → assets/img, prepare.sh)만 쓰고, 코드로는 모션 그래픽 레이어만 그린다.
  * 화면은 시각 t 의 순수 함수다(engine.js 규칙). 언어는 lang.js 의 window.LANG. */
 const { ease, prog, kf, clamp, lerp, css, h, s, cue, bezier } = REEL;
 REEL.config({ duration: 40, fps: 30, width: 1920, height: 1080, audio: null });
@@ -14,7 +14,7 @@ const T = { s02: cue('scene.s02', 6), s03: cue('scene.s03', 14), s04: cue('scene
 const COPY = {
   ko: {
     c1: ['자리를 비운 사이,', '에이전트가 당신을 기다립니다.'],
-    c2: ['잠금화면에서', '바로 허용합니다.'],
+    c2: ['잠금화면과 위젯에서', '바로 허용합니다.'],
     allowed: '허용됨 · Mac mini에서 실행 중',
     wrist: 'Apple Watch에서도.',
     c3: ['여러 에이전트, 여러 컴퓨터.', '한 화면에서.'],
@@ -38,7 +38,7 @@ const COPY = {
   },
   en: {
     c1: ['While you’re away,', 'an agent is waiting for you.'],
-    c2: ['Allow it right from', 'the Lock Screen.'],
+    c2: ['Allow it right from', 'the Lock Screen and widgets.'],
     allowed: 'Allowed · running on Mac mini',
     wrist: 'Or from Apple Watch.',
     c3: ['Every agent, every computer.', 'On one screen.'],
@@ -99,7 +99,9 @@ const TILE0 = { x: LIST.x + 6, y: LIST.y + TURN_ROW * LIST.row + (LIST.row - 26)
 const rowIndex = (i, t) => (i === TURN_ROW ? lerp(TURN_ROW, 0, SORT(t)) : i < TURN_ROW ? lerp(i, i + 1, SORT(t)) : i);
 const PHONE2 = { x: 1210, y: 60, h: 960 };
 const K2 = PHONE2.h / 2622;
-const TILE1 = { x: PHONE2.x + 82 * K2, y: PHONE2.y + 1522 * K2, s: 28 * K2, r: 14 * K2 };   // Live Activity 의 당신 차례 ●
+// iPhone-Widgets-dark 캡처(1206×2622)의 좌표: 당신 차례 위젯의 Kumquat ●, 그 줄, 허용 버튼
+const CAP = { dot: { x: 112, y: 2010, s: 25 }, row: { x: 70, y: 1968, w: 1070, h: 122 }, allow: { x: 1025, y: 2021 } };
+const TILE1 = { x: PHONE2.x + CAP.dot.x * K2, y: PHONE2.y + CAP.dot.y * K2, s: CAP.dot.s * K2, r: CAP.dot.s / 2 * K2 };   // 위젯의 당신 차례 ●
 // 엔드카드 로고: 브랜드 lockup SVG 의 크기와(있다면) 브랜드 강조색으로 칠한 커서 블록 위치를 읽는다.
 // 커서가 있는 로고면 영상의 커서가 그 자리로 들어가고, 없으면 로고가 왼쪽부터 드러난다.
 const LOGO_GEO = (() => {
@@ -171,24 +173,17 @@ REEL.scene({
   },
 });
 
-// ── s02 잠금화면 승인 ─────────────────────────────────────────────────────
+// ── s02 잠금화면·위젯 승인 ────────────────────────────────────────────────
 REEL.scene({
   id: 's02', start: T.s02 - 0.9, end: T.s03,
   setup(el) {
-    this.ph = phoneImg(el, '../assets/img/iOS-Lock-dark.png', PHONE2.x, PHONE2.y, PHONE2.h);
+    this.ph = phoneImg(el, '../assets/img/iPhone-Widgets-dark.png', PHONE2.x, PHONE2.y, PHONE2.h);
     const g = this.ph.g;
-    // 알림과 메뉴 자리는 잠금화면 바탕색으로 덮었다가, 같은 시안을 잘라 낸 조각으로 차례로 보여 준다
-    this.cover = h('div', 'a', g); css(this.cover, { left: 0, top: '1606px', width: '1206px', height: '734px', background: (window.MOCKUP_BG || {})['iOS-Lock-dark'] || 'var(--night)' });
-    const piece = (inset, origin) => {
-      const im = REEL.img('../assets/img/iOS-Lock-dark.png'); g.appendChild(im);
-      css(im, { position: 'absolute', left: 0, top: 0, width: '1206px', height: '2622px', clipPath: `inset(${inset})`, transformOrigin: origin });
-      return im;
-    };
-    this.note = piece('1622px 24px 722px 24px', '603px 1760px');
-    this.menu = piece('1912px 20px 286px 352px', '1170px 1912px');
-    this.tap = h('div', 'a', g); css(this.tap, { left: '700px', top: '1928px', width: '120px', height: '120px', borderRadius: '60px', background: 'rgba(var(--night-text-rgb), .28)' });
-    this.hasWatch = (window.MOCKUPS || []).includes('watchOS-Approve-dark');
-    if (this.hasWatch) this.watch = frameImg(el, '../assets/img/watchOS-Approve-dark.png', 624, 744, 820, 470, 300, 0);
+    // 허용한 줄은 위젯 바탕색으로 덮어 목록에서 빠지게 한다(캡처 위에 그리는 것은 이 덮개와 탭 표시뿐)
+    this.cover = h('div', 'a', g); css(this.cover, { left: CAP.row.x + 'px', top: CAP.row.y + 'px', width: CAP.row.w + 'px', height: CAP.row.h + 'px', background: (window.MOCKUP_BG || {})['iPhone-Widgets-dark'] || '#000', opacity: 0 });
+    this.tap = h('div', 'a', g); css(this.tap, { left: CAP.allow.x - 60 + 'px', top: CAP.allow.y - 60 + 'px', width: '120px', height: '120px', borderRadius: '60px', background: 'rgba(var(--night-text-rgb), .28)' });
+    this.hasWatch = (window.MOCKUPS || []).includes('Watch-Approve-dark');
+    if (this.hasWatch) this.watch = frameImg(el, '../assets/img/Watch-Approve-dark.png', 416, 496, 820, 470, 300, 0);
     this.cap = caption(el, this.hasWatch ? [...COPY.c2, COPY.wrist] : COPY.c2, 120, 150, 'var(--night-text)', 'var(--night-2)');
     this.ok = h('div', 'a', el); css(this.ok, { left: '120px', bottom: '84px', fontSize: '30px', color: 'var(--night-2)', display: 'flex', alignItems: 'center', gap: '12px', height: '36px' });
     const ic = icon(this.ok, 'check-circle', 34, 'var(--success-d)'); css(ic, { position: 'relative' });
@@ -198,17 +193,14 @@ REEL.scene({
     const t0 = 0.9;                       // 장면 큐(6.0) = lt 0.9
     const enter = prog(lt, 0.25, 0.9, BE);
     const exit = prog(lt, 8.9 - 0.6, 0.5, BX);
-    const push = prog(lt, t0 + 1.2, 3.2, ease.inOutSine) * (1 - prog(lt, t0 + 5.0, 1.6, ease.inOutSine));
-    const k = K2 * (1 + 0.1 * push);
-    css(this.ph.g, { transform: `translate(${-push * 70}px, ${(1 - enter) * 320 - push * 30 - exit * 120}px) scale(${k})`, opacity: enter * (1 - exit) });
-    // 알림 등장(6.9) → 길게 눌러 메뉴(8.6) → 허용 탭(10.0) → 메뉴·알림 닫힘
+    const push = prog(lt, t0 + 1.2, 2.6, ease.inOutSine) * (1 - prog(lt, t0 + 5.0, 1.6, ease.inOutSine));
+    const k = K2 * (1 + 0.6 * push);       // 당신 차례 위젯으로 다가간다
+    css(this.ph.g, { transform: `translate(${-push * 160}px, ${(1 - enter) * 320 - push * 640 - exit * 120}px) scale(${k})`, opacity: enter * (1 - exit) });
+    // 위젯의 허용 탭(10.0) → 그 줄이 빠진다
     const tTap = 10.0 - (T.s02 - 0.9);
-    const nIn = prog(lt, t0 + 0.9, 0.5, BE), nOut = prog(lt, tTap + 0.55, 0.4, BX);
-    css(this.note, { opacity: nIn * (1 - nOut), transform: `translateY(${(1 - nIn) * 120 - nOut * 60}px) scale(${1 - nOut * 0.04})` });
-    const mIn = prog(lt, tTap - 1.4, 0.35, BE), mOut = prog(lt, tTap + 0.25, 0.3, BX);
-    css(this.menu, { opacity: mIn * (1 - mOut), transform: `scale(${lerp(0.94, 1, mIn) - mOut * 0.04})` });
     const tp = prog(lt, tTap - 0.25, 0.5, ease.linear);
     css(this.tap, { opacity: tp > 0 && tp < 1 ? Math.sin(tp * Math.PI) : 0, transform: `scale(${lerp(0.5, 1.1, tp)})` });
+    css(this.cover, { opacity: prog(lt, tTap + 0.3, 0.45, BE) });
     showLines(this.cap.spans.slice(0, 2), lt, t0 + 0.6, 8.9 - 0.7);
     showLines(this.cap.spans.slice(2), lt, tTap + 1.9, 8.9 - 0.7);
     if (this.hasWatch) {
@@ -236,8 +228,8 @@ REEL.scene({
   id: 's03', start: T.s03 - 0.5, end: T.s04,
   setup(el) {
     this.root = h('div', 'full', el); css(this.root, { background: 'var(--bg)' });
-    this.ipad = frameImg(this.root, '../assets/img/iPad-Grid-light.png', 2752, 2064, 790, 150, 1080, 26);
-    this.mac = frameImg(this.root, '../assets/img/Mac-Workspace-light.png', 2880, 1800, 780, 200, 1080, 14);
+    this.ipad = frameImg(this.root, '../assets/img/iPad-Grid-light.png', 2064, 2752, 940, 64, 714, 30);      // 세로 캡처
+    this.mac = frameImg(this.root, '../assets/img/Mac-Workspace-light.png', 2880, 1772, 780, 208, 1080, 14);
     this.cap = caption(this.root, COPY.c3, 120, 214, 'var(--ink)', 'var(--ink2)');
     css(this.cap.el, { width: '600px' });
     this.ag = h('div', 'a', this.root, COPY.agents); css(this.ag, { left: '120px', bottom: '150px', fontSize: '26px', color: 'var(--ink3)', width: '600px' });
@@ -249,14 +241,14 @@ REEL.scene({
     const swap = 4.3;                                   // iPad → Mac(18.3)
     const e1 = prog(lt, 0.25, 0.9, BE), x1 = prog(lt, swap, 0.7, BE);
     css(this.ipad.g, { opacity: e1 * (1 - x1), transform: `translate(${-x1 * 260}px, ${(1 - e1) * 260}px) scale(${1 - 0.04 * x1})` });
-    // iPad: 답을 기다리는 Kumquat 타일로 다가갔다가(15.6–16.9) 빠진다
+    // iPad: 답을 기다리는 Kumquat 칸(허용·거부)으로 다가갔다가(15.6–16.9) 빠진다
     const zi = prog(lt, 2.1, 1.2, BE) * (1 - prog(lt, 3.6, 0.7, BE));
-    this.ipad.zoom(1 + 0.8 * zi, 960, 300);
+    this.ipad.zoom(1 + 0.9 * zi, 40, 620);
     const e2 = prog(lt, swap + 0.1, 0.8, BE);
     css(this.mac.g, { opacity: e2 * (1 - out), transform: `translate(${(1 - e2) * 420 - out * 900}px, 0px)` });
     // Mac: 대화 위의 승인 요청 줄로 다가간다(19.6–)
     const zm = prog(lt, swap + 1.3, 1.3, BE) * (1 - prog(lt, 7.6, 0.4, BE));
-    this.mac.zoom(1 + 0.7 * zm, 1420, 560);
+    this.mac.zoom(1 + 0.7 * zm, 1430, 780);
     showLines(this.cap.spans, lt, 1.0, 8.5 - 0.6);
     const a = prog(lt, 1.8, 0.6, BE) * (1 - prog(lt, 8.5 - 0.6, 0.35, BX));
     css(this.ag, { opacity: a, transform: `translateY(${(1 - a) * 16}px)` });
