@@ -1,6 +1,7 @@
 // 사용자 가이드(한국어). 내용은 Foreman 저장소 main b427465에 구현된 것만 씁니다.
 // 절과 소절의 id는 고정입니다. 앱의 도움말 링크가 걸리므로 바꾸지 마세요(docs/guide-anchors.md).
 // 시험 측정 수치의 출처는 docs/guide-sources.md에 있습니다.
+import { MAC } from './downloads.mjs';
 const MAC_CLI = '/Applications/ForemanHost.app/Contents/MacOS/foreman';
 
 export default {
@@ -18,7 +19,8 @@ export default {
         ['p', 'Foreman은 두 부분으로 나뉩니다. 에이전트가 실제로 도는 컴퓨터에는 <strong>호스트</strong>를, 세션을 보고 승인할 기기에는 <strong>앱</strong>을 설치합니다. 호스트는 세션을 직접 소유하므로 터미널 창을 닫거나 연결이 끊겨도 에이전트는 계속 돌고, 앱은 언제든 다시 붙습니다.'],
         ['h3', 'start-mac-host', 'Mac 호스트 설치'],
         ['steps', [
-          '<strong>Foreman Host</strong>를 응용 프로그램 폴더에 두고 엽니다. Dock에는 나타나지 않고 메뉴 막대에 펄스 아이콘이 생깁니다.',
+          `<a href="${MAC.host}">Foreman Host ${MAC.version} DMG</a>를 내려받아 열고 <strong>Foreman Host</strong>를 응용 프로그램 폴더로 끌어다 놓습니다. macOS 15 이상, Apple 실리콘과 Intel Mac 모두 됩니다.`,
+          '응용 프로그램 폴더에서 <strong>Foreman Host</strong>를 엽니다. Dock에는 나타나지 않고 메뉴 막대에 펄스 아이콘이 생깁니다.',
           '메뉴를 열어 맨 위에 “이 Mac이 호스트로 동작 중”이 보이면 준비가 끝난 것입니다. 그 아래 줄에 foremand 버전, 세션 수, 원격 연결 상태가 나옵니다.',
           '메뉴의 <strong>로그인 시 시작</strong>을 켭니다. 이제 Mac에 로그인할 때마다 호스트가 자동으로 뜨고, 꺼지면 몇 초 안에 다시 뜹니다. 토글 옆에 “승인 필요”가 보이면 시스템 설정 › 일반 › 로그인 항목에서 Foreman Host를 허용합니다.',
           '같은 Mac에서 Foreman 앱을 쓰면 페어링 없이 바로 이 호스트에 연결됩니다.',
@@ -42,7 +44,7 @@ export default {
         ]],
         ['note', '패키지 없이 압축 파일로 받은 호스트는 <code>foreman autostart enable</code> 한 번으로 로그온 시 시작을 켭니다. 관리자 권한은 필요 없습니다.'],
         ['h3', 'start-apps', 'iPhone · iPad · Mac 앱'],
-        ['p', 'iPhone과 iPad는 App Store에서 <strong>Foreman</strong>을 받습니다. Apple Watch 앱은 iPhone 앱과 함께 설치됩니다. Mac에서 세션을 보려면 Foreman 앱을, 그 Mac을 호스트로 쓰려면 Foreman Host를 설치합니다. 둘은 별개의 앱이고 한 Mac에 같이 둘 수 있습니다.'],
+        ['p', `iPhone과 iPad는 App Store에서 <strong>Foreman</strong>을 받습니다. Apple Watch 앱은 iPhone 앱과 함께 설치됩니다. Mac에서 세션을 보려면 Foreman 앱(<a href="${MAC.app}">DMG 내려받기</a>)을, 그 Mac을 호스트로 쓰려면 Foreman Host(<a href="${MAC.host}">DMG 내려받기</a>)를 설치합니다. 두 앱 모두 새 버전이 나오면 앱 안에서 알려 줍니다. 둘은 별개의 앱이고 한 Mac에 같이 둘 수 있습니다.`],
         ['fig', [
           { key: 'iphone-home', alt: 'iPhone 앱의 현황 화면. 당신 차례, 실행 중, 오늘 완료 수와 승인을 기다리는 세션 목록.', cap: 'iPhone · 현황' },
           { key: 'ipad-grid', alt: 'iPad 관제 그리드. 여러 세션이 표로 펼쳐져 있습니다.', cap: 'iPad · 관제 그리드' },

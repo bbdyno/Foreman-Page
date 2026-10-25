@@ -64,8 +64,6 @@ export const APP_STORE = {
     description: lines(
       'Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from iPhone, iPad, Apple Watch and Mac. When an agent asks whether it may run a command, or asks you a question, you get a notification and answer on the spot.',
       '',
-      'The app’s interface is currently in Korean.',
-      '',
       'Approvals and questions',
       '- Approval requests and questions from all your computers gather in one Approvals tab.',
       '- Reversible requests can be allowed straight from notifications, the Lock Screen, widgets and Apple Watch.',
@@ -144,8 +142,6 @@ export const GOOGLE_PLAY = {
     full_description: lines(
       'Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from your Android phone or tablet. When an agent asks whether it may run a command, or asks you a question, you get a notification and answer on the spot.',
       '',
-      'The app’s interface is currently in Korean.',
-      '',
       'Approvals and questions',
       '- Approval requests and questions from all your computers gather in one Approvals tab, filtered by all, approvals, questions and risky.',
       '- Reversible requests can be allowed with the Allow button in the notification.',
@@ -209,8 +205,6 @@ export const MICROSOFT_STORE = {
     short_description: 'Follow the sessions of the coding agents running on your computer, and answer their approval requests and questions. Risky requests are verified with Windows Hello.',
     description: lines(
       'Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from Windows. When an agent asks whether it may run a command, or asks you a question, a toast notification arrives and you answer on the spot.',
-      '',
-      'The app’s interface is currently in Korean.',
       '',
       'Install Foreman Host on the Mac or Windows PC that runs your agents and paste the pairing link it shows. Six digits on both screens confirm you are talking to each other, and every connection is encrypted end to end with the Noise protocol. There are no servers run by the developer.',
       '',

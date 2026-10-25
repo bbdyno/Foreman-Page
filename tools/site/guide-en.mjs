@@ -2,6 +2,7 @@
 // Section and subsection ids are fixed: the apps link to them (docs/guide-anchors.md).
 // The apps' interface is in Korean, so on-screen labels are quoted in Korean with an English gloss.
 // Sources for measured numbers: docs/guide-sources.md.
+import { MAC } from './downloads.mjs';
 const MAC_CLI = '/Applications/ForemanHost.app/Contents/MacOS/foreman';
 const ui = (ko, en) => `<strong lang="ko">${ko}</strong> (${en})`;
 
@@ -20,7 +21,8 @@ export default {
         ['p', 'Foreman has two parts. The <strong>host</strong> goes on the computer where your agents actually run; the <strong>app</strong> goes on the devices you use to follow and approve sessions. The host owns each session, so the agent keeps running when you close the terminal window or lose the connection, and the app can attach again at any time.'],
         ['h3', 'start-mac-host', 'Installing the Mac host'],
         ['steps', [
-          'Put <strong>Foreman Host</strong> in your Applications folder and open it. It does not appear in the Dock; a pulse icon appears in the menu bar.',
+          `Download <a href="${MAC.host}">Foreman Host ${MAC.version} (DMG)</a>, open it and drag <strong>Foreman Host</strong> to Applications. It needs macOS 15 or later and runs on Apple silicon and Intel Macs.`,
+          'Open <strong>Foreman Host</strong> from your Applications folder. It does not appear in the Dock; a pulse icon appears in the menu bar.',
           `Open the menu. When the top line reads ${ui('이 Mac이 호스트로 동작 중', 'this Mac is working as a host')}, you are ready. The line below shows the foremand version, the number of sessions and the remote connection status.`,
           `Turn on ${ui('로그인 시 시작', 'start at login')}. The host now starts every time you log in to the Mac and restarts within seconds if it stops. If ${ui('승인 필요', 'approval needed')} appears next to the toggle, allow Foreman Host in System Settings › General › Login Items.`,
           'If you also use the Foreman app on the same Mac, it connects to this host directly, without pairing.',
@@ -44,7 +46,7 @@ export default {
         ]],
         ['note', 'A host installed from a zip file instead of the package turns on start-at-sign-in with <code>foreman autostart enable</code>. No administrator rights are needed.'],
         ['h3', 'start-apps', 'iPhone · iPad · Mac apps'],
-        ['p', 'On iPhone and iPad, get <strong>Foreman</strong> from the App Store; the Apple Watch app comes with the iPhone app. On a Mac, install the Foreman app to follow sessions, and Foreman Host to use that Mac as a host. They are separate apps and can live on the same Mac.'],
+        ['p', `On iPhone and iPad, get <strong>Foreman</strong> from the App Store; the Apple Watch app comes with the iPhone app. On a Mac, install the Foreman app (<a href="${MAC.app}">download the DMG</a>) to follow sessions, and Foreman Host (<a href="${MAC.host}">download the DMG</a>) to use that Mac as a host. Both apps tell you when a new version is out. They are separate apps and can live on the same Mac.`],
         ['fig', [
           { key: 'iphone-home', alt: 'The iPhone app home screen: counts of sessions waiting for you, running and done today, and the sessions waiting for an approval.', cap: 'iPhone · Home' },
           { key: 'ipad-grid', alt: 'The iPad control grid with many sessions laid out as a table.', cap: 'iPad · Control grid' },

@@ -1,7 +1,5 @@
 Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from Windows. When an agent asks whether it may run a command, or asks you a question, a toast notification arrives and you answer on the spot.
 
-The app’s interface is currently in Korean.
-
 Install Foreman Host on the Mac or Windows PC that runs your agents and paste the pairing link it shows. Six digits on both screens confirm you are talking to each other, and every connection is encrypted end to end with the Noise protocol. There are no servers run by the developer.
 
 When you close the window, the app keeps running in the notification area to receive approval notifications.

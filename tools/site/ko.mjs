@@ -1,6 +1,7 @@
 // 한국어 콘텐츠. build.mjs가 이 값으로 ko/ 아래 페이지를 만듭니다.
 import { icon } from './icons.mjs';
 import { RELAY } from './relay.mjs';
+import { MAC } from './downloads.mjs';
 import guide from './guide-ko.mjs';
 const R = RELAY.ko;
 const REPO = 'https://github.com/bbdyno/Foreman-Page';
@@ -39,7 +40,7 @@ export default {
       ['app-store-logo', 'App Store', 'iPhone · iPad · Apple Watch'],
       ['google-play-logo', 'Google Play', 'Android'],
       ['windows-logo', 'Microsoft Store', 'Windows 앱 · Windows 호스트'],
-      ['apple-logo', 'Mac 직접 다운로드', 'Mac 앱 · Mac 호스트'],
+      ['apple-logo', 'Mac 직접 다운로드', 'Mac 앱 · Mac 호스트', [[`Foreman 앱 ${MAC.version} (DMG)`, MAC.app], [`Foreman Host ${MAC.version} (DMG)`, MAC.host]]],
     ],
     storeState: '출시 준비 중',
     jumpFeatures: '무엇을 하는지 보기',

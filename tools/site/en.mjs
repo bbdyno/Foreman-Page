@@ -1,6 +1,7 @@
 // English content. build.mjs renders the root pages from these values.
 import { icon } from './icons.mjs';
 import { RELAY } from './relay.mjs';
+import { MAC } from './downloads.mjs';
 import guide from './guide-en.mjs';
 const R = RELAY.en;
 const REPO = 'https://github.com/bbdyno/Foreman-Page';
@@ -39,7 +40,7 @@ export default {
       ['app-store-logo', 'App Store', 'iPhone · iPad · Apple Watch'],
       ['google-play-logo', 'Google Play', 'Android'],
       ['windows-logo', 'Microsoft Store', 'Windows app · Windows host'],
-      ['apple-logo', 'Direct download for Mac', 'Mac app · Mac host'],
+      ['apple-logo', 'Direct download for Mac', 'Mac app · Mac host', [[`Foreman app ${MAC.version} (DMG)`, MAC.app], [`Foreman Host ${MAC.version} (DMG)`, MAC.host]]],
     ],
     storeState: 'Coming at launch',
     jumpFeatures: 'See what it does',

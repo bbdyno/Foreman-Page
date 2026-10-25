@@ -181,7 +181,7 @@ function home(c) {
       <dl class="facts">${h.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
       <p class="launch">${icon('hourglass-medium')}<span>${h.launch}</span></p>
       <section class="stores" aria-labelledby="stores-title"><h2 id="stores-title" class="meta">${h.storesTitle}</h2>
-        <ul>${h.stores.map(([ic, name, what]) => `<li>${icon(ic)}<div><span class="store">${name}</span><span class="what">${what}</span><span class="state">${h.storeState}</span></div></li>`).join('')}</ul>
+        <ul>${h.stores.map(([ic, name, what, links]) => `<li>${icon(ic)}<div><span class="store">${name}</span><span class="what">${what}</span>${links ? `<span class="links">${links.map(([label, href]) => `<a href="${href}">${icon('download-simple')}${label}</a>`).join('')}</span>` : `<span class="state">${h.storeState}</span>`}</div></li>`).join('')}</ul>
       </section>
       <p class="jump"><a href="#features">${h.jumpFeatures}${icon('arrow-right')}</a><a href="#zero">${h.jumpZero}${icon('arrow-right')}</a></p>
     </div>
