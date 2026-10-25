@@ -105,7 +105,7 @@ export const APP_STORE = {
 
 export const GOOGLE_PLAY = {
   ko: {
-    title: 'Foreman',
+    title: 'Foreman: Agent Remote',
     short_description: '내 컴퓨터의 코딩 에이전트를 휴대폰에서 보고 승인하세요',
     full_description: lines(
       'Foreman은 내 컴퓨터에서 도는 코딩 에이전트(Claude Code, Codex, Gemini CLI, OpenCode)를 Android 휴대폰과 태블릿에서 보고 승인하는 앱입니다. 에이전트가 명령을 실행해도 되는지 묻거나 질문하면 알림이 오고, 그 자리에서 답할 수 있습니다.',
@@ -139,7 +139,7 @@ export const GOOGLE_PLAY = {
     changelog: '첫 버전입니다. 승인 인박스, 알림에서 허용·거부·답장, 위험한 요청의 본인 확인, 세션의 대화·터미널·변경 보기, QR 페어링을 제공합니다.',
   },
   en: {
-    title: 'Foreman',
+    title: 'Foreman: Agent Remote',
     short_description: 'See and approve the coding agents on your computer from your phone',
     full_description: lines(
       'Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from your Android phone or tablet. When an agent asks whether it may run a command, or asks you a question, you get a notification and answer on the spot.',

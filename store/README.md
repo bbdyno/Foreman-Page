@@ -38,7 +38,7 @@ store/
 | App Store | 키워드 | 100바이트, 쉼표 뒤 공백 없음, 다른 앱·회사 이름 금지 | ko 74바이트 / en 83바이트 | 같은 문서, [Product page](https://developer.apple.com/app-store/product-page/) |
 | App Store | 새로운 기능 | 4000자, 첫 버전에는 입력란이 없음 | 비워 둠 | 같은 문서 |
 | App Store | 스크린샷 | 기기 크기마다 1–10장, PNG·JPEG, 알파 채널 금지. iPhone은 6.1"/6.3"급이 필수이고 6.9"를 주면 6.5"는 필요 없음. iPad 13" 필수(iPad 지원 시), Mac은 16:10 네 가지 크기, Watch는 기종별 한 크기 | iPhone 6.9·6.5·6.3, iPad 13, Mac 2880×1800, Watch 416×496(Series 10·11) | [Screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications/) |
-| Google Play | 앱 이름 · 간단한 설명 · 자세한 설명 | 30 · 80 · 4000자 | ko 7·30·1021 / en 7·66·1913 | [Store listing](https://support.google.com/googleplay/android-developer/answer/9859152) |
+| Google Play | 앱 이름 · 간단한 설명 · 자세한 설명 | 30 · 80 · 4000자 | ko 21·30·1021 / en 21·66·1913 | [Store listing](https://support.google.com/googleplay/android-developer/answer/9859152) |
 | Google Play | 출시 노트 | 언어당 500자 | ko 79 / en 180 | [Release notes](https://support.google.com/googleplay/android-developer/answer/9859348) |
 | Google Play | 아이콘 · 그래픽 이미지 | 512×512 PNG(알파 허용) · 1024×500(알파 금지) | 있음 | [Preview assets](https://support.google.com/googleplay/android-developer/answer/9866151) |
 | Google Play | 스크린샷 | 기기 종류당 최대 8장, 변 320–3840px, 긴 변이 짧은 변의 2배 이하, 알파 금지. 추천 노출에는 1080px 이상 9:16 또는 16:9가 4장 이상 필요 | 휴대폰 6장(9:16), 태블릿 7"·10" 각 3장(16:9) | 같은 문서 |
@@ -47,6 +47,16 @@ store/
 | Microsoft Store | 이번 버전의 새로운 기능 | 1500자, 첫 제출은 비워 둠 | 비워 둠 | Store listing 문서 |
 | Microsoft Store | 스크린샷 | 데스크톱 1366×768 이상(4K까지), PNG, 최대 10장, 장당 50MB 이하. 캡션 200자. 아래 1/3은 오버레이로 가려질 수 있음 | 2880×1800 4장, 캡션 `screenshot_captions.txt` | [Screenshots and images](https://learn.microsoft.com/en-us/windows/apps/publish/publish-your-app/msix/screenshots-and-images) |
 | Microsoft Store | 스토어 로고 | 1:1 300×300 권장 | 있음 | 같은 문서 |
+
+## 스토어 이름
+
+세 스토어 모두 **"Foreman: Agent Remote"**로 등록했습니다. "Foreman"은 App Store와 Microsoft Store에서 이미 쓰이고 있었습니다. 앱 안의 이름과 브랜드는 Foreman입니다.
+
+| 스토어 | 식별자 |
+| --- | --- |
+| App Store | 앱 ID 6826943850, 번들 `com.bbdyno.foreman.ios` |
+| Google Play | 패키지 `com.bbdyno.foreman` |
+| Microsoft Store | Store ID 9N7SBRZGF595, 2027-01-26까지 제출해야 이름 예약 유지 |
 
 ## 주소
 
