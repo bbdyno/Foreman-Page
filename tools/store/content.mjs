@@ -14,7 +14,7 @@ const lines = (...xs) => xs.join('\n');
 
 export const APP_STORE = {
   ko: {
-    name: 'Foreman',
+    name: 'Foreman: Agent Remote',
     subtitle: '코딩 에이전트를 어디서든 승인',
     promotional_text: '자리를 비운 사이 에이전트가 승인을 기다리면 잠금화면이나 Apple Watch에서 바로 답하세요. 되돌릴 수 없는 작업은 Face ID로만 허용합니다.',
     keywords: '코딩,에이전트,승인,터미널,원격,세션,개발자,CLI,알림,AI',
@@ -57,7 +57,7 @@ export const APP_STORE = {
     ),
   },
   en: {
-    name: 'Foreman',
+    name: 'Foreman: Agent Remote',
     subtitle: 'Approve coding agents anywhere',
     promotional_text: 'When an agent waits for your approval while you are away, answer from the Lock Screen or Apple Watch. Irreversible actions are allowed only with Face ID.',
     keywords: 'coding,agent,approve,terminal,remote,session,developer,cli,notification,worktree,ai',

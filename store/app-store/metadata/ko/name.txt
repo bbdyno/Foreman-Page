@@ -1,1 +1,1 @@
-Foreman
+Foreman: Agent Remote

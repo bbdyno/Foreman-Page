@@ -33,7 +33,7 @@ store/
 
 | 스토어 | 항목 | 한도 | 이 자료 | 출처 |
 | --- | --- | --- | --- | --- |
-| App Store | 이름 · 부제 | 2–30자 · 30자 | 7자 · ko 16자 / en 30자 | [App information](https://developer.apple.com/help/app-store-connect/reference/app-information/app-information) |
+| App Store | 이름 · 부제 | 2–30자 · 30자 | 21자 · ko 16자 / en 30자 | [App information](https://developer.apple.com/help/app-store-connect/reference/app-information/app-information) |
 | App Store | 프로모션 텍스트 · 설명 | 170자 · 4000자 | ko 84·1380 / en 153·2587 | [Platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information) |
 | App Store | 키워드 | 100바이트, 쉼표 뒤 공백 없음, 다른 앱·회사 이름 금지 | ko 74바이트 / en 83바이트 | 같은 문서, [Product page](https://developer.apple.com/app-store/product-page/) |
 | App Store | 새로운 기능 | 4000자, 첫 버전에는 입력란이 없음 | 비워 둠 | 같은 문서 |
