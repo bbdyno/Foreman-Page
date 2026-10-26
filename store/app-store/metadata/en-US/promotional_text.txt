@@ -1,1 +1,1 @@
-When an agent waits for your approval while you are away, answer from the Lock Screen or Apple Watch. Irreversible actions are allowed only with Face ID.
+When Claude Code nears its usage limit, Foreman hands the task to Codex or Gemini with the context. No account and no developer servers: it all runs on your own computer.

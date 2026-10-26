@@ -1,4 +1,11 @@
-Foreman lets you follow and approve the coding agents running on your computer (Claude Code, Codex, Gemini CLI, OpenCode) from iPhone, iPad, Apple Watch and Mac. When an agent asks whether it may run a command, or asks you a question, you get a notification and answer on the spot.
+Foreman runs the coding agents on your computer (Claude Code, Codex, Gemini CLI, OpenCode) as one team: it hands work from one agent to another, races them against each other, and lets you answer their approval requests from iPhone, iPad, Apple Watch and Mac.
+
+Agents as one team (Pro)
+- Limit failover: when an agent account nears its usage limit, the task continues in the next agent with the context so far.
+- Handoff: pass a running session to another agent with a summary and the changes made.
+- Pipelines: chain steps, for example one agent writes and another reviews.
+- Races: give the same task to several agents, each in its own git worktree, then compare and pick.
+- Autopilot: resume stopped work when a limit resets, and get a morning briefing of what ran overnight.
 
 Approvals and questions
 - Approval requests and questions from all your computers gather in one Approvals tab.
